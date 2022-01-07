@@ -10,7 +10,7 @@ import Foundation
 
 struct NetworkEngine {
     
-    static func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) ->  Void)) {
+    static func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> (Void)) {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = endpoint.scheme

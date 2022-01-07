@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // Self identifier
     private(set) static var identifier = "HomeViewController"
@@ -17,6 +17,8 @@ class HomeViewController: UIViewController {
     
     // MARK: - Instances
     
+    private var movies = [Movie]()
+    
     
     // MARK: - Initialization
     
@@ -25,19 +27,22 @@ class HomeViewController: UIViewController {
         updateUI()
         addSubViews()
         populateStackView()
+        initializeCollectionView()
         initializeConstraints()
         NetworkEngine.request(endpoint: MoviesDbEndpoint.dailyTrends) { (result: Result<MoviesResponse, Error>) in
             switch result {
-            case .success(let response): print("Response: ", response)
+            case .success(let response): self.movies = response.results; self.trendingMoviesCollectionView.reloadData()
             case .failure(let error): print(error)
             }
         }
+       
     }
     
     
     // adding SubViews
     private func addSubViews() {
         self.view.addSubview(upperStackView)
+        self.view.addSubview(trendingMoviesCollectionView)
     }
     
     // adding arrangedSubViews into stackView
@@ -100,7 +105,44 @@ class HomeViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - CollectionView Configuration
     
+    private let trendingMoviesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+//        layout.estimatedItemSize = .zero
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .brown
+        return collectionView
+    }()
+    
+    private func initializeCollectionView() {
+        trendingMoviesCollectionView.register(TrendingMoviesCollectionViewCell.self, forCellWithReuseIdentifier: TrendingMoviesCollectionViewCell.identifier)
+        trendingMoviesCollectionView.dataSource = self
+        trendingMoviesCollectionView.delegate = self
+    }
+    
+    // MARK: - CollectionView Delegate Methods
+    
+    // Cell count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    // Cell configuration
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = trendingMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: TrendingMoviesCollectionViewCell.identifier, for: indexPath) as! TrendingMoviesCollectionViewCell
+        cell.initializeCellContent(movies[indexPath.row])
+        return cell
+    }
+    
+    // Cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: trendingMoviesCollectionView.bounds.width , height: trendingMoviesCollectionView.bounds.height)
+    }
+    
+
     
     // MARK: - Constraints
     
@@ -121,8 +163,12 @@ class HomeViewController: UIViewController {
         // search button
         constraints.append(searchButton.widthAnchor.constraint(equalToConstant: 24))
         
-        // NF logo
-
+        // trending movies collectionView
+        constraints.append(trendingMoviesCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
+        constraints.append(trendingMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0))
+        constraints.append(trendingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
+        constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: upperStackView.bottomAnchor, constant: 30))
+        constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2))
         
         NSLayoutConstraint.activate(constraints)
         

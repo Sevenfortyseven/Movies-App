@@ -8,7 +8,7 @@
 import Foundation
 
 enum MoviesDbEndpoint: Endpoint {
-    
+  
 case dailyTrends
 case WeeklyTrends
     
@@ -33,6 +33,7 @@ case WeeklyTrends
         }
     }
     
+    
     var parameters: [URLQueryItem] {
         let API_KEY = "08c2f604eb89c1dd78a4e0a744575c02"
         
@@ -48,7 +49,6 @@ case WeeklyTrends
         case .dailyTrends: return "GET"
         }
     }
-    
     
     
 }
