@@ -69,7 +69,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.view.addSubview(upperStackView)
         self.view.addSubview(categoriesStackView)
         self.view.addSubview(trendingMoviesCollectionView)
+        self.view.addSubview(topRatedMoviesCollectionView)
         self.view.addSubview(trendingLabel)
+        self.view.addSubview(topRatedLabel)
+        self.view.addSubview(topRatedMoviesExtensionButton)
     }
     
     // adding arrangedSubViews into stackView
@@ -92,7 +95,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         _ = myListButton.roundedCorners
         _ = moviesButton.roundedCorners
         _ = tvShowsButton.roundedCorners
-        // Cells peeking from sides type behavior
+
     }
     
     // MARK: - ContentView
@@ -116,6 +119,49 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return button
     }()
     
+    // TV shows button
+    private let tvShowsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("TV Shows", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .appRedColor
+        return button
+    }()
+    
+    // Movies Button
+    private let moviesButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Movies", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .appRedColor
+        return button
+    }()
+    
+    // MyList button
+    private let myListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("My List", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .appRedColor
+        return button
+    }()
+    
+    // top rated movies collectionView extension button
+    private let topRatedMoviesExtensionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("See All", for: .normal)
+        button.setTitleColor(.appDarkRedColor, for: .normal)
+        button.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 13)
+        return button
+    }()
+    
     // SearchBar
     private let searchButton: UIButton = {
         let button = UIButton(type: .system)
@@ -130,40 +176,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private let trendingLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .headline, compatibleWith: .current)
+        label.font = .preferredFont(forTextStyle: .headline)
         label.text = "Trending this week"
         label.textColor = .white
         return label
     }()
     
-    // TV shows button
-    private let tvShowsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("TV Shows", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
-        return button
-    }()
-    
-    // Movies Button
-    private let moviesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Movies", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
-        return button
-    }()
-    
-    // MyList button
-    private let myListButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("My List", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
-        return button
+    // Top rated label
+    private let topRatedLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Top Rated"
+        label.textColor = .white
+        label.font = .preferredFont(forTextStyle: .headline)
+        return label
     }()
     
     // MARK: - StackView Configuration
@@ -194,6 +220,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - CollectionView Configuration
     
+    // Trending Movies Collection View
     private let trendingMoviesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -204,11 +231,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return collectionView
     }()
     
+    // Top rated Movies Collection View
+    private let topRatedMoviesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     private func initializeCollectionView() {
+        /// Trending Movies CollectionView
         trendingMoviesCollectionView.register(TrendingMoviesCollectionViewCell.self, forCellWithReuseIdentifier: TrendingMoviesCollectionViewCell.identifier)
         trendingMoviesCollectionView.dataSource = self
         trendingMoviesCollectionView.delegate = self
+        
+        // Cells peeking from sides type behavior
         trendingMoviesCollectionView.configureForPeekingBehavior(behavior: behavior)
+       
+        /// Top rated Movies CollectionView
+        topRatedMoviesCollectionView.register(TopRatedMoviesCollectionViewCell.self, forCellWithReuseIdentifier: TopRatedMoviesCollectionViewCell.identifier)
+        topRatedMoviesCollectionView.dataSource = self
+        topRatedMoviesCollectionView.dataSource = self
     }
     
     
@@ -217,17 +262,40 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // Cell count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+            /// Value for top rated movies collectionView
+        case self.topRatedMoviesCollectionView: return 15
+        default: break
+        }
+        /// Default value for top rated movies collectionView
         return movies.count
     }
     
     // Cell configuration
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+            /// Cell for top rated movies collectionView
+        case self.topRatedMoviesCollectionView:
+            let cell = topRatedMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: TopRatedMoviesCollectionViewCell.identifier, for: indexPath) as!
+            TopRatedMoviesCollectionViewCell
+            return cell
+        default: break
+        }
+        /// Default cell for trending movies collectionView
         let cell = trendingMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: TrendingMoviesCollectionViewCell.identifier, for: indexPath) as! TrendingMoviesCollectionViewCell
         cell.initializeCellContent(movies[indexPath.row])
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView {
+            /// Cell size for top rated movies collectionView
+        case self.topRatedMoviesCollectionView:
+            return CGSize(width: collectionView.bounds.width - 50, height: collectionView.bounds.height - 50)
+        default: break
+        }
+        /// Cell size for trending movies collectionView
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
     
@@ -237,12 +305,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
+    
+    
     // MARK: - Constraints
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
         
-        // constants
+        // Constants
         let leadingSpace = CGFloat(24)
         let trailingSpace = CGFloat(-24)
         let paddingBetweenItems = CGFloat(20)
@@ -255,30 +325,42 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         constraints.append(upperStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
         constraints.append(upperStackView.heightAnchor.constraint(equalToConstant: stackViewHeight))
         
-        // Middle stackview
+        // Categories stackview
         constraints.append(categoriesStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(categoriesStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
         constraints.append(categoriesStackView.topAnchor.constraint(equalTo: trendingMoviesCollectionView.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(categoriesStackView.heightAnchor.constraint(equalToConstant: stackViewHeight))
         
-        // option menu
+        // Option menu
         constraints.append(optionMenu.widthAnchor.constraint(equalToConstant: 24))
         
         
-        // search button
+        // Search button
         constraints.append(searchButton.widthAnchor.constraint(equalToConstant: 24))
         
-        // trending label
+        // Trending label
         constraints.append(trendingLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(trendingLabel.topAnchor.constraint(equalTo: upperStackView.bottomAnchor, constant: paddingBetweenItems))
         
-        // trending movies collectionView
-        constraints.append(trendingMoviesCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
+        // Top rated label
+        constraints.append(topRatedLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
+        constraints.append(topRatedLabel.topAnchor.constraint(equalTo: categoriesStackView.bottomAnchor, constant: paddingBetweenItems))
+        
+        // Top rated movies extension button
+        constraints.append(topRatedMoviesExtensionButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
+        constraints.append(topRatedMoviesExtensionButton.centerYAnchor.constraint(equalTo: topRatedLabel.centerYAnchor))
+        
+        // Trending movies collectionView
         constraints.append(trendingMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0))
         constraints.append(trendingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
         constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: trendingLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2))
-
+        
+        // Top rated movies collectionView
+        constraints.append(topRatedMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leadingSpace))
+        constraints.append(topRatedMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
+        constraints.append(topRatedMoviesCollectionView.topAnchor.constraint(equalTo: topRatedLabel.bottomAnchor, constant: paddingBetweenItems))
+        constraints.append(topRatedMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.17))
         
         NSLayoutConstraint.activate(constraints)
         
