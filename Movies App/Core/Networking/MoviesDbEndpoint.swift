@@ -8,9 +8,10 @@
 import Foundation
 
 enum MoviesDbEndpoint: Endpoint {
-  
-case dailyTrends
-case WeeklyTrends
+    
+    case dailyTrends
+    case WeeklyTrends
+    case moviesGenres
     
     var scheme: String {
         switch self {
@@ -30,6 +31,7 @@ case WeeklyTrends
         switch self {
         case .dailyTrends: return "/3/trending/movie/day"
         case .WeeklyTrends: return "/3/trending/movie/week"
+        case .moviesGenres: return "/3/genre/movie/list"
         }
     }
     
@@ -47,6 +49,7 @@ case WeeklyTrends
         switch self {
         case .WeeklyTrends: return "GET"
         case .dailyTrends: return "GET"
+        case .moviesGenres: return "GET"
         }
     }
     

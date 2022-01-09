@@ -5,6 +5,7 @@
 //  Created by aleksandre on 25.12.21.
 //
 
+import MSPeekCollectionViewDelegateImplementation
 import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -20,6 +21,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var movies = [Movie]()
     
     
+    // Cell peek behavior configuration
+    private var behavior = MSCollectionViewPeekingBehavior(cellSpacing: 15, cellPeekWidth: 40)
+    
+    
     // MARK: - Initialization
     
     override func viewDidLoad() {
@@ -29,13 +34,30 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         populateStackView()
         initializeCollectionView()
         initializeConstraints()
+        
+        // Network calls
         NetworkEngine.request(endpoint: MoviesDbEndpoint.dailyTrends) { (result: Result<MoviesResponse, Error>) in
             switch result {
-            case .success(let response): self.movies = response.results; self.trendingMoviesCollectionView.reloadData()
-            case .failure(let error): print(error)
+            case .success(let response):
+                self.movies = response.results
+                self.trendingMoviesCollectionView.reloadData()
+            case .failure(let error):
+                print(error)
             }
         }
-       
+        NetworkEngine.request(endpoint: MoviesDbEndpoint.moviesGenres) { (result :Result<GenresResponse, Error>) in
+            switch result {
+            case .success(let success):
+                // append fetched data into dictionary with ID as key and name as value
+                for genre in success.genres {
+                    GenresDataBase.setGenreData(genre.id, name: genre.name)
+                }
+                self.trendingMoviesCollectionView.reloadData()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
     }
     
     
@@ -43,6 +65,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private func addSubViews() {
         self.view.addSubview(upperStackView)
         self.view.addSubview(trendingMoviesCollectionView)
+        self.view.addSubview(trendingLabel)
     }
     
     // adding arrangedSubViews into stackView
@@ -57,6 +80,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     private func updateUI() {
         self.view.backgroundColor = UIColor.mainAppColor
+        // Cells peeking from sides type behavior
+        trendingMoviesCollectionView.configureForPeekingBehavior(behavior: behavior)
     }
     
     // MARK: - ContentView
@@ -90,6 +115,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return button
     }()
     
+    // Trending Label
+    private let trendingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .preferredFont(forTextStyle: .headline, compatibleWith: .current)
+        label.text = "Trending this week"
+        label.textColor = .white
+        return label
+    }()
     
     // MARK: - StackView Configuration
     
@@ -110,10 +144,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private let trendingMoviesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-//        layout.estimatedItemSize = .zero
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .brown
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -122,6 +156,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         trendingMoviesCollectionView.dataSource = self
         trendingMoviesCollectionView.delegate = self
     }
+    
+    
     
     // MARK: - CollectionView Delegate Methods
     
@@ -137,23 +173,31 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
-    // Cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: trendingMoviesCollectionView.bounds.width , height: trendingMoviesCollectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
     
-
+    
+    // Cell behavior configuration
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
     
     // MARK: - Constraints
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
         
+        // constants
+        let leadingSpace = CGFloat(24)
+        let trailingSpace = CGFloat(-24)
+        let paddingBetweenItems = CGFloat(20)
+        
         // Upper stackview
         constraints.append(upperStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 54))
         constraints.append(upperStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
-        constraints.append(upperStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 24))
-        constraints.append(upperStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -24))
+        constraints.append(upperStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
+        constraints.append(upperStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
         constraints.append(upperStackView.heightAnchor.constraint(equalToConstant: 44))
         
         // option menu
@@ -163,11 +207,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // search button
         constraints.append(searchButton.widthAnchor.constraint(equalToConstant: 24))
         
+        // trending label
+        constraints.append(trendingLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
+        constraints.append(trendingLabel.topAnchor.constraint(equalTo: upperStackView.bottomAnchor, constant: paddingBetweenItems))
+        
         // trending movies collectionView
         constraints.append(trendingMoviesCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
         constraints.append(trendingMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0))
         constraints.append(trendingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
-        constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: upperStackView.bottomAnchor, constant: 30))
+        constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: trendingLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2))
         
         NSLayoutConstraint.activate(constraints)

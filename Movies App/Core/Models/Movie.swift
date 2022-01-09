@@ -19,6 +19,7 @@ struct Movie: Codable {
     var popularity: Double
     var posterPath: String
     var backdropPath: String
+    var genreIDs: [Int]
     
     enum CodingKeys: String, CodingKey {
         case overview
@@ -31,6 +32,7 @@ struct Movie: Codable {
         case popularity
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
+        case genreIDs = "genre_ids"
     }
     
     init(from decoder: Decoder) throws {
@@ -45,6 +47,7 @@ struct Movie: Codable {
         self.popularity = try container.decode(Double.self, forKey: .popularity)
         self.posterPath = try container.decode(String.self, forKey: .posterPath)
         self.backdropPath = try container.decode(String.self, forKey: .backdropPath)
+        self.genreIDs = try container.decode([Int].self, forKey: .genreIDs)
     }
 }
 
