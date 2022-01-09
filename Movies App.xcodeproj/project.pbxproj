@@ -12,6 +12,8 @@
 		9F1220CC278A184F00B5CDE5 /* GenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1220CB278A184F00B5CDE5 /* GenresResponse.swift */; };
 		9F275DFD278B084100C95E2B /* GenresDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275DFC278B084100C95E2B /* GenresDataBase.swift */; };
 		9F275E01278B37A500C95E2B /* String+DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275E00278B37A500C95E2B /* String+DateFormat.swift */; };
+		9F275E05278B5F9300C95E2B /* StaticEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275E04278B5F9300C95E2B /* StaticEndpoint.swift */; };
+		9F275E08278B68B200C95E2B /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275E07278B68B200C95E2B /* UIView+RoundCorners.swift */; };
 		9F39B9AC2778E8E80090D9BA /* Endpoint Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9AB2778E8E80090D9BA /* Endpoint Protocol.swift */; };
 		9F39B9AE2778EA500090D9BA /* MoviesDbEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9AD2778EA500090D9BA /* MoviesDbEndpoint.swift */; };
 		9F39B9B027791E350090D9BA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9AF27791E350090D9BA /* Movie.swift */; };
@@ -37,6 +39,8 @@
 		9F1220CB278A184F00B5CDE5 /* GenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponse.swift; sourceTree = "<group>"; };
 		9F275DFC278B084100C95E2B /* GenresDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresDataBase.swift; sourceTree = "<group>"; };
 		9F275E00278B37A500C95E2B /* String+DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormat.swift"; sourceTree = "<group>"; };
+		9F275E04278B5F9300C95E2B /* StaticEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticEndpoint.swift; sourceTree = "<group>"; };
+		9F275E07278B68B200C95E2B /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		9F39B9AB2778E8E80090D9BA /* Endpoint Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint Protocol.swift"; sourceTree = "<group>"; };
 		9F39B9AD2778EA500090D9BA /* MoviesDbEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDbEndpoint.swift; sourceTree = "<group>"; };
 		9F39B9AF27791E350090D9BA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -85,6 +89,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9F275E06278B609800C95E2B /* Static endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				9F275E04278B5F9300C95E2B /* StaticEndpoint.swift */,
+			);
+			path = "Static endpoints";
+			sourceTree = "<group>";
+		};
 		9F39B9A82778E7EF0090D9BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 		9F39B9A92778E7FA0090D9BA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				9F275E06278B609800C95E2B /* Static endpoints */,
 				9F39B9AB2778E8E80090D9BA /* Endpoint Protocol.swift */,
 				9F39B9AD2778EA500090D9BA /* MoviesDbEndpoint.swift */,
 				9F39B9B3277923A80090D9BA /* NetworkEngine.swift */,
@@ -167,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				9FB70D022788CF8B00CCE203 /* CollectionView Cells */,
-				9F9888392777A22A002D0EDB /* Home Page */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -194,6 +206,7 @@
 				9F98883F2777ABFD002D0EDB /* UIColor+Colors.swift */,
 				9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */,
 				9F275E00278B37A500C95E2B /* String+DateFormat.swift */,
+				9F275E07278B68B200C95E2B /* UIView+RoundCorners.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB70D032788CFB500CCE203 /* TrendingMovies Cell.swift */,
+				9F9888392777A22A002D0EDB /* Home Page */,
 			);
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
@@ -349,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F275E08278B68B200C95E2B /* UIView+RoundCorners.swift in Sources */,
 				9FB70D082788E4C500CCE203 /* ImageView+Fetching.swift in Sources */,
 				9F39B9B027791E350090D9BA /* Movie.swift in Sources */,
 				9F98882627779870002D0EDB /* HomeViewController.swift in Sources */,
@@ -356,6 +371,7 @@
 				9F275DFD278B084100C95E2B /* GenresDataBase.swift in Sources */,
 				9F98882227779870002D0EDB /* AppDelegate.swift in Sources */,
 				9F98882427779870002D0EDB /* SceneDelegate.swift in Sources */,
+				9F275E05278B5F9300C95E2B /* StaticEndpoint.swift in Sources */,
 				9F39B9B4277923A80090D9BA /* NetworkEngine.swift in Sources */,
 				9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */,
 				9F1220CC278A184F00B5CDE5 /* GenresResponse.swift in Sources */,

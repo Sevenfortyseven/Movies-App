@@ -15,7 +15,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 6
+        _ = self.roundedCorners
         self.clipsToBounds = true
         addSubviews()
         populateStackView()
@@ -47,7 +47,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     // Initialize Cell content
     public func initializeCellContent(_ movie: Movie) {
         
-        self.moviePoster.loadImageFromUrl(urlString: "https://image.tmdb.org/t/p/w500" + movie.backdropPath)
+        self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie.backdropPath)
         self.movieTitle.text = movie.title
         self.moviesGenre.text = GenresDataBase.getGenreData(movie.genreIDs)
         self.moviesReleaseDate.text = movie.releaseDate.YearFormat

@@ -29,7 +29,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
         addSubViews()
         populateStackView()
         initializeCollectionView()
@@ -60,19 +59,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateUI()
+    }
     
     // adding SubViews
     private func addSubViews() {
         self.view.addSubview(upperStackView)
+        self.view.addSubview(categoriesStackView)
         self.view.addSubview(trendingMoviesCollectionView)
         self.view.addSubview(trendingLabel)
     }
     
     // adding arrangedSubViews into stackView
     private func populateStackView() {
+        /// upper stackview
         upperStackView.addArrangedSubview(optionMenu)
         upperStackView.addArrangedSubview(nfLogo)
         upperStackView.addArrangedSubview(searchButton)
+        /// middle stackView
+        categoriesStackView.addArrangedSubview(tvShowsButton)
+        categoriesStackView.addArrangedSubview(moviesButton)
+        categoriesStackView.addArrangedSubview(myListButton)
     }
     
     
@@ -80,8 +89,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     private func updateUI() {
         self.view.backgroundColor = UIColor.mainAppColor
+        _ = myListButton.roundedCorners
+        _ = moviesButton.roundedCorners
+        _ = tvShowsButton.roundedCorners
         // Cells peeking from sides type behavior
-        trendingMoviesCollectionView.configureForPeekingBehavior(behavior: behavior)
     }
     
     // MARK: - ContentView
@@ -97,7 +108,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // Menu Option
     private let optionMenu: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .white
         button.imageView?.contentMode = .scaleAspectFit
@@ -107,7 +118,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // SearchBar
     private let searchButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "search_icon"), for: .normal)
         button.tintColor = .white
@@ -125,6 +136,36 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return label
     }()
     
+    // TV shows button
+    private let tvShowsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("TV Shows", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemRed
+        return button
+    }()
+    
+    // Movies Button
+    private let moviesButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Movies", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemRed
+        return button
+    }()
+    
+    // MyList button
+    private let myListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("My List", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemRed
+        return button
+    }()
+    
     // MARK: - StackView Configuration
     
     // Upper StackView
@@ -136,6 +177,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         stackView.isUserInteractionEnabled = true
         stackView.distribution = .fill
         stackView.spacing = 40
+        return stackView
+    }()
+    
+    // Middle StackView
+    private let categoriesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.isUserInteractionEnabled = true
+        stackView.distribution = .fillEqually
+        stackView.spacing = 20
         return stackView
     }()
     
@@ -155,6 +208,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         trendingMoviesCollectionView.register(TrendingMoviesCollectionViewCell.self, forCellWithReuseIdentifier: TrendingMoviesCollectionViewCell.identifier)
         trendingMoviesCollectionView.dataSource = self
         trendingMoviesCollectionView.delegate = self
+        trendingMoviesCollectionView.configureForPeekingBehavior(behavior: behavior)
     }
     
     
@@ -192,13 +246,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let leadingSpace = CGFloat(24)
         let trailingSpace = CGFloat(-24)
         let paddingBetweenItems = CGFloat(20)
+        let stackViewHeight = CGFloat(44)
         
         // Upper stackview
         constraints.append(upperStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 54))
         constraints.append(upperStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
         constraints.append(upperStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(upperStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
-        constraints.append(upperStackView.heightAnchor.constraint(equalToConstant: 44))
+        constraints.append(upperStackView.heightAnchor.constraint(equalToConstant: stackViewHeight))
+        
+        // Middle stackview
+        constraints.append(categoriesStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
+        constraints.append(categoriesStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
+        constraints.append(categoriesStackView.topAnchor.constraint(equalTo: trendingMoviesCollectionView.bottomAnchor, constant: paddingBetweenItems))
+        constraints.append(categoriesStackView.heightAnchor.constraint(equalToConstant: stackViewHeight))
         
         // option menu
         constraints.append(optionMenu.widthAnchor.constraint(equalToConstant: 24))
@@ -217,6 +278,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         constraints.append(trendingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
         constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: trendingLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2))
+
         
         NSLayoutConstraint.activate(constraints)
         

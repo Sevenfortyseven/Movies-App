@@ -11,17 +11,24 @@ struct GenresDataBase {
     
     private static var data = [Int: String]()
     
-    public static func setGenreData(_ id: Int, name: String) {
-        data[id] = name
+    public static func setGenreData(_ genreID: Int, name: String) {
+        data[genreID] = name
     }
     
-    public static func getGenreData(_ id: [Int]) -> String {
+    public static func getGenreData(_ genreID: [Int?]) -> String? {
         // Transforms an array of strings into one string
         var genreIdArray = [String]()
         var genreNamesCombined: String
         
-        for item in id {
-            genreIdArray.append(data[item]!)
+        
+        for id in genreID {
+            
+            guard id != nil else {
+                print("error while appending genre names with ID")
+                return nil
+            }
+            
+            genreIdArray.append(data[id!]!)
         }
         genreNamesCombined = genreIdArray.joined(separator: ",")
         return genreNamesCombined
