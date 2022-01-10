@@ -45,12 +45,16 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     }
     
     // Initialize Cell content
-    public func initializeCellContent(_ movie: Movie) {
+    public func initializeCellContent(_ movie: Movie?) {
+        guard movie != nil else {
+            print("error while initializing cell content")
+            return
+        }
         
-        self.movieBackdrop.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie.backdropPath)
-        self.movieTitle.text = movie.title
-        self.moviesGenre.text = GenresDataBase.getGenreData(movie.genreIDs)
-        self.moviesReleaseDate.text = movie.releaseDate.YearFormat
+        self.movieBackdrop.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie!.backdropPath)
+        self.movieTitle.text = movie?.title
+        self.moviesGenre.text = GenresDataBase.getGenreData(movie!.genreIDs)
+        self.moviesReleaseDate.text = movie!.releaseDate.YearFormat
     }
     
     // MARK: - Cell ContentView

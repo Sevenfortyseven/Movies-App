@@ -2,27 +2,27 @@
 //  TopRatedMovies Cell.swift
 //  Movies App
 //
-//  Created by aleksandre on 10.01.22.
+//  Created by aleksandre on 11.01.22.
 //
 
 import Foundation
 import UIKit
 
-class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
+class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
     
-    private(set) static var identifier = "UpcomingMoviesCollectionViewCell"
+    private(set) static var identifier = "TopRatedMoviesCollectionViewCell"
     
     // MARK: - Instances
+    
     
     
     // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.clipsToBounds = true
         _ = self.roundedCorners
+        self.contentView.clipsToBounds = true
         addSubviews()
-        initializeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -34,25 +34,27 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
         updateUI()
     }
     
-    // Populate contentView with subViews
-    private func addSubviews() {
+    // Populate view with subviews
+    private func addSubviews(){
         self.contentView.addSubview(moviePoster)
+        
     }
     
     // Initialize cell content
     public func initializeCellContent(_ movie: Movie?) {
         guard movie != nil else {
-            print("Error while initializing content")
+            print("error while initializing cell content")
             return
         }
         self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie!.posterPath)
     }
     
     // MARK: - Cell ContentView
+    
     private let moviePoster: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        return imageView
+        let image = UIImageView()
+        image.contentMode = .scaleToFill
+        return image
     }()
     
     
@@ -62,12 +64,8 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
         moviePoster.frame = self.contentView.bounds
     }
     
+    
     // MARK: - Constraints
     
-    private func initializeConstraints() {
-        let constraints = [NSLayoutConstraint]()
-        
-        NSLayoutConstraint.activate(constraints)
-        
-    }
+    
 }
