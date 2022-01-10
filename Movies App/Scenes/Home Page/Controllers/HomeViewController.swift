@@ -18,7 +18,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Instances
     
-    private var movies = [Movie]()
+    private var trendingMovies = [Movie]()
+    private var upcomingMovies = [Movie]()
     
     
     // Cell peek behavior configuration
@@ -29,16 +30,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubViews()
+        addSubviews()
         populateStackView()
         initializeCollectionView()
         initializeConstraints()
         
         // Network calls
-        NetworkEngine.request(endpoint: MoviesDbEndpoint.dailyTrends) { (result: Result<MoviesResponse, Error>) in
+        NetworkEngine.request(endpoint: MoviesDbEndpoint.dailyTrends) { (result: Result<TrendingMoviesResponse, Error>) in
             switch result {
             case .success(let response):
-                self.movies = response.results
+                self.trendingMovies = response.results
                 self.trendingMoviesCollectionView.reloadData()
             case .failure(let error):
                 print(error)
@@ -56,6 +57,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 print(failure)
             }
         }
+        NetworkEngine.request(endpoint: MoviesDbEndpoint.comingSoon) { (result: Result<UpcomingMoviesResponse, Error>) in
+            switch result {
+            case .success(let success):
+                self.upcomingMovies = success.results
+                self.upcomingMoviesCollectionView.reloadData()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
         
     }
     
@@ -65,11 +75,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // adding SubViews
-    private func addSubViews() {
+    private func addSubviews() {
         self.view.addSubview(upperStackView)
         self.view.addSubview(categoriesStackView)
         self.view.addSubview(trendingMoviesCollectionView)
-        self.view.addSubview(topRatedMoviesCollectionView)
+        self.view.addSubview(upcomingMoviesCollectionView)
         self.view.addSubview(trendingLabel)
         self.view.addSubview(topRatedLabel)
         self.view.addSubview(topRatedMoviesExtensionButton)
@@ -95,7 +105,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         _ = myListButton.roundedCorners
         _ = moviesButton.roundedCorners
         _ = tvShowsButton.roundedCorners
-
+        
     }
     
     // MARK: - ContentView
@@ -182,11 +192,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return label
     }()
     
-    // Top rated label
+    // ComingSoon label
     private let topRatedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Top Rated"
+        label.text = "Coming Soon"
         label.textColor = .white
         label.font = .preferredFont(forTextStyle: .headline)
         return label
@@ -206,7 +216,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return stackView
     }()
     
-    // Middle StackView
+    // Categories StackView
     private let categoriesStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -220,7 +230,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - CollectionView Configuration
     
-    // Trending Movies Collection View
+    // Upcoming Collection View
     private let trendingMoviesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -231,13 +241,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return collectionView
     }()
     
-    // Top rated Movies Collection View
-    private let topRatedMoviesCollectionView: UICollectionView = {
+    // Upcoming Movies Collection View
+    private let upcomingMoviesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = false
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -247,13 +259,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         trendingMoviesCollectionView.dataSource = self
         trendingMoviesCollectionView.delegate = self
         
-        // Cells peeking from sides type behavior
+        /// Cells peeking from sides type custom behavior
         trendingMoviesCollectionView.configureForPeekingBehavior(behavior: behavior)
-       
-        /// Top rated Movies CollectionView
-        topRatedMoviesCollectionView.register(TopRatedMoviesCollectionViewCell.self, forCellWithReuseIdentifier: TopRatedMoviesCollectionViewCell.identifier)
-        topRatedMoviesCollectionView.dataSource = self
-        topRatedMoviesCollectionView.dataSource = self
+    
+        /// Upcoming Movies CollectionView
+        upcomingMoviesCollectionView.register(UpcomingMoviesCollectionViewCell.self, forCellWithReuseIdentifier: UpcomingMoviesCollectionViewCell.identifier)
+        upcomingMoviesCollectionView.dataSource = self
+        upcomingMoviesCollectionView.delegate = self
     }
     
     
@@ -263,45 +275,57 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Cell count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-            /// Value for top rated movies collectionView
-        case self.topRatedMoviesCollectionView: return 15
+            /// Value for Upcoming movies collectionView
+        case self.upcomingMoviesCollectionView: return trendingMovies.count
         default: break
         }
-        /// Default value for top rated movies collectionView
-        return movies.count
+        /// Default value for trending movies collectionView
+        return trendingMovies.count
     }
     
     // Cell configuration
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-            /// Cell for top rated movies collectionView
-        case self.topRatedMoviesCollectionView:
-            let cell = topRatedMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: TopRatedMoviesCollectionViewCell.identifier, for: indexPath) as!
-            TopRatedMoviesCollectionViewCell
+            /// Cell for upcoming movies collectionView
+        case self.upcomingMoviesCollectionView:
+            let cell = upcomingMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMoviesCollectionViewCell.identifier, for: indexPath) as!
+            UpcomingMoviesCollectionViewCell
+            cell.initializeCellContent(upcomingMovies[indexPath.row])
             return cell
         default: break
         }
         /// Default cell for trending movies collectionView
         let cell = trendingMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: TrendingMoviesCollectionViewCell.identifier, for: indexPath) as! TrendingMoviesCollectionViewCell
-        cell.initializeCellContent(movies[indexPath.row])
+        cell.initializeCellContent(trendingMovies[indexPath.row])
         return cell
         
     }
     
+    // Cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
-            /// Cell size for top rated movies collectionView
-        case self.topRatedMoviesCollectionView:
-            return CGSize(width: collectionView.bounds.width - 50, height: collectionView.bounds.height - 50)
+            /// Cell size for upcoming movies collectionView
+        case self.upcomingMoviesCollectionView:
+            return CGSize(width: collectionView.bounds.width / 4, height: collectionView.bounds.height)
         default: break
         }
-        /// Cell size for trending movies collectionView
+        /// Trending movies collectionView cell size
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
     
+    // Spacing between cells
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        switch collectionView {
+        case self.upcomingMoviesCollectionView:
+            return 15
+        default: break
+        }
+        return 0
+    }
     
-    // Cell behavior configuration
+    // Cell scrolling behavior configuration for only trendingMoviesCollectionView
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard scrollView == trendingMoviesCollectionView else { return }
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
@@ -346,7 +370,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         constraints.append(topRatedLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(topRatedLabel.topAnchor.constraint(equalTo: categoriesStackView.bottomAnchor, constant: paddingBetweenItems))
         
-        // Top rated movies extension button
+        // Upcoming movies extension button
         constraints.append(topRatedMoviesExtensionButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
         constraints.append(topRatedMoviesExtensionButton.centerYAnchor.constraint(equalTo: topRatedLabel.centerYAnchor))
         
@@ -356,11 +380,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: trendingLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2))
         
-        // Top rated movies collectionView
-        constraints.append(topRatedMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leadingSpace))
-        constraints.append(topRatedMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
-        constraints.append(topRatedMoviesCollectionView.topAnchor.constraint(equalTo: topRatedLabel.bottomAnchor, constant: paddingBetweenItems))
-        constraints.append(topRatedMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.17))
+        // Upcoming collectionView
+        constraints.append(upcomingMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leadingSpace))
+        constraints.append(upcomingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
+        constraints.append(upcomingMoviesCollectionView.topAnchor.constraint(equalTo: topRatedLabel.bottomAnchor, constant: paddingBetweenItems))
+        constraints.append(upcomingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.17))
         
         NSLayoutConstraint.activate(constraints)
         

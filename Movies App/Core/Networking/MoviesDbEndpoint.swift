@@ -12,6 +12,7 @@ enum MoviesDbEndpoint: Endpoint {
     case dailyTrends
     case WeeklyTrends
     case moviesGenres
+    case comingSoon
     
     var scheme: String {
         switch self {
@@ -32,14 +33,17 @@ enum MoviesDbEndpoint: Endpoint {
         case .dailyTrends: return "/3/trending/movie/day"
         case .WeeklyTrends: return "/3/trending/movie/week"
         case .moviesGenres: return "/3/genre/movie/list"
+        case .comingSoon: return "/3/movie/upcoming"
         }
     }
     
     
     var parameters: [URLQueryItem] {
         let API_KEY = "08c2f604eb89c1dd78a4e0a744575c02"
-        
         switch self {
+        case .comingSoon: return [URLQueryItem(name: "api_key", value: API_KEY),
+                                  URLQueryItem(name: "page", value: "1")
+        ]
         default: return [URLQueryItem(name: "api_key", value: API_KEY)]
         }
         
@@ -50,6 +54,7 @@ enum MoviesDbEndpoint: Endpoint {
         case .WeeklyTrends: return "GET"
         case .dailyTrends: return "GET"
         case .moviesGenres: return "GET"
+        case .comingSoon: return "GET"
         }
     }
     

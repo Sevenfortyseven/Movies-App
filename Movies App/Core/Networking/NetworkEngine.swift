@@ -18,11 +18,12 @@ struct NetworkEngine {
         urlComponents.path = endpoint.path
         urlComponents.queryItems = endpoint.parameters
         
+        
         guard let url = urlComponents.url else {
             print("error with url")
             return
         }
-        
+        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endpoint.method
         

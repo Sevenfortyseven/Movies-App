@@ -33,7 +33,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     
     // Populate View with subviews
     private func addSubviews() {
-        self.contentView.addSubview(moviePoster)
+        self.contentView.addSubview(movieBackdrop)
         self.contentView.addSubview(moviesInfo)
     }
     
@@ -47,7 +47,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     // Initialize Cell content
     public func initializeCellContent(_ movie: Movie) {
         
-        self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie.backdropPath)
+        self.movieBackdrop.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie.backdropPath)
         self.movieTitle.text = movie.title
         self.moviesGenre.text = GenresDataBase.getGenreData(movie.genreIDs)
         self.moviesReleaseDate.text = movie.releaseDate.YearFormat
@@ -55,10 +55,10 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Cell ContentView
     
-    private let moviePoster: UIImageView = {
-        let moviePoster = UIImageView()
-        moviePoster.contentMode = .scaleToFill
-        return moviePoster
+    private let movieBackdrop: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        return imageView
     }()
     
     private let movieTitle: UILabel = {
@@ -101,7 +101,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     // MARK: - Update UI
     
     private func updateUI() {
-        moviePoster.frame = self.contentView.bounds
+        movieBackdrop.frame = self.contentView.bounds
     }
     
     
