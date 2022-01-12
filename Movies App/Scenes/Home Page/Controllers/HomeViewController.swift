@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var topRatedMovies = [Movie]()
     
     
+    
     // Cell peek behavior configuration
     private var behavior = MSCollectionViewPeekingBehavior(cellSpacing: 15, cellPeekWidth: 40)
     
@@ -37,14 +38,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         initializeConstraints()
         networkInAction()
         
-       
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateUI()
+        
     }
+    
     
     // adding SubViews
     private func addSubviews() {
@@ -81,6 +90,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         _ = moviesButton.roundedCorners
         _ = tvShowsButton.roundedCorners
         
+        self.tabBarController?.tabBar.backgroundColor = .tabBarColor
+        self.tabBarController?.tabBar.tintColor = .appRedColor
     }
     
     // MARK: - ContentView
@@ -197,6 +208,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return label
     }()
     
+    // MARK: - TabBar Configuration
+    
+    private func configureTabBar() {
+        
+    }
+    
+    
     // MARK: - StackView Configuration
     
     // Upper StackView
@@ -267,7 +285,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         /// Cells peeking from sides type custom behavior
         trendingMoviesCollectionView.configureForPeekingBehavior(behavior: behavior)
-    
+        
         /// Upcoming movies CollectionView
         upcomingMoviesCollectionView.register(UpcomingMoviesCollectionViewCell.self, forCellWithReuseIdentifier: UpcomingMoviesCollectionViewCell.identifier)
         upcomingMoviesCollectionView.dataSource = self
@@ -418,11 +436,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Constants
         let leadingSpace = CGFloat(24)
         let trailingSpace = CGFloat(-24)
-        let paddingBetweenItems = CGFloat(20)
+        let paddingBetweenItems = CGFloat(10)
         let stackViewHeight = CGFloat(44)
         
         // Upper stackview
-        constraints.append(upperStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8))
+        constraints.append(upperStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5))
         constraints.append(upperStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
         constraints.append(upperStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(upperStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
@@ -478,6 +496,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         constraints.append(topRatedMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
         constraints.append(topRatedMoviesCollectionView.topAnchor.constraint(equalTo: topRatedLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(topRatedMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.17))
+        
         
         NSLayoutConstraint.activate(constraints)
         

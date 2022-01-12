@@ -13,7 +13,14 @@ extension UIColor {
     static var mainAppColor: UIColor {
         
         get {
-            self.init(red: 0.22, green: 0.20, blue: 0.20, alpha: 1)
+            self.init(red: 0.10, green: 0.10, blue: 0.10, alpha: 1)
+        }
+    }
+    
+    static var tabBarColor: UIColor {
+        
+        get {
+            self.init(red: 0.03, green: 0.03, blue: 0.03, alpha: 0.8)
         }
     }
     

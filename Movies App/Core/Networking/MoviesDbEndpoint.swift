@@ -44,7 +44,7 @@ enum MoviesDbEndpoint: Endpoint {
         let API_KEY = "08c2f604eb89c1dd78a4e0a744575c02"
         switch self {
         case .comingSoon: return [URLQueryItem(name: "api_key", value: API_KEY),
-                                  URLQueryItem(name: "page", value: "2")
+                                  URLQueryItem(name: "page", value: "1")
         ]
         case .topRated: return [URLQueryItem(name: "api_key", value: API_KEY),
                                   URLQueryItem(name: "page", value: "3")

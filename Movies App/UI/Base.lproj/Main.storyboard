@@ -8,43 +8,83 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--HomeViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" userLabel="HomeViewController" customClass="HomeViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="1jk-N6-n2s"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="tab_bar_home_icon" id="1jk-N6-n2s"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="728.98550724637687" y="114.50892857142857"/>
         </scene>
+        <!--Favourites-->
+        <scene sceneID="QQ9-6f-VSB">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" id="oB0-vL-YVf" customClass="DetailsViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wd8-XS-uxp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0IW-cY-gzk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="tab_bar_star_icon" id="bg6-ri-6mx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faW-uo-PFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="729" y="-602"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tC0-6V-bf2">
             <objects>
                 <tabBarController id="yu9-NL-AoR" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Srz-xA-U1r">
+                    <tabBar key="tabBar" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="Srz-xA-U1r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemRedColor"/>
+                        <tabBarAppearance key="standardAppearance" backgroundEffect="systemUltraThinMaterialDark" stackedItemPositioning="centered"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lfp-St-je5"/>
+                        <segue destination="oB0-vL-YVf" kind="relationship" relationship="viewControllers" id="rRM-yX-CpW"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="mTW-nx-Cpp"/>
+                        <segue destination="cjB-6p-ZCu" kind="relationship" relationship="viewControllers" id="72K-TK-IUu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IO4-kN-nqk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-284" y="115"/>
         </scene>
+        <!--Favourites View Controller-->
+        <scene sceneID="cgh-E3-qR9">
+            <objects>
+                <viewController storyboardIdentifier="FavouritesViewController" id="cjB-6p-ZCu" customClass="FavouritesViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ke-VR-kZS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RMz-l9-IB0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="6qa-Tg-tdD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJX-dg-UOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="729" y="800"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="tab_bar_home_icon" width="32" height="32"/>
+        <image name="tab_bar_star_icon" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
