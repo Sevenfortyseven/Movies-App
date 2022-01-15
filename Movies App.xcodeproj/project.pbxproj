@@ -22,6 +22,8 @@
 		9F39B9B4277923A80090D9BA /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9B3277923A80090D9BA /* NetworkEngine.swift */; };
 		9F89344D278CC0EE00360719 /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F89344C278CC0EE00360719 /* MoviesResponse.swift */; };
 		9F89344F278CE23000360719 /* TopRatedMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F89344E278CE23000360719 /* TopRatedMovies Cell.swift */; };
+		9F8FF65627935D44001FDF67 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8FF65527935D44001FDF67 /* SearchViewController.swift */; };
+		9F8FF6582793699D001FDF67 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8FF6572793699D001FDF67 /* NavigationManager.swift */; };
 		9F98882227779870002D0EDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98882127779870002D0EDB /* AppDelegate.swift */; };
 		9F98882427779870002D0EDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98882327779870002D0EDB /* SceneDelegate.swift */; };
 		9F98882627779870002D0EDB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98882527779870002D0EDB /* HomeViewController.swift */; };
@@ -53,6 +55,8 @@
 		9F39B9B3277923A80090D9BA /* NetworkEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		9F89344C278CC0EE00360719 /* MoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponse.swift; sourceTree = "<group>"; };
 		9F89344E278CE23000360719 /* TopRatedMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopRatedMovies Cell.swift"; sourceTree = "<group>"; };
+		9F8FF65527935D44001FDF67 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9F8FF6572793699D001FDF67 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		9F98881E27779870002D0EDB /* Movies App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F98882127779870002D0EDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F98882327779870002D0EDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,14 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		9F8FF65427935CEE001FDF67 /* Search Page */ = {
+			isa = PBXGroup;
+			children = (
+				9F8FF65527935D44001FDF67 /* SearchViewController.swift */,
+			);
+			path = "Search Page";
+			sourceTree = "<group>";
+		};
 		9F98881527779870002D0EDB = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +231,7 @@
 		9F9888382777A224002D0EDB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9F8FF65427935CEE001FDF67 /* Search Page */,
 				9F9888392777A22A002D0EDB /* Home Page */,
 				9F23C93B278DFF92001C434C /* Details Page */,
 				9F23C93C278DFF98001C434C /* Favourites Page */,
@@ -276,6 +289,7 @@
 		9F98883E2777ABE6002D0EDB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				9F8FF6572793699D001FDF67 /* NavigationManager.swift */,
 				9FB70D052788E26700CCE203 /* CacheManager.swift */,
 				9F275DFC278B084100C95E2B /* GenresDataBase.swift */,
 			);
@@ -412,6 +426,7 @@
 				9F89344F278CE23000360719 /* TopRatedMovies Cell.swift in Sources */,
 				9F39B9B027791E350090D9BA /* Movie.swift in Sources */,
 				9F98882627779870002D0EDB /* HomeViewController.swift in Sources */,
+				9F8FF6582793699D001FDF67 /* NavigationManager.swift in Sources */,
 				9F275DFD278B084100C95E2B /* GenresDataBase.swift in Sources */,
 				9F98882227779870002D0EDB /* AppDelegate.swift in Sources */,
 				9F98882427779870002D0EDB /* SceneDelegate.swift in Sources */,
@@ -420,6 +435,7 @@
 				9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */,
 				9F1220CC278A184F00B5CDE5 /* GenresResponse.swift in Sources */,
 				9FB70D042788CFB500CCE203 /* TrendingMovies Cell.swift in Sources */,
+				9F8FF65627935D44001FDF67 /* SearchViewController.swift in Sources */,
 				9F275E01278B37A500C95E2B /* String+DateFormat.swift in Sources */,
 				9F23C942278E004E001C434C /* FavouritesViewController.swift in Sources */,
 				9F1220CA278A169100B5CDE5 /* Genre.swift in Sources */,

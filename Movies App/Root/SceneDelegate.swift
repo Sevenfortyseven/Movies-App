@@ -18,8 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         // Set tab with selected index as initial viewController
-        if let tabBarController = self.window!.rootViewController as? UITabBarController {
-                tabBarController.selectedIndex = 1
+        if let navigationController = self.window!.rootViewController as? UINavigationController {
+            let tabBarController = navigationController.viewControllers[0] as! UITabBarController
+            tabBarController.selectedIndex = 1
             }
         
         guard let _ = (scene as? UIWindowScene) else { return }

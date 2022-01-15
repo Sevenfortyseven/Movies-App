@@ -38,13 +38,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         initializeConstraints()
         networkInAction()
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         
     }
     
@@ -171,6 +168,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // SearchBar
     private let searchButton: UIButton = {
         let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(searchButtonAction), for: .touchDown)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "search_icon"), for: .normal)
         button.tintColor = .white
@@ -208,10 +206,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return label
     }()
     
-    // MARK: - TabBar Configuration
+    // MARK: - UI Button Actions
     
-    private func configureTabBar() {
-        
+    // Action for Search button
+    @objc private func searchButtonAction() {
+        NavigationManager.changeScene(from: self, to: .SearchScreen, with: .push)
     }
     
     
