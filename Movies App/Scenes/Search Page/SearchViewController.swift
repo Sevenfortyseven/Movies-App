@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIScrollViewDelegate  {
   
     private(set) static var identifier = "SearchViewController"
     
@@ -15,7 +15,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     private var filteredMovies = [Movie]()
     
-
     
     // MARK: - Initialization
     
@@ -26,6 +25,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         initializeTableView()
         initializeSearchBar()
         populateStackView()
+
         
     }
     
@@ -46,6 +46,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.addSubview(favouriteGenreLabel)
         self.view.addSubview(searchResultLabel)
         self.view.addSubview(searchResultTableView)
+
     }
     
     // populate stackView with arranged subviews
@@ -64,6 +65,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         _ = favouriteGenreButton1.roundedCorners
         _ = favouriteGenreButton2.roundedCorners
         _ = favouriteGenreButton3.roundedCorners
+        
+
     }
     
     // MARK: - Content View
@@ -130,6 +133,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return button
     }()
     
+    
     // MARK: - StackView Configuration
     
     // stackView for genre buttons
@@ -161,12 +165,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchResultTableView.delegate = self
     }
     
-    
+ 
     // MARK: - TableView Delegate Methods
     
     // Number of cells
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(filteredMovies.count)
         return filteredMovies.count
     }
     
@@ -181,17 +184,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
- 
+
+
     // MARK: - SearchBar Configuration and Delegate Methods
     
     private func initializeSearchBar() {
         searchBar.delegate = self
     }
     
+    // SearchBar method that sends text input to initialize network call
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        // Network call to fetch data using SearchBar text input
-        NetworkEngine.request(endpoint: MoviesDbEndpoint.search(query: searchText.lowercased(), pages: 2)) { (result:Result<MoviesResponse, Error>) in
+       // clear tableView cells if there is no text input
+        guard searchText != ""  else {
+            self.filteredMovies.removeAll()
+            self.searchResultTableView.reloadData()
+            return
+        }
+        NetworkEngine.request(endpoint: MoviesDbEndpoint.search(query: searchText)) { (result:Result<MoviesResponse, Error>) in
             switch result {
             case .success(let response):
                 self.filteredMovies = response.results
@@ -201,7 +210,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-       
     }
 
     
@@ -241,6 +249,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         constraints.append(searchResultTableView.topAnchor.constraint(equalTo: searchResultLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(searchResultTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 5))
         
+
         NSLayoutConstraint.activate(constraints)
     }
 }

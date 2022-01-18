@@ -19,10 +19,10 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        
         addSubviews()
         initializeStackView()
         initializeConstraints()
+        updateUI()
     }
     
     required init?(coder: NSCoder) {
@@ -32,6 +32,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = .mainAppColor
+ 
     }
     
     // Add subviews
@@ -64,6 +65,10 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     // MARK: UI Config
     
+    private func updateUI() {
+
+    }
+    
     // MARK: ContentView
     
     // Movie poster imageView
@@ -78,6 +83,8 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     private let movieTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .white
         return label
     }()
@@ -87,6 +94,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
+        label.font = .preferredFont(forTextStyle: .caption1)
         label.numberOfLines = 0
         return label
     }()
@@ -96,6 +104,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
+        label.font = .preferredFont(forTextStyle: .subheadline)
         return label
     }()
     
@@ -106,8 +115,8 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
+        stackView.spacing = 5
+        stackView.distribution = .fill
         return stackView
     }()
     

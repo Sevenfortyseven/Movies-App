@@ -10,7 +10,7 @@ import Foundation
 
 struct NetworkEngine {
     
-    static func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> (Void)) {
+    static func request<T: Codable>(pagination: Bool = false, endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> (Void)) {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = endpoint.scheme
@@ -38,7 +38,8 @@ struct NetworkEngine {
             
             guard response != nil, let data = data else { return }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (pagination ? 3 : 0), execute: {
+                
                 let decoder = JSONDecoder()
                 if let responseObject = try? decoder.decode(T.self, from: data) {
                     completion(.success(responseObject))
@@ -47,7 +48,9 @@ struct NetworkEngine {
                     let error = NSError(domain: "", code: 200, userInfo: [NSLocalizedDescriptionKey: "Failed to Decode response"])
                     completion(.failure(error))
                 }
-            }
+            })
+                
+            
         }
         dataTask.resume()
     }
