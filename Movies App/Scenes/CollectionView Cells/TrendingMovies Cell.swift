@@ -46,12 +46,12 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     
     // Initialize Cell content
     public func initializeCellContent(_ movie: Movie?) {
-        guard movie != nil else {
-            print("error while initializing cell content")
+        guard let backdrop = movie?.backdropPath else {
+            print("error with movie backdrop url")
             return
         }
         
-        self.movieBackdrop.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie!.backdropPath)
+        self.movieBackdrop.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + backdrop)
         self.movieTitle.text = movie?.title
         self.moviesGenre.text = GenresDataBase.getGenreData(movie!.genreIDs)
         self.moviesReleaseDate.text = movie!.releaseDate.YearFormat

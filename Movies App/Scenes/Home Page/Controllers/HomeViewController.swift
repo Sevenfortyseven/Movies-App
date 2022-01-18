@@ -181,7 +181,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
-        label.text = "Trending this week"
+        label.text = "Trending This Week"
         label.textColor = .white
         return label
     }()

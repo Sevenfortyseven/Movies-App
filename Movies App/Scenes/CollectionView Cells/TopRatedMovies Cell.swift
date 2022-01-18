@@ -42,11 +42,11 @@ class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
     
     // Initialize cell content
     public func initializeCellContent(_ movie: Movie?) {
-        guard movie != nil else {
+        guard let poster = movie?.posterPath else {
             print("error while initializing cell content")
             return
         }
-        self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + movie!.posterPath)
+        self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + poster)
     }
     
     // MARK: - Cell ContentView

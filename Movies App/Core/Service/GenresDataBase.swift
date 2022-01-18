@@ -27,9 +27,6 @@ struct GenresDataBase {
             
         }
         
-        
-        
-        
         genreNamesCombined = genreIdArray.joined(separator: ",")
         return genreNamesCombined
     }

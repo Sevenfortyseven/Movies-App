@@ -14,6 +14,7 @@ enum MoviesDbEndpoint: Endpoint {
     case moviesGenres
     case comingSoon
     case topRated
+    case search(query: String, pages: Int)
     
     var scheme: String {
         switch self {
@@ -36,18 +37,25 @@ enum MoviesDbEndpoint: Endpoint {
         case .moviesGenres: return "/3/genre/movie/list"
         case .comingSoon: return "/3/movie/upcoming"
         case .topRated: return "/3/movie/top_rated"
+        case .search: return "/3/search/movie"
         }
     }
     
     
     var parameters: [URLQueryItem] {
         let API_KEY = "08c2f604eb89c1dd78a4e0a744575c02"
+
+        
         switch self {
         case .comingSoon: return [URLQueryItem(name: "api_key", value: API_KEY),
                                   URLQueryItem(name: "page", value: "1")
         ]
         case .topRated: return [URLQueryItem(name: "api_key", value: API_KEY),
-                                  URLQueryItem(name: "page", value: "3")
+                                URLQueryItem(name: "page", value: "15")
+        ]
+        case .search(let query, let count): return [URLQueryItem(name: "api_key", value: API_KEY),
+                              URLQueryItem(name: "page", value: String(count)),
+                              URLQueryItem(name: "query", value: query)
         ]
         default: return [URLQueryItem(name: "api_key", value: API_KEY)]
         }
@@ -61,6 +69,7 @@ enum MoviesDbEndpoint: Endpoint {
         case .moviesGenres: return "GET"
         case .comingSoon: return "GET"
         case .topRated: return "GET"
+        case .search: return "GET"
         }
     }
     

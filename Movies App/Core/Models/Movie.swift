@@ -17,8 +17,8 @@ struct Movie: Codable {
     var title: String
     var averageVote: Double
     var popularity: Double
-    var posterPath: String
-    var backdropPath: String
+    var posterPath: String?
+    var backdropPath: String?
     var genreIDs: [Int]
     
     enum CodingKeys: String, CodingKey {
@@ -35,19 +35,8 @@ struct Movie: Codable {
         case genreIDs = "genre_ids"
     }
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.overview = try container.decode(String.self, forKey: .overview)
-        self.releaseDate = try container.decode(String.self, forKey: .releaseDate)
-        self.voteCount = try container.decode(Int.self, forKey: .voteCount)
-        self.language = try container.decode(String.self, forKey: .language)
-        self.movieId = try container.decode(Int.self, forKey: .movieId)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.averageVote = try container.decode(Double.self, forKey: .averageVote)
-        self.popularity = try container.decode(Double.self, forKey: .popularity)
-        self.posterPath = try container.decode(String.self, forKey: .posterPath)
-        self.backdropPath = try container.decode(String.self, forKey: .backdropPath)
-        self.genreIDs = try container.decode([Int].self, forKey: .genreIDs)
-    }
 }
+
+
+
 
