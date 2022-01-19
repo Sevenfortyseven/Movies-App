@@ -66,7 +66,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     // MARK: UI Config
     
     private func updateUI() {
-
+        self.selectionStyle = .none
     }
     
     // MARK: ContentView

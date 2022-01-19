@@ -373,6 +373,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
+    // Cell action
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch collectionView {
+            // Switch to DetailsScreen
+        case self.trendingMoviesCollectionView:
+            let selectedMovieID = trendingMovies[indexPath.row].movieId
+            let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+            targetVC.movieID = selectedMovieID
+            self.navigationController?.present(targetVC, animated: true, completion: nil)
+        default: break
+        }
+        
+    }
+    
     // MARK: - Network Calls
     
     private func networkInAction() {

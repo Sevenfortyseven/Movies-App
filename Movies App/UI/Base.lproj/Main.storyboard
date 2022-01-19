@@ -43,7 +43,7 @@
         <!--Favourites-->
         <scene sceneID="QQ9-6f-VSB">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="oB0-vL-YVf" customClass="DetailsViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oB0-vL-YVf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wd8-XS-uxp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJX-dg-UOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="729" y="800"/>
+            <point key="canvasLocation" x="729" y="826"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="hpj-UJ-PXm">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" id="jDh-bV-RB4" customClass="DetailsViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NH7-Jk-9B1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mQG-ul-A1q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="osO-ym-dcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1751" y="826"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="eud-yA-Swt">
@@ -108,39 +123,12 @@
             </objects>
             <point key="canvasLocation" x="1751" y="115"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ydi-Om-9Vn">
-            <objects>
-                <viewController id="h8y-L8-Qz8" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BhS-mT-1ZD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-Pb-Clz">
-                                <rect key="frame" x="0.0" y="233" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.8004692793" green="0.088881008329999997" blue="0.20152011510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Qbw-7k-fWT"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UYP-dq-uap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3176.811594202899" y="678.34821428571422"/>
-        </scene>
     </scenes>
     <resources>
         <image name="tab_bar_home_icon" width="32" height="32"/>
         <image name="tab_bar_star_icon" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

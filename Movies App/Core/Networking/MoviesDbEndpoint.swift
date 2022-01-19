@@ -15,6 +15,7 @@ enum MoviesDbEndpoint: Endpoint {
     case comingSoon
     case topRated
     case search(query: String)
+    case movieTrailer(movieID: Int)
     
     var scheme: String {
         switch self {
@@ -38,6 +39,7 @@ enum MoviesDbEndpoint: Endpoint {
         case .comingSoon: return "/3/movie/upcoming"
         case .topRated: return "/3/movie/top_rated"
         case .search: return "/3/search/movie"
+        case .movieTrailer(let movieID): return "/3/movie/\(movieID)/videos"
         }
     }
     
@@ -62,6 +64,7 @@ enum MoviesDbEndpoint: Endpoint {
         
     }
     
+    
     var method: String {
         switch self {
         case .WeeklyTrends: return "GET"
@@ -70,6 +73,7 @@ enum MoviesDbEndpoint: Endpoint {
         case .comingSoon: return "GET"
         case .topRated: return "GET"
         case .search: return "GET"
+        case .movieTrailer: return "GET"
         }
     }
     

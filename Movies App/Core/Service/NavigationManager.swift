@@ -12,6 +12,7 @@ struct NavigationManager {
     
     enum TargetView {
         case SearchScreen
+        case DetailsScreen
     }
     
     enum TransferStyle {
@@ -25,8 +26,10 @@ struct NavigationManager {
         
         switch chosenScreen {
         case .SearchScreen:
-            targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SearchViewController.identifier) as! SearchViewController
-            
+            targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SearchViewController.identifier) as!
+            SearchViewController
+        case .DetailsScreen:
+            targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
         }
         
         switch transferStyle {
