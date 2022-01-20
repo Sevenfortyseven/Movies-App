@@ -375,14 +375,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // Cell action
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
         
         switch collectionView {
-            // Switch to DetailsScreen
         case self.trendingMoviesCollectionView:
-            let selectedMovieID = trendingMovies[indexPath.row]
-            let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
-            targetVC.movie = selectedMovieID
-            targetVC.genreIDs = selectedMovieID.genreIDs
+            let selectedMovie = trendingMovies[indexPath.row]
+            targetVC.movie = selectedMovie
+            targetVC.genreIDs = selectedMovie.genreIDs
+            self.navigationController?.present(targetVC, animated: true, completion: nil)
+        case self.upcomingMoviesCollectionView:
+            let selectedMovie = upcomingMovies[indexPath.row]
+            targetVC.movie = selectedMovie
+            targetVC.genreIDs = selectedMovie.genreIDs
+            self.navigationController?.present(targetVC, animated: true, completion: nil)
+        case self.topRatedMoviesCollectionView:
+            let selectedMovie = topRatedMovies[indexPath.row]
+            targetVC.movie = selectedMovie
+            targetVC.genreIDs = selectedMovie.genreIDs
             self.navigationController?.present(targetVC, animated: true, completion: nil)
         default: break
         }

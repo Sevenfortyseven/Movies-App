@@ -183,6 +183,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+    
+    // Cell action
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+        let selectedMovie = filteredMovies[indexPath.row]
+        targetVC.movie = selectedMovie
+        targetVC.genreIDs = selectedMovie.genreIDs
+        self.navigationController?.present(targetVC, animated: true, completion: nil)
+    }
 
 
     // MARK: - SearchBar Configuration and Delegate Methods
