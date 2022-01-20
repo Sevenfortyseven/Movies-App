@@ -16,7 +16,7 @@ struct Video: Codable {
     var type: String
     var id: String
     
-    enum CodingKeys: Codable, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name
         case key
         case site

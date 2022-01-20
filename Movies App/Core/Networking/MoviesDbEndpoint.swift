@@ -16,6 +16,7 @@ enum MoviesDbEndpoint: Endpoint {
     case topRated
     case search(query: String)
     case movieTrailer(movieID: Int)
+    case userReviews(movieID: Int)
     
     var scheme: String {
         switch self {
@@ -40,6 +41,7 @@ enum MoviesDbEndpoint: Endpoint {
         case .topRated: return "/3/movie/top_rated"
         case .search: return "/3/search/movie"
         case .movieTrailer(let movieID): return "/3/movie/\(movieID)/videos"
+        case .userReviews(let movieID): return "/3/movie/\(movieID)/reviews"
         }
     }
     
@@ -74,6 +76,7 @@ enum MoviesDbEndpoint: Endpoint {
         case .topRated: return "GET"
         case .search: return "GET"
         case .movieTrailer: return "GET"
+        case .userReviews: return "GET"
         }
     }
     

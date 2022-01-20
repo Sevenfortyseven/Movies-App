@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Movies App/Pods-Movies App-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation.framework
+${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework

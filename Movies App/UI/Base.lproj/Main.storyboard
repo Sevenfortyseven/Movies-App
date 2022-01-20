@@ -108,6 +108,34 @@
             </objects>
             <point key="canvasLocation" x="1751" y="826"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="RCm-i2-wGk">
+            <objects>
+                <viewController id="ZsS-D5-sE2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1lq-br-B7d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R3-cL-190">
+                                <rect key="frame" x="165.5" y="424" width="83.5" height="48"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up.fill" catalog="system" imagePlacement="top" title="Favourite">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yWX-HX-t1q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2R3-cL-190" firstAttribute="centerY" secondItem="1lq-br-B7d" secondAttribute="centerY" id="brV-Sj-Nlg"/>
+                            <constraint firstItem="2R3-cL-190" firstAttribute="centerX" secondItem="1lq-br-B7d" secondAttribute="centerX" id="qCW-mB-4sM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONg-B1-gAE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4061" y="546"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="eud-yA-Swt">
             <objects>
@@ -125,6 +153,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="tab_bar_home_icon" width="32" height="32"/>
         <image name="tab_bar_star_icon" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">

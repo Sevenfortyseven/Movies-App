@@ -154,7 +154,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     private let searchResultTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
         return tableView
     }()
     

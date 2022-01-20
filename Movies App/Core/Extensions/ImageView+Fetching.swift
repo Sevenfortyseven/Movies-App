@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImageView {
     @discardableResult
-    func loadImageFromUrl(urlString: String) -> URLSessionDataTask? {
+    func loadImageFromUrl(urlString: String, placeHolder: UIImage? = nil) -> URLSessionDataTask? {
         self.image = nil
         
         if let cachedImage = CacheManager.getImageCache(urlString) {
@@ -18,8 +18,12 @@ extension UIImageView {
         }
         guard let url = URL(string: urlString) else { return nil }
         
+        if let placeHolder = placeHolder {
+            self.image = placeHolder
+        }
         
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            
             DispatchQueue.main.async {
                 if let data = data, let downloadedImage = UIImage(data: data) {
                     // Save data into the cache

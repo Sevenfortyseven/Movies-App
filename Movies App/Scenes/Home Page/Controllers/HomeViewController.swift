@@ -379,9 +379,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         switch collectionView {
             // Switch to DetailsScreen
         case self.trendingMoviesCollectionView:
-            let selectedMovieID = trendingMovies[indexPath.row].movieId
+            let selectedMovieID = trendingMovies[indexPath.row]
             let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
-            targetVC.movieID = selectedMovieID
+            targetVC.movie = selectedMovieID
+            targetVC.genreIDs = selectedMovieID.genreIDs
             self.navigationController?.present(targetVC, animated: true, completion: nil)
         default: break
         }
