@@ -23,7 +23,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     public var genreIDs: [Int]?
     private var video = [Video]()
     private var userReviews = [UserReview]()
-    
+    private var delegate: AddMovieToFavouritesCollection?
     
     // MARK: - Initialization
     
@@ -156,6 +156,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         var config = UIButton.Configuration.plain()
         config.imagePlacement = .top
         let button = UIButton(configuration: config, primaryAction: .none)
+        button.addTarget(self, action: #selector(markAsFavourite), for: .touchDown)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         button.setTitleColor(.systemGray, for: .normal)
@@ -296,6 +297,11 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         userReviewsTableView.dataSource = self
     }
     
+    // MARK: - Button Actions
+    
+    @objc private func markAsFavourite() {
+        
+    }
     
     // MARK: - TableView Delegate Methods
 

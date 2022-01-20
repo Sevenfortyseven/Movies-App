@@ -37,6 +37,8 @@
 		9F9C0C5927989E1100278FF2 /* UserReviews Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C5827989E1100278FF2 /* UserReviews Cell.swift */; };
 		9F9C0C5C2798A28F00278FF2 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C5B2798A28F00278FF2 /* UserReview.swift */; };
 		9F9C0C5E2798A2AC00278FF2 /* UserReviewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C5D2798A2AC00278FF2 /* UserReviewsResponse.swift */; };
+		9F9C0C622798F1EC00278FF2 /* FavouriteMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C612798F1EB00278FF2 /* FavouriteMovies Cell.swift */; };
+		9F9C0C642798F80600278FF2 /* AddMovieToFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C632798F80600278FF2 /* AddMovieToFavourites.swift */; };
 		9FB70D042788CFB500CCE203 /* TrendingMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D032788CFB500CCE203 /* TrendingMovies Cell.swift */; };
 		9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D052788E26700CCE203 /* CacheManager.swift */; };
 		9FB70D082788E4C500CCE203 /* ImageView+Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */; };
@@ -78,6 +80,8 @@
 		9F9C0C5827989E1100278FF2 /* UserReviews Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserReviews Cell.swift"; sourceTree = "<group>"; };
 		9F9C0C5B2798A28F00278FF2 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		9F9C0C5D2798A2AC00278FF2 /* UserReviewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewsResponse.swift; sourceTree = "<group>"; };
+		9F9C0C612798F1EB00278FF2 /* FavouriteMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteMovies Cell.swift"; sourceTree = "<group>"; };
+		9F9C0C632798F80600278FF2 /* AddMovieToFavourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToFavourites.swift; sourceTree = "<group>"; };
 		9FB70D032788CFB500CCE203 /* TrendingMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMovies Cell.swift"; sourceTree = "<group>"; };
 		9FB70D052788E26700CCE203 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Fetching.swift"; sourceTree = "<group>"; };
@@ -326,6 +330,7 @@
 		9F9C0C492795E4A200278FF2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				9F9C0C632798F80600278FF2 /* AddMovieToFavourites.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				9FB70D032788CFB500CCE203 /* TrendingMovies Cell.swift */,
 				9FB8D0EE278B922900FB0B2D /* UpcomingMovies Cell.swift */,
 				9F89344E278CE23000360719 /* TopRatedMovies Cell.swift */,
+				9F9C0C612798F1EB00278FF2 /* FavouriteMovies Cell.swift */,
 			);
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 				9F39B9B027791E350090D9BA /* Movie.swift in Sources */,
 				9F9C0C55279841A800278FF2 /* Video.swift in Sources */,
 				9F9C0C482795C05700278FF2 /* SearchedMovies Cell.swift in Sources */,
+				9F9C0C642798F80600278FF2 /* AddMovieToFavourites.swift in Sources */,
 				9F98882627779870002D0EDB /* HomeViewController.swift in Sources */,
 				9F8FF6582793699D001FDF67 /* NavigationManager.swift in Sources */,
 				9F275DFD278B084100C95E2B /* GenresDataBase.swift in Sources */,
@@ -478,6 +485,7 @@
 				9F8FF65627935D44001FDF67 /* SearchViewController.swift in Sources */,
 				9F275E01278B37A500C95E2B /* String+DateFormat.swift in Sources */,
 				9F23C942278E004E001C434C /* FavouritesViewController.swift in Sources */,
+				9F9C0C622798F1EC00278FF2 /* FavouriteMovies Cell.swift in Sources */,
 				9F1220CA278A169100B5CDE5 /* Genre.swift in Sources */,
 				9F89344D278CC0EE00360719 /* MoviesResponse.swift in Sources */,
 				9F39B9AE2778EA500090D9BA /* MoviesDbEndpoint.swift in Sources */,
