@@ -16,6 +16,8 @@
 		9F275E01278B37A500C95E2B /* String+DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275E00278B37A500C95E2B /* String+DateFormat.swift */; };
 		9F275E05278B5F9300C95E2B /* StaticEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275E04278B5F9300C95E2B /* StaticEndpoint.swift */; };
 		9F275E08278B68B200C95E2B /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F275E07278B68B200C95E2B /* UIView+RoundCorners.swift */; };
+		9F32C95D2799EBC200B51B4E /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32C95C2799EBC200B51B4E /* UIView+Shadow.swift */; };
+		9F32C962279A0B0100B51B4E /* NotificationName+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32C961279A0B0100B51B4E /* NotificationName+Keys.swift */; };
 		9F39B9AC2778E8E80090D9BA /* Endpoint Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9AB2778E8E80090D9BA /* Endpoint Protocol.swift */; };
 		9F39B9AE2778EA500090D9BA /* MoviesDbEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9AD2778EA500090D9BA /* MoviesDbEndpoint.swift */; };
 		9F39B9B027791E350090D9BA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39B9AF27791E350090D9BA /* Movie.swift */; };
@@ -57,6 +59,8 @@
 		9F275E00278B37A500C95E2B /* String+DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormat.swift"; sourceTree = "<group>"; };
 		9F275E04278B5F9300C95E2B /* StaticEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticEndpoint.swift; sourceTree = "<group>"; };
 		9F275E07278B68B200C95E2B /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
+		9F32C95C2799EBC200B51B4E /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		9F32C961279A0B0100B51B4E /* NotificationName+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Keys.swift"; sourceTree = "<group>"; };
 		9F39B9AB2778E8E80090D9BA /* Endpoint Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint Protocol.swift"; sourceTree = "<group>"; };
 		9F39B9AD2778EA500090D9BA /* MoviesDbEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDbEndpoint.swift; sourceTree = "<group>"; };
 		9F39B9AF27791E350090D9BA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */,
 				9F275E00278B37A500C95E2B /* String+DateFormat.swift */,
 				9F275E07278B68B200C95E2B /* UIView+RoundCorners.swift */,
+				9F32C95C2799EBC200B51B4E /* UIView+Shadow.swift */,
+				9F32C961279A0B0100B51B4E /* NotificationName+Keys.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				9F9C0C5E2798A2AC00278FF2 /* UserReviewsResponse.swift in Sources */,
 				9F275E08278B68B200C95E2B /* UIView+RoundCorners.swift in Sources */,
 				9FB70D082788E4C500CCE203 /* ImageView+Fetching.swift in Sources */,
+				9F32C95D2799EBC200B51B4E /* UIView+Shadow.swift in Sources */,
 				9F89344F278CE23000360719 /* TopRatedMovies Cell.swift in Sources */,
 				9F9C0C5C2798A28F00278FF2 /* UserReview.swift in Sources */,
 				9F39B9B027791E350090D9BA /* Movie.swift in Sources */,
@@ -479,6 +486,7 @@
 				9F9C0C5927989E1100278FF2 /* UserReviews Cell.swift in Sources */,
 				9F275E05278B5F9300C95E2B /* StaticEndpoint.swift in Sources */,
 				9F39B9B4277923A80090D9BA /* NetworkEngine.swift in Sources */,
+				9F32C962279A0B0100B51B4E /* NotificationName+Keys.swift in Sources */,
 				9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */,
 				9F1220CC278A184F00B5CDE5 /* GenresResponse.swift in Sources */,
 				9FB70D042788CFB500CCE203 /* TrendingMovies Cell.swift in Sources */,

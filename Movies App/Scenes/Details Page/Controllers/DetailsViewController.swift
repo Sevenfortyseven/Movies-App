@@ -19,11 +19,13 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     
     // MARK: - Instances
     
+    private var observer: NSObjectProtocol?
     public var movie: Movie?
     public var genreIDs: [Int]?
     private var video = [Video]()
     private var userReviews = [UserReview]()
-    private var delegate: AddMovieToFavouritesCollection?
+    private static var favouriteMovies = [Movie]()
+    weak var delegate: FavouriteMoviesDelegate?
     
     // MARK: - Initialization
     
@@ -34,13 +36,16 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         populateStackView()
         initializeTableView()
         initializeConstraints()
+        checkMovie()
         updateUI()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initializeObserver()
         spinner.startAnimating()
+    
     }
     
     override func viewWillLayoutSubviews() {
@@ -49,6 +54,13 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         
         movieGenre.setContentHuggingPriority(.defaultLow, for: .horizontal)
         movieGenre.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+    }
+    
+    
+    deinit {
+        
+        print("deinit called")
+        removeObserver()
     }
     
     // Populate view with subviews
@@ -84,6 +96,15 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         movieReleaseDate.text = movie?.releaseDate.YearFormat
         movieRating.text = "Imdb " + String(movie!.averageVote)
         movieDescriptionView.text = movie!.overview
+    }
+    
+    // Checks if movie is marked as favourite and updates button colour accordingly
+    private func checkMovie() {
+        for favMovie in DetailsViewController.favouriteMovies {
+            if movie?.movieId == favMovie.movieId {
+                self.addToFavouritesButton.tintColor = .appRedColor
+            }
+        }
     }
     
     // MARK: - UI Configuration
@@ -300,14 +321,24 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     // MARK: - Button Actions
     
     @objc private func markAsFavourite() {
-        
+
+        guard let favouriteMovie = movie else {
+            print("invalid movie object")
+            return
+        }
+        // check whether the movie is already added into favourite movies array
+        if !DetailsViewController.favouriteMovies.contains(where: { movie?.movieId == $0.movieId }) {
+            addToFavouritesButton.tintColor = .appRedColor
+            DetailsViewController.favouriteMovies.append(favouriteMovie)
+            delegate?.addMovie(favouriteMovie)
+        }
+       
     }
     
     // MARK: - TableView Delegate Methods
 
     // Number of cells
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(userReviews.count)
         return  userReviews.count
     }
     
@@ -352,6 +383,22 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
                 print(error)
             }
         }
+    }
+    
+    // MARK: - Observer Configuration and Initialization
+    private func initializeObserver() {
+        observer = NotificationCenter.default.addObserver(forName: .removeFromFavourites, object: nil, queue: .main) { [weak self] notification in
+            let senderVC = notification.object as! FavouriteMoviesCollectionViewCell
+            DetailsViewController.favouriteMovies.removeAll(where: { senderVC.movie?.movieId == $0.movieId })
+            self?.addToFavouritesButton.tintColor = .white
+        }
+    }
+    
+    private func removeObserver() {
+        guard observer != nil else {
+            return
+        }
+        NotificationCenter.default.removeObserver(observer!)
     }
     
     // MARK: - Constraints

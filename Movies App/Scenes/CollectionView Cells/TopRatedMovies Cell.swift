@@ -20,7 +20,7 @@ class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        _ = self.roundedCorners
+        _ = self.roundedCornersMinCurve
         self.contentView.clipsToBounds = true
         addSubviews()
     }

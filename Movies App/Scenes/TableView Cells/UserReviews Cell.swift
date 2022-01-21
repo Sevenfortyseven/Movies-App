@@ -48,7 +48,6 @@ class UserReviewsTableViewCell: UITableViewCell {
     
     // ContentView initialization
     public func initializeContentView(_ userReview: UserReview) {
-        print(userReview)
         /// ImageView initialization
         guard let avatarPath = userReview.authorDetails.avatarPath else {
             print("No avatar available")

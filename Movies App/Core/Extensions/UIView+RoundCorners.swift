@@ -12,9 +12,25 @@ import UIKit
 extension UIView {
     
     
-    public var roundedCorners: CGFloat? {
+    public var roundedCornersMinCurve: CGFloat? {
         get {
             let newCornerRadius = self.frame.size.width / 35
+            self.layer.cornerRadius = newCornerRadius
+            return nil
+        }
+    }
+    
+    public var roundedCornersMediumCurve: CGFloat? {
+        get {
+            let newCornerRadius = self.frame.size.width / 25
+            self.layer.cornerRadius = newCornerRadius
+            return nil
+        }
+    }
+    
+    public var roundedCornersMaxCurve: CGFloat? {
+        get {
+            let newCornerRadius = self.frame.size.width / 15
             self.layer.cornerRadius = newCornerRadius
             return nil
         }

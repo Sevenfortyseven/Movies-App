@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AddMovieToFavouritesCollection {
+protocol FavouriteMoviesDelegate: AnyObject {
     
     func addMovie(_ movie: Movie)
 }

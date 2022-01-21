@@ -8,13 +8,14 @@
 import Foundation
 import UIKit
 
-class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AddMovieToFavouritesCollection {
+class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FavouriteMoviesDelegate {
  
     // Self identifier
     private(set) static var identifier = "FavouritesViewController"
     
     // MARK: - Instances
-    
+
+    private var observer: NSObjectProtocol?
     private var favouriteMovies = [Movie]()
     
     // MARK: - Initialization
@@ -25,17 +26,23 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         InitializeCollectionView()
         updateUI()
         initializeConstraints()
+
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initializeObserver()
     }
     
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateFrames()
+    }
+    
+    deinit {
+        removeObserver()
     }
     
     // Add subviews
@@ -48,10 +55,16 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     private func updateUI() {
         self.view.backgroundColor = .mainAppColor
+        self.favouriteMoviesCollectionView.backgroundColor = .clear
     }
     
     private func updateFrames() {
         
+    }
+    
+    // Updates contentView according to observers and other changes
+    private func updateContentView() {
+    
     }
     
     // MARK: - UI Elements
@@ -72,6 +85,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
@@ -86,13 +100,26 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // Cell count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(favouriteMovies.count)
         return favouriteMovies.count
     }
     
     // Cell configuration
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = favouriteMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: FavouriteMoviesCollectionViewCell.identifier, for: indexPath) as! FavouriteMoviesCollectionViewCell
+        cell.initializeContentView(favouriteMovies[indexPath.row])
         return cell
+    }
+    // Cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = collectionView.frame.size.width
+        let cellHeight = collectionView.frame.size.height / 1.5
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    // Spacing between cells
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
     }
     
     
@@ -100,10 +127,32 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
     // MARK: - Delegate Methods
-    
+
     // appends given movie object into self movies array
     func addMovie(_ movie: Movie) {
         self.favouriteMovies.append(movie)
+        print(favouriteMovies.count)
+        self.favouriteMoviesCollectionView.reloadData()
+        
+    }
+    
+    // MARK: - Observer Configuration and Initializaiton
+    
+    private func initializeObserver() {
+        observer = NotificationCenter.default.addObserver(forName: .removeFromFavourites, object: nil, queue: .main) { [weak self] notification in
+            let senderVC = notification.object as! FavouriteMoviesCollectionViewCell
+            print("FavouritesScreen signal")
+            self?.favouriteMovies.removeAll(where: { senderVC.movie?.movieId == $0.movieId })
+            self?.favouriteMoviesCollectionView.reloadData()
+        }
+    }
+    
+    private func removeObserver() {
+        guard  observer != nil else {
+            NotificationCenter.default.removeObserver(observer!)
+            return
+        }
+
     }
     
     
@@ -115,7 +164,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         let leadingSpace = CGFloat(24)
         let trailingSpace = CGFloat(-24)
         let paddingBetweenItems = CGFloat(10)
-//        let stackViewHeight = CGFloat(44)
         
         // Your movies label
         constraints.append(yourMoviesLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))

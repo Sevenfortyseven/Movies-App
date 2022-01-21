@@ -15,7 +15,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        _ = self.roundedCorners
+        _ = self.roundedCornersMinCurve
         self.clipsToBounds = true
         addSubviews()
         populateStackView()

@@ -62,9 +62,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     private func updateUI() {
         self.view.backgroundColor = .mainAppColor
         searchResultTableView.backgroundColor = .clear
-        _ = favouriteGenreButton1.roundedCorners
-        _ = favouriteGenreButton2.roundedCorners
-        _ = favouriteGenreButton3.roundedCorners
+        _ = favouriteGenreButton1.roundedCornersMinCurve
+        _ = favouriteGenreButton2.roundedCornersMinCurve
+        _ = favouriteGenreButton3.roundedCornersMinCurve
         
 
     }

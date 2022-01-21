@@ -83,9 +83,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     private func updateUI() {
         self.view.backgroundColor = UIColor.mainAppColor
-        _ = myListButton.roundedCorners
-        _ = moviesButton.roundedCorners
-        _ = tvShowsButton.roundedCorners
+        _ = myListButton.roundedCornersMinCurve
+        _ = moviesButton.roundedCornersMinCurve
+        _ = tvShowsButton.roundedCornersMinCurve
         
         self.tabBarController?.tabBar.backgroundColor = .tabBarColor
         self.tabBarController?.tabBar.tintColor = .appRedColor
@@ -375,7 +375,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // Cell action
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Instantiate DetailsViewController and set it's delegate to FavouritesViewController to pass data
         let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+        let favMoviesScreen = self.tabBarController?.viewControllers?[0] as! FavouritesViewController
+        targetVC.delegate = favMoviesScreen
         
         switch collectionView {
         case self.trendingMoviesCollectionView:

@@ -20,7 +20,7 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = true
-        _ = self.roundedCorners
+        _ = self.roundedCornersMinCurve
         addSubviews()
         initializeConstraints()
     }
