@@ -10,8 +10,9 @@ import UIKit
 import WebKit
 import MarqueeLabel
 
-class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
-
+class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource, UpdateMovieStatusDelegate {
+  
+   
     // Self identifier
     private(set) static var identifier = "DetailsViewController"
     
@@ -25,7 +26,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     private var video = [Video]()
     private var userReviews = [UserReview]()
     private static var favouriteMovies = [Movie]()
-    weak var delegate: FavouriteMoviesDelegate?
+    weak var changeToFavouriteDelegate: FavouriteMoviesDelegate?
     
     // MARK: - Initialization
     
@@ -330,7 +331,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         if !DetailsViewController.favouriteMovies.contains(where: { movie?.movieId == $0.movieId }) {
             addToFavouritesButton.tintColor = .appRedColor
             DetailsViewController.favouriteMovies.append(favouriteMovie)
-            delegate?.addMovie(favouriteMovie)
+            changeToFavouriteDelegate?.addMovie(favouriteMovie)
         }
        
     }
@@ -385,6 +386,15 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         }
     }
     
+    // MARK: - Delegate Methods
+    
+      func updateStatus(movie: [Movie], isFavourite: Bool) {
+          for removedMovies in movie {
+              DetailsViewController.favouriteMovies.removeAll(where: { $0.movieId == removedMovies.movieId })
+          }
+    }
+    
+
     // MARK: - Observer Configuration and Initialization
     private func initializeObserver() {
         observer = NotificationCenter.default.addObserver(forName: .removeFromFavourites, object: nil, queue: .main) { [weak self] notification in

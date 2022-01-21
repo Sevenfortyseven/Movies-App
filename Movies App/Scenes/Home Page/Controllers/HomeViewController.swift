@@ -378,8 +378,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Instantiate DetailsViewController and set it's delegate to FavouritesViewController to pass data
         let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
         let favMoviesScreen = self.tabBarController?.viewControllers?[0] as! FavouritesViewController
-        targetVC.delegate = favMoviesScreen
-        
+        targetVC.changeToFavouriteDelegate = favMoviesScreen
+        favMoviesScreen.movieStatusDelegate = targetVC
+
         switch collectionView {
         case self.trendingMoviesCollectionView:
             let selectedMovie = trendingMovies[indexPath.row]

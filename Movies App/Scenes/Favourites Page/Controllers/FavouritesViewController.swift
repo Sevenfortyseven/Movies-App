@@ -17,6 +17,8 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
 
     private var observer: NSObjectProtocol?
     private var favouriteMovies = [Movie]()
+    private var deletedMovies = [Movie]()
+    public var movieStatusDelegate: UpdateMovieStatusDelegate?
     
     // MARK: - Initialization
     
@@ -26,6 +28,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         InitializeCollectionView()
         updateUI()
         initializeConstraints()
+
 
     }
     
@@ -136,14 +139,25 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
+    // Updates movie status for Details screen after getting notification from cell
+    private func updateMovieStatus() {
+        
+        print("Delegation working")
+        movieStatusDelegate?.updateStatus(movie: deletedMovies, isFavourite: true)
+    }
+    
+    
     // MARK: - Observer Configuration and Initializaiton
     
     private func initializeObserver() {
         observer = NotificationCenter.default.addObserver(forName: .removeFromFavourites, object: nil, queue: .main) { [weak self] notification in
             let senderVC = notification.object as! FavouriteMoviesCollectionViewCell
-            print("FavouritesScreen signal")
-            self?.favouriteMovies.removeAll(where: { senderVC.movie?.movieId == $0.movieId })
-            self?.favouriteMoviesCollectionView.reloadData()
+            if let movie = senderVC.movie {
+                self?.favouriteMovies.removeAll(where: { movie.movieId == $0.movieId })
+                self?.deletedMovies.append(movie)
+                self?.updateMovieStatus()
+                self?.favouriteMoviesCollectionView.reloadData()
+            }
         }
     }
     

@@ -16,6 +16,7 @@ class FavouriteMoviesCollectionViewCell: UICollectionViewCell {
     //MARK: - Instances
     
     private(set) var movie: Movie?
+
     
     //MARK: - Initialization
     
