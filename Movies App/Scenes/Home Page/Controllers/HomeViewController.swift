@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private func populateStackView() {
         /// upper stackview
         upperStackView.addArrangedSubview(optionMenu)
-        upperStackView.addArrangedSubview(nfLogo)
+        upperStackView.addArrangedSubview(appTitle)
         upperStackView.addArrangedSubview(searchButton)
         /// middle stackView
         categoriesStackView.addArrangedSubview(tvShowsButton)
@@ -94,12 +94,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - ContentView
     
     // Netflix logo
-    private let nfLogo: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "Netflix_Logo")
-        image.contentMode = .scaleToFill
-        return image
+//    private let nfLogo: UIImageView = {
+//        let image = UIImageView()
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        image.image = UIImage(named: "Netflix_Logo")
+//        image.contentMode = .scaleToFill
+//        return image
+//    }()
+    // App title
+    private let appTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Movie Hub"
+        label.font = UIFont(name: "AmericanTypewriter-Bold", size: 30)
+        label.textColor = .appRedColor
+        return label
     }()
     
     // Menu Option
@@ -223,7 +232,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.isUserInteractionEnabled = true
-        stackView.distribution = .fill
+        stackView.distribution = .equalCentering
         stackView.spacing = 40
         return stackView
     }()
@@ -379,7 +388,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
         let favMoviesScreen = self.tabBarController?.viewControllers?[0] as! FavouritesViewController
         targetVC.changeToFavouriteDelegate = favMoviesScreen
-        favMoviesScreen.movieStatusDelegate = targetVC
 
         switch collectionView {
         case self.trendingMoviesCollectionView:
@@ -473,6 +481,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         constraints.append(upperStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(upperStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
         constraints.append(upperStackView.heightAnchor.constraint(equalToConstant: stackViewHeight))
+        
+        // App title
+        constraints.append(appTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor))
         
         // Categories stackview
         constraints.append(categoriesStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))

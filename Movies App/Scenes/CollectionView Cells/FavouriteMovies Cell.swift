@@ -23,7 +23,6 @@ class FavouriteMoviesCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
-        initializeConstraints()
         updateUI()
     }
     
@@ -39,7 +38,7 @@ class FavouriteMoviesCollectionViewCell: UICollectionViewCell {
     //Add subviews
     private func addSubviews() {
         self.contentView.addSubview(moviePosterView)
-        self.contentView.addSubview(dismissFromFavouritesButton)
+
     }
     
     public func initializeContentView(_ movie: Movie) {
@@ -72,39 +71,10 @@ class FavouriteMoviesCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private let dismissFromFavouritesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        button.tintColor = .appRedColor
-        button.addTarget(self, action: #selector(removeMovieFromFavourites), for: .touchDown)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    
     //MARK: - Button actions
     
-    // Send notifications that button was pressed
-    @objc private func removeMovieFromFavourites() {
-        NotificationCenter.default.post(name: .removeFromFavourites , object: self)
-    }
-    
+
     //MARK: - Constraints
     
-    private func initializeConstraints() {
-        var constraints = [NSLayoutConstraint]()
-        let topPadding = CGFloat(10)
-        let trailingPadding = CGFloat(-10)
-        let buttonSize = CGFloat(40)
-    
-        // Remove from favourites button
-        constraints.append(dismissFromFavouritesButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: topPadding))
-        constraints.append(dismissFromFavouritesButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: trailingPadding))
-        constraints.append(dismissFromFavouritesButton.heightAnchor.constraint(equalToConstant: buttonSize))
-        constraints.append(dismissFromFavouritesButton.widthAnchor.constraint(equalToConstant: buttonSize))
-        
-        NSLayoutConstraint.activate(constraints)
-        
-    }
-    
+
 }

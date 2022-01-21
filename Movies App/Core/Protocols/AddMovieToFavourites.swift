@@ -10,4 +10,6 @@ import Foundation
 protocol FavouriteMoviesDelegate: AnyObject {
     
     func addMovie(_ movie: Movie)
+    
+    func removeMovie(_ movie: Movie)
 }

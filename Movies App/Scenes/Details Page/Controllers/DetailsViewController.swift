@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import MarqueeLabel
 
-class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource, UpdateMovieStatusDelegate {
+class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
   
    
     // Self identifier
@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     public var movie: Movie?
     public var genreIDs: [Int]?
     private var video = [Video]()
+    private var YTkey: String?
     private var userReviews = [UserReview]()
     private static var favouriteMovies = [Movie]()
     weak var changeToFavouriteDelegate: FavouriteMoviesDelegate?
@@ -287,8 +288,16 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     // Initialize webView content
     private func initializeWebView() {
         webView.navigationDelegate = self
-        let YTkey = video[0].key
-        let embedURL = StaticEndpoint.YTendpoint + YTkey
+      
+        for key in video {
+            self.YTkey = key.key
+        }
+        guard YTkey != nil else {
+            print("no YT key available")
+            return
+        }
+        
+        let embedURL = StaticEndpoint.YTendpoint + YTkey!
         let url = URL(string: embedURL)
         guard url != nil else {
             print("invalid url")
@@ -328,10 +337,14 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
             return
         }
         // check whether the movie is already added into favourite movies array
-        if !DetailsViewController.favouriteMovies.contains(where: { movie?.movieId == $0.movieId }) {
+        if !DetailsViewController.favouriteMovies.contains(where: { favouriteMovie.movieId == $0.movieId }) {
             addToFavouritesButton.tintColor = .appRedColor
             DetailsViewController.favouriteMovies.append(favouriteMovie)
             changeToFavouriteDelegate?.addMovie(favouriteMovie)
+        } else {
+            addToFavouritesButton.tintColor = .white
+            DetailsViewController.favouriteMovies.removeAll(where: { $0.movieId == favouriteMovie.movieId})
+            changeToFavouriteDelegate?.removeMovie(favouriteMovie)
         }
        
     }
@@ -388,12 +401,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     
     // MARK: - Delegate Methods
     
-      func updateStatus(movie: [Movie], isFavourite: Bool) {
-          for removedMovies in movie {
-              DetailsViewController.favouriteMovies.removeAll(where: { $0.movieId == removedMovies.movieId })
-          }
-    }
-    
+
 
     // MARK: - Observer Configuration and Initialization
     private func initializeObserver() {

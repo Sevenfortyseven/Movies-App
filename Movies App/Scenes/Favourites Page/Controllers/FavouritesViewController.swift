@@ -9,16 +9,15 @@ import Foundation
 import UIKit
 
 class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FavouriteMoviesDelegate {
- 
+  
     // Self identifier
     private(set) static var identifier = "FavouritesViewController"
     
     // MARK: - Instances
 
-    private var observer: NSObjectProtocol?
     private var favouriteMovies = [Movie]()
     private var deletedMovies = [Movie]()
-    public var movieStatusDelegate: UpdateMovieStatusDelegate?
+
     
     // MARK: - Initialization
     
@@ -35,7 +34,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initializeObserver()
+
     }
     
     
@@ -45,7 +44,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     deinit {
-        removeObserver()
     }
     
     // Add subviews
@@ -103,7 +101,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // Cell count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(favouriteMovies.count)
         return favouriteMovies.count
     }
     
@@ -125,6 +122,17 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         return 30
     }
     
+    // Cell action
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie = favouriteMovies[indexPath.row]
+        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+        targetVC.movie = selectedMovie
+        targetVC.genreIDs = selectedMovie.genreIDs
+        targetVC.changeToFavouriteDelegate = self
+        navigationController?.present(targetVC, animated: true, completion: nil
+        )
+    }
+    
     
     // MARK: - Networking
     
@@ -133,43 +141,25 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
 
     // appends given movie object into self movies array
     func addMovie(_ movie: Movie) {
+        print("add delegate working")
         self.favouriteMovies.append(movie)
-        print(favouriteMovies.count)
         self.favouriteMoviesCollectionView.reloadData()
         
     }
     
-    // Updates movie status for Details screen after getting notification from cell
-    private func updateMovieStatus() {
-        
-        print("Delegation working")
-        movieStatusDelegate?.updateStatus(movie: deletedMovies, isFavourite: true)
+    // Removes movie from self movies array
+    func removeMovie(_ movie: Movie) {
+        print("remove delegate working")
+        self.favouriteMovies.removeAll(where: { $0.movieId == movie.movieId})
+        self.favouriteMoviesCollectionView.reloadData()
     }
+    
+ 
     
     
     // MARK: - Observer Configuration and Initializaiton
     
-    private func initializeObserver() {
-        observer = NotificationCenter.default.addObserver(forName: .removeFromFavourites, object: nil, queue: .main) { [weak self] notification in
-            let senderVC = notification.object as! FavouriteMoviesCollectionViewCell
-            if let movie = senderVC.movie {
-                self?.favouriteMovies.removeAll(where: { movie.movieId == $0.movieId })
-                self?.deletedMovies.append(movie)
-                self?.updateMovieStatus()
-                self?.favouriteMoviesCollectionView.reloadData()
-            }
-        }
-    }
-    
-    private func removeObserver() {
-        guard  observer != nil else {
-            NotificationCenter.default.removeObserver(observer!)
-            return
-        }
 
-    }
-    
-    
     // MARK: - Constraints
     
     private func initializeConstraints() {
