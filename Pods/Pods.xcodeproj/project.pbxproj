@@ -7,93 +7,159 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19EE53C9966D4142DD5B6BA2AD06D52B /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843C109A96D2134BC763CB481FA59AB /* MarqueeLabel.swift */; };
+		1931641597698A8323AC4819B7EB3954 /* MenuTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457F40D054D0ADDEEDB01197382BCC5 /* MenuTransitionAnimator.swift */; };
+		19EE53C9966D4142DD5B6BA2AD06D52B /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4187B8408B3A5518C05599F47756C5 /* MarqueeLabel.swift */; };
 		2DF1F2842BF627B387F208A99772044C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE46B11FEBCBB7C689EB07A5E57BD38 /* QuartzCore.framework */; };
-		2F9878203C57B16F8A2341363CE6ADE2 /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21D36FAAE3C9383D3A33B4D47B8D61F9 /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F8CB9390F95091A09869DB82312757C /* CGPoint+Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD5CAF1D3D3944251DBF15C28DDDBD /* CGPoint+Axis.swift */; };
-		46B43D1AD89FE337F3CAAC272E7FCE6C /* Pods-Movies App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5737A011F45BA064AFA00F05E558C26D /* Pods-Movies App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		54860D983E4747F04B90645B0B287D83 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0753F16F495B73314DF1027F15F37DB2 /* Axis.swift */; };
-		6654FAE48DED3834622E7F9E0A5F9667 /* MSCollectionViewCellPeekingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871B95924AFE06E33C5F5835B3A322B3 /* MSCollectionViewCellPeekingLayout.swift */; };
-		6CE0B8970AEE2F68ABC4434712981A8A /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B6393A426D2A858FC048C4DE70D61 /* MarqueeLabel-dummy.m */; };
-		82A3E76BDE946661391749A04C4DDCC3 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F988F3CF2678044295663FB4601B0D /* Sign.swift */; };
-		8431133668C8C5BCD6B4D43B8CC30D34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */; };
+		2F9878203C57B16F8A2341363CE6ADE2 /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 64AFA08B1CAB0A1CFCB4F784D488F4CE /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34E481F27CB2FA14008CF69338DE2305 /* Pods-Movies App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5737A011F45BA064AFA00F05E558C26D /* Pods-Movies App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F8CB9390F95091A09869DB82312757C /* CGPoint+Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A79A1FDE440FEE28747FAFB7B8528 /* CGPoint+Axis.swift */; };
+		4086C1D1DED1D0E0F8B9F2784334AF0E /* YALSideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA81C41CA080DC208E76CF468B09CCD7 /* YALSideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4687571EF9090FCD554EB0860C5A0926 /* BaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B13B3CBDEABA362BD896F8744A57E /* BaseControl.swift */; };
+		54860D983E4747F04B90645B0B287D83 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D167F5D90D254DF9194A2589B36C1 /* Axis.swift */; };
+		6654FAE48DED3834622E7F9E0A5F9667 /* MSCollectionViewCellPeekingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C080B74A9DF760A2054B1F55DC81657 /* MSCollectionViewCellPeekingLayout.swift */; };
+		6CE0B8970AEE2F68ABC4434712981A8A /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F55B01A42BDC33B9B975CC96465BF1 /* MarqueeLabel-dummy.m */; };
+		6D61A62BB64271DB05F5EA11B2DAA78B /* JDSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A41EEEE9482C08009B3C513049DE49 /* JDSwitch.swift */; };
+		7E3FA7EC272EB7C15E36AA02BBA71111 /* Switches-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E81EA07E637CDE4295D69EEA01D4B9B /* Switches-dummy.m */; };
+		82A3E76BDE946661391749A04C4DDCC3 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1731E1709676346FCF1471FF7C5C1 /* Sign.swift */; };
+		8867E75893EA34C2B4060ACD1D3F63C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */; };
 		890D842A253CC9351D66015AB218F4DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */; };
-		9F90FB61FD4EBE1851711A5B8C3DCA70 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4D1893EABBB3D6A0C5233E582D311 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */; };
-		BE60CE30F08D833BFD469C6877FB2B7B /* MSPeekCollectionViewDelegateImplementation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F12344116E6B47D1971B6BCFBAAE6 /* MSPeekCollectionViewDelegateImplementation-dummy.m */; };
-		C7657D3A6CE2D3A07EEFAB278F34D989 /* MSPeekCollectionViewDelegateImplementation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 805A47E0E9909EC89055BDBF875F2FCD /* MSPeekCollectionViewDelegateImplementation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D6ABB7A43094D86C49F5F1A0D5BE5C23 /* MSCollectionViewPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BB34F0FFB7FCB5A31D6FA0E371992A /* MSCollectionViewPaging.swift */; };
+		8A29291EBA9679A37FA804090F0504C0 /* YapLiquidSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854E9818A35EFD5C11E1AD13D71D18C0 /* YapLiquidSwitch.swift */; };
+		8B49600CD581AE34A1437A8D07564EC5 /* YapSmileSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DD68463AAC89D1CFC90BC91342739 /* YapSmileSwitch.swift */; };
+		8E091505F0A0A8D57EE9EE0948BD63E0 /* YapBaseSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753266D27CD7A187597341B27F89692F /* YapBaseSwitch.swift */; };
+		9E508CD8F0C80C480A79582B1D4FC9F5 /* Switches-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AADE817FD259C23CBEB12399637C3E0 /* Switches-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F90FB61FD4EBE1851711A5B8C3DCA70 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C9718D6CC64AC9DAA6B177BF986E3 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */; };
+		A8060D006B04342EE69C5B2407339504 /* MenuItemsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260094E83689AD80884EF0C92DB4E6E5 /* MenuItemsAnimator.swift */; };
+		AA5346DAC28BE61EBA050B0D3E2CF9FF /* Switches.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A911A3FA7092C60C966C1B7A7CC437E /* Switches.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFACCE013B0C191993A58D8A7DE8F0E5 /* Switches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4DD14DEA897174D40AC3DE1CF3A98 /* Switches.swift */; };
+		B0EAA00A1B3C61AF7C07B94233B36D53 /* SDSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4D608C55E4E36551D6F27AFCCB1FE /* SDSwitch.swift */; };
+		BA73F6B21EAEFEECE2C1CEA81B3BDCFE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82BF3530F222F8895D67188AD31F78F /* UIImage+Extension.swift */; };
+		BE60CE30F08D833BFD469C6877FB2B7B /* MSPeekCollectionViewDelegateImplementation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF03F1EE8E81D4786C89FBD65F999E8 /* MSPeekCollectionViewDelegateImplementation-dummy.m */; };
+		C06D680F60EB85525748A4C3AC1C43D7 /* Pods-Movies App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E463B8AC3DA8D3DB58838AA9A5DF4C15 /* Pods-Movies App-dummy.m */; };
+		C49080A506D4EF866611C07D077FC1D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */; };
+		C72C821940108F97BA1FBD2EADD9E198 /* YALSideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCD70D8B19E7CCDB8CCFC564F685E47 /* YALSideMenu-dummy.m */; };
+		C7657D3A6CE2D3A07EEFAB278F34D989 /* MSPeekCollectionViewDelegateImplementation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 073397CB40E451970604B6DACF2CCA10 /* MSPeekCollectionViewDelegateImplementation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8E93D66D18BCBA49C911C86AD2E3BCA /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE838E77978D2A4050FB4F0B8577F10F /* CALayer+Extension.swift */; };
+		D6ABB7A43094D86C49F5F1A0D5BE5C23 /* MSCollectionViewPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C38D341050DAFF9F013E84C8792E76 /* MSCollectionViewPaging.swift */; };
+		D83F942D91BAEA63D43C88E8DB88B8E8 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1A9E542A1D660A39C444273C35F74 /* Switcher.swift */; };
+		E3CE38155CD9828D391056FFBFC2864F /* YapSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41441DC538C40329902E1468177C858 /* YapSwitch.swift */; };
 		E9FF44007BDCA913CEEA7FE1ED53288A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */; };
-		EA496F09CD22A08AAFF818D0D447F51F /* Pods-Movies App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E463B8AC3DA8D3DB58838AA9A5DF4C15 /* Pods-Movies App-dummy.m */; };
-		EC2E46E6B2164E6AC09B661FBBFFAF2D /* UICollectionView+PeekConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8225478C78C0ED6B8945091A8851FB38 /* UICollectionView+PeekConfiguration.swift */; };
+		EC0DDA59998DCCF09F9FE9DE17CF3658 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24820790780103118D0A5112EC96F60A /* Menu.swift */; };
+		EC2E46E6B2164E6AC09B661FBBFFAF2D /* UICollectionView+PeekConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D7C04732930508121F506D6AAB74B /* UICollectionView+PeekConfiguration.swift */; };
 		F70BE6EE52CFB5E92B68F8FBE2A7E1B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE2AD31F00D0EF9C522211BDDBF6C3C /* UIKit.framework */; };
-		FE790B24303963BEE0733F25271F1D25 /* MSCollectionViewPeekingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA8CCE73CCE2F8A305C0EAD59FC6D64 /* MSCollectionViewPeekingBehavior.swift */; };
+		FD1732E0AF14A653985AF8421204FADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */; };
+		FE790B24303963BEE0733F25271F1D25 /* MSCollectionViewPeekingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F5B79904168D23A148ED0A6DDE393C /* MSCollectionViewPeekingBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3D910944AB00C5C132F7EC95F6ACE644 /* PBXContainerItemProxy */ = {
+		08370E8BB021DA7CDDDE627DB9EA248F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CC4DE41EB4BC5DDE87BBBE62DE643BD8;
 			remoteInfo = MSPeekCollectionViewDelegateImplementation;
 		};
-		3F1D6AD207311B35D5EDC46EFB0545D2 /* PBXContainerItemProxy */ = {
+		5FD4497248C7608E63AA7F781FB7D1C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CF73B25E3FEE9938AE4C373505D5100;
+			remoteInfo = YALSideMenu;
+		};
+		A59D777264606B0FF181AB308272B840 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C23DB88E45B0ED14F0C8827BE9C46C95;
 			remoteInfo = MarqueeLabel;
 		};
+		E20D309CC066F9E16C22C0C047C2A6CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E65BF325F9630E19991BF97283A0DF3A;
+			remoteInfo = Switches;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0753F16F495B73314DF1027F15F37DB2 /* Axis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Axis.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/Axis.swift; sourceTree = "<group>"; };
-		0A647404FF9256E212F67524DD3DECAA /* MSPeekCollectionViewDelegateImplementation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MSPeekCollectionViewDelegateImplementation-Info.plist"; sourceTree = "<group>"; };
-		0E8B6393A426D2A858FC048C4DE70D61 /* MarqueeLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarqueeLabel-dummy.m"; sourceTree = "<group>"; };
+		032B13B3CBDEABA362BD896F8744A57E /* BaseControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseControl.swift; path = Sources/Switches/BaseControl.swift; sourceTree = "<group>"; };
+		073397CB40E451970604B6DACF2CCA10 /* MSPeekCollectionViewDelegateImplementation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSPeekCollectionViewDelegateImplementation-umbrella.h"; sourceTree = "<group>"; };
+		0A911A3FA7092C60C966C1B7A7CC437E /* Switches.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Switches.h; path = Sources/Switches.h; sourceTree = "<group>"; };
+		0AADE817FD259C23CBEB12399637C3E0 /* Switches-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Switches-umbrella.h"; sourceTree = "<group>"; };
+		0DF03F1EE8E81D4786C89FBD65F999E8 /* MSPeekCollectionViewDelegateImplementation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSPeekCollectionViewDelegateImplementation-dummy.m"; sourceTree = "<group>"; };
+		0E441648A9804E54099324F1FDFF5965 /* Switches.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Switches.modulemap; sourceTree = "<group>"; };
 		121F14AA712F4EA06853BCBE8D2B575F /* Pods-Movies App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Movies App-frameworks.sh"; sourceTree = "<group>"; };
+		19923515D3F36771CEEB621C78B6FDA3 /* MSPeekCollectionViewDelegateImplementation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MSPeekCollectionViewDelegateImplementation-Info.plist"; sourceTree = "<group>"; };
+		1C080B74A9DF760A2054B1F55DC81657 /* MSCollectionViewCellPeekingLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewCellPeekingLayout.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewCellPeekingLayout.swift; sourceTree = "<group>"; };
 		1E907D313739BD2F0212BC4F4BA8D4A6 /* Pods-Movies App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Movies App-acknowledgements.markdown"; sourceTree = "<group>"; };
-		21D36FAAE3C9383D3A33B4D47B8D61F9 /* MarqueeLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-umbrella.h"; sourceTree = "<group>"; };
 		246A36B3F6E8193FA099823CFA78ED5F /* Pods-Movies App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Movies App.release.xcconfig"; sourceTree = "<group>"; };
-		2843C109A96D2134BC763CB481FA59AB /* MarqueeLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Sources/MarqueeLabel.swift; sourceTree = "<group>"; };
+		24820790780103118D0A5112EC96F60A /* Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Menu.swift; path = SideMenu/Menu.swift; sourceTree = "<group>"; };
+		260094E83689AD80884EF0C92DB4E6E5 /* MenuItemsAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuItemsAnimator.swift; path = SideMenu/MenuItemsAnimator.swift; sourceTree = "<group>"; };
 		2848949DD809BC5C5680B3617CBE153C /* MSPeekCollectionViewDelegateImplementation */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MSPeekCollectionViewDelegateImplementation; path = MSPeekCollectionViewDelegateImplementation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE060A1257A7837B8F7932B5DAAB6DF /* Pods-Movies App-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Movies App-Info.plist"; sourceTree = "<group>"; };
-		3E34F0FF19AB08D6814EF13D5A02F050 /* MarqueeLabel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.debug.xcconfig; sourceTree = "<group>"; };
+		3D0D7C04732930508121F506D6AAB74B /* UICollectionView+PeekConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+PeekConfiguration.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/UICollectionView+PeekConfiguration.swift"; sourceTree = "<group>"; };
+		44F55B01A42BDC33B9B975CC96465BF1 /* MarqueeLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarqueeLabel-dummy.m"; sourceTree = "<group>"; };
 		45E83EC99CE2AB30C6CC035817309C2E /* Pods-Movies App.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Movies App.modulemap"; sourceTree = "<group>"; };
+		470A79A1FDE440FEE28747FAFB7B8528 /* CGPoint+Axis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+Axis.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/CGPoint+Axis.swift"; sourceTree = "<group>"; };
 		4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4BE10CDAC2CD8F6E63C06068E2E3D757 /* MarqueeLabel-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarqueeLabel-Info.plist"; sourceTree = "<group>"; };
 		5737A011F45BA064AFA00F05E558C26D /* Pods-Movies App-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Movies App-umbrella.h"; sourceTree = "<group>"; };
 		5887E7A0BE7E0A9709200FC3C537C7FB /* Pods-Movies App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Movies App.debug.xcconfig"; sourceTree = "<group>"; };
-		5C76EBEAB697EB544AA3640877439637 /* MSPeekCollectionViewDelegateImplementation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSPeekCollectionViewDelegateImplementation.release.xcconfig; sourceTree = "<group>"; };
-		614F12344116E6B47D1971B6BCFBAAE6 /* MSPeekCollectionViewDelegateImplementation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSPeekCollectionViewDelegateImplementation-dummy.m"; sourceTree = "<group>"; };
-		77BB34F0FFB7FCB5A31D6FA0E371992A /* MSCollectionViewPaging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewPaging.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewPaging.swift; sourceTree = "<group>"; };
-		7BF7A7CB3EB98779012F73F4B34748D5 /* MarqueeLabel-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarqueeLabel-Info.plist"; sourceTree = "<group>"; };
-		805A47E0E9909EC89055BDBF875F2FCD /* MSPeekCollectionViewDelegateImplementation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSPeekCollectionViewDelegateImplementation-umbrella.h"; sourceTree = "<group>"; };
-		8225478C78C0ED6B8945091A8851FB38 /* UICollectionView+PeekConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+PeekConfiguration.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/UICollectionView+PeekConfiguration.swift"; sourceTree = "<group>"; };
-		8246E926A0C45C65559889099FC8E730 /* MSPeekCollectionViewDelegateImplementation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSPeekCollectionViewDelegateImplementation.debug.xcconfig; sourceTree = "<group>"; };
-		871B95924AFE06E33C5F5835B3A322B3 /* MSCollectionViewCellPeekingLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewCellPeekingLayout.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewCellPeekingLayout.swift; sourceTree = "<group>"; };
+		59E36B251D01FEFB304FC7D233A583A6 /* MarqueeLabel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.release.xcconfig; sourceTree = "<group>"; };
+		5EF25C17988910AA9BA0D035E63979D1 /* MSPeekCollectionViewDelegateImplementation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSPeekCollectionViewDelegateImplementation.debug.xcconfig; sourceTree = "<group>"; };
+		618B76E127C3102F513DA3E7A27073E2 /* Switches.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Switches.release.xcconfig; sourceTree = "<group>"; };
+		64AFA08B1CAB0A1CFCB4F784D488F4CE /* MarqueeLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-umbrella.h"; sourceTree = "<group>"; };
+		685FA037D61F132C29B7C687FC93720B /* MarqueeLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-prefix.pch"; sourceTree = "<group>"; };
+		6B8D167F5D90D254DF9194A2589B36C1 /* Axis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Axis.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/Axis.swift; sourceTree = "<group>"; };
+		6BD1731E1709676346FCF1471FF7C5C1 /* Sign.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sign.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/Sign.swift; sourceTree = "<group>"; };
+		6DE3C46EC9F3AA10F6410A40E7399134 /* Switches-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Switches-prefix.pch"; sourceTree = "<group>"; };
+		6E4187B8408B3A5518C05599F47756C5 /* MarqueeLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Sources/MarqueeLabel.swift; sourceTree = "<group>"; };
+		6E81EA07E637CDE4295D69EEA01D4B9B /* Switches-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Switches-dummy.m"; sourceTree = "<group>"; };
+		73D4DD14DEA897174D40AC3DE1CF3A98 /* Switches.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switches.swift; path = Sources/Switches.swift; sourceTree = "<group>"; };
+		7506AC4A8C75BAC67D58C2E5A9268C3F /* YALSideMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YALSideMenu.release.xcconfig; sourceTree = "<group>"; };
+		753266D27CD7A187597341B27F89692F /* YapBaseSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YapBaseSwitch.swift; path = Sources/Switches/YapBaseSwitch.swift; sourceTree = "<group>"; };
+		758F2A6A1D4BA334D98BCB582C909CE3 /* MarqueeLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarqueeLabel.modulemap; sourceTree = "<group>"; };
+		7B498F619A645660812EA8FCBD3E1025 /* MarqueeLabel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.debug.xcconfig; sourceTree = "<group>"; };
+		816A99BFC4D49D750AE7119DB9BAF5C4 /* Switches.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Switches.debug.xcconfig; sourceTree = "<group>"; };
+		81C5128D1CD0B6EE5401E27AEF56C842 /* MSPeekCollectionViewDelegateImplementation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSPeekCollectionViewDelegateImplementation.release.xcconfig; sourceTree = "<group>"; };
+		854E9818A35EFD5C11E1AD13D71D18C0 /* YapLiquidSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YapLiquidSwitch.swift; path = Sources/Switches/YapLiquidSwitch.swift; sourceTree = "<group>"; };
 		8CE2AD31F00D0EF9C522211BDDBF6C3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		90538E7E7C8DF635913BD81AC7C47405 /* MSPeekCollectionViewDelegateImplementation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSPeekCollectionViewDelegateImplementation-prefix.pch"; sourceTree = "<group>"; };
-		95F988F3CF2678044295663FB4601B0D /* Sign.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sign.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/Sign.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		92EB005C3B3934361983E67098CF3DEB /* MSPeekCollectionViewDelegateImplementation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSPeekCollectionViewDelegateImplementation-prefix.pch"; sourceTree = "<group>"; };
+		92F5B79904168D23A148ED0A6DDE393C /* MSCollectionViewPeekingBehavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewPeekingBehavior.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewPeekingBehavior.swift; sourceTree = "<group>"; };
+		99956BCE7FAA681E605ACE866A5CF7DE /* YALSideMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YALSideMenu.debug.xcconfig; sourceTree = "<group>"; };
+		9B258BF2743C549E1DBA7616AFB144E1 /* YALSideMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YALSideMenu-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FE46B11FEBCBB7C689EB07A5E57BD38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		A213CDB8B6A7A21BC1363262FE15AA03 /* MarqueeLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-prefix.pch"; sourceTree = "<group>"; };
-		B483452F55BC7CCE4269AB90A65BAAE4 /* MarqueeLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarqueeLabel.modulemap; sourceTree = "<group>"; };
+		A457F40D054D0ADDEEDB01197382BCC5 /* MenuTransitionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuTransitionAnimator.swift; path = SideMenu/MenuTransitionAnimator.swift; sourceTree = "<group>"; };
+		A71C9718D6CC64AC9DAA6B177BF986E3 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionViewScrollDirection+PeekDataCovnversion.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/UICollectionViewScrollDirection+PeekDataCovnversion.swift"; sourceTree = "<group>"; };
+		AE94494B570F1FC6B809DEF12C52A1AF /* Switches-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Switches-Info.plist"; sourceTree = "<group>"; };
+		B0A41EEEE9482C08009B3C513049DE49 /* JDSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JDSwitch.swift; path = Sources/Switches/JDSwitch.swift; sourceTree = "<group>"; };
 		B7CDC2F61C0D607C5AE71F7B7848024A /* Pods-Movies App */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Movies App"; path = Pods_Movies_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCD69DFADA58FDFC4061DAB143727EFE /* MSPeekCollectionViewDelegateImplementation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MSPeekCollectionViewDelegateImplementation.modulemap; sourceTree = "<group>"; };
-		C8E4D1893EABBB3D6A0C5233E582D311 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionViewScrollDirection+PeekDataCovnversion.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/UICollectionViewScrollDirection+PeekDataCovnversion.swift"; sourceTree = "<group>"; };
-		CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2DD5CAF1D3D3944251DBF15C28DDDBD /* CGPoint+Axis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+Axis.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/CGPoint+Axis.swift"; sourceTree = "<group>"; };
+		B82BF3530F222F8895D67188AD31F78F /* UIImage+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "Sources/Switches/UIImage+Extension.swift"; sourceTree = "<group>"; };
+		BA81C41CA080DC208E76CF468B09CCD7 /* YALSideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YALSideMenu-umbrella.h"; sourceTree = "<group>"; };
+		C22516E1B14DCFFD38DD83B748B7A7F4 /* YALSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YALSideMenu.modulemap; sourceTree = "<group>"; };
+		C3C38D341050DAFF9F013E84C8792E76 /* MSCollectionViewPaging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewPaging.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewPaging.swift; sourceTree = "<group>"; };
+		CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarqueeLabel; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3C1A9E542A1D660A39C444273C35F74 /* Switcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switcher.swift; path = Sources/Switches/Switcher.swift; sourceTree = "<group>"; };
+		D41441DC538C40329902E1468177C858 /* YapSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YapSwitch.swift; path = Sources/Switches/YapSwitch.swift; sourceTree = "<group>"; };
+		D5FBE1031BE107DE87EFE1FD1B32767A /* YALSideMenu */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YALSideMenu; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC4D608C55E4E36551D6F27AFCCB1FE /* SDSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SDSwitch.swift; path = Sources/Switches/SDSwitch.swift; sourceTree = "<group>"; };
 		E463B8AC3DA8D3DB58838AA9A5DF4C15 /* Pods-Movies App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Movies App-dummy.m"; sourceTree = "<group>"; };
 		E5F6E168DDCC7824189E31B85EC11748 /* Pods-Movies App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Movies App-acknowledgements.plist"; sourceTree = "<group>"; };
-		E9BA24BC4BA6353116398F13B9C528CC /* MarqueeLabel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.release.xcconfig; sourceTree = "<group>"; };
-		EEA8CCE73CCE2F8A305C0EAD59FC6D64 /* MSCollectionViewPeekingBehavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewPeekingBehavior.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewPeekingBehavior.swift; sourceTree = "<group>"; };
+		E7FAD0DC8DD67F492503B8C352A917F1 /* MSPeekCollectionViewDelegateImplementation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MSPeekCollectionViewDelegateImplementation.modulemap; sourceTree = "<group>"; };
+		E89DD68463AAC89D1CFC90BC91342739 /* YapSmileSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YapSmileSwitch.swift; path = Sources/Switches/YapSmileSwitch.swift; sourceTree = "<group>"; };
+		F1A026693CFA88D325F0A4EE2FED4183 /* YALSideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YALSideMenu-prefix.pch"; sourceTree = "<group>"; };
+		FCCD70D8B19E7CCDB8CCFC564F685E47 /* YALSideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YALSideMenu-dummy.m"; sourceTree = "<group>"; };
+		FE838E77978D2A4050FB4F0B8577F10F /* CALayer+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Extension.swift"; path = "Sources/Switches/CALayer+Extension.swift"; sourceTree = "<group>"; };
+		FF987C54A4424E2AE87F1B34975F2B6A /* Switches */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Switches; path = Switches.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2D7B88F5FE954EF6F7B2B0A8537E1E5C /* Frameworks */ = {
+		62FB4B37B36D9D7BC95A08C85808C916 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8431133668C8C5BCD6B4D43B8CC30D34 /* Foundation.framework in Frameworks */,
+				8867E75893EA34C2B4060ACD1D3F63C4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +168,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9FF44007BDCA913CEEA7FE1ED53288A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84D1265E2536C68BA7EB32D71DF1A926 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD1732E0AF14A653985AF8421204FADA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D11B94CF8577E7C7D3743B9CB19BDB19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C49080A506D4EF866611C07D077FC1D3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,63 +208,87 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		50E74035D5434E9E1A0B3AE451BDEF99 /* Support Files */ = {
+		4E199B4A5720DC6CFEFC98FF42CA75D3 /* MSPeekCollectionViewDelegateImplementation */ = {
 			isa = PBXGroup;
 			children = (
-				B483452F55BC7CCE4269AB90A65BAAE4 /* MarqueeLabel.modulemap */,
-				0E8B6393A426D2A858FC048C4DE70D61 /* MarqueeLabel-dummy.m */,
-				7BF7A7CB3EB98779012F73F4B34748D5 /* MarqueeLabel-Info.plist */,
-				A213CDB8B6A7A21BC1363262FE15AA03 /* MarqueeLabel-prefix.pch */,
-				21D36FAAE3C9383D3A33B4D47B8D61F9 /* MarqueeLabel-umbrella.h */,
-				3E34F0FF19AB08D6814EF13D5A02F050 /* MarqueeLabel.debug.xcconfig */,
-				E9BA24BC4BA6353116398F13B9C528CC /* MarqueeLabel.release.xcconfig */,
+				6B8D167F5D90D254DF9194A2589B36C1 /* Axis.swift */,
+				470A79A1FDE440FEE28747FAFB7B8528 /* CGPoint+Axis.swift */,
+				1C080B74A9DF760A2054B1F55DC81657 /* MSCollectionViewCellPeekingLayout.swift */,
+				C3C38D341050DAFF9F013E84C8792E76 /* MSCollectionViewPaging.swift */,
+				92F5B79904168D23A148ED0A6DDE393C /* MSCollectionViewPeekingBehavior.swift */,
+				6BD1731E1709676346FCF1471FF7C5C1 /* Sign.swift */,
+				3D0D7C04732930508121F506D6AAB74B /* UICollectionView+PeekConfiguration.swift */,
+				A71C9718D6CC64AC9DAA6B177BF986E3 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */,
+				CF48EFB78049BF9033102A63A59C0E7E /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/MarqueeLabel";
+			name = MSPeekCollectionViewDelegateImplementation;
+			path = MSPeekCollectionViewDelegateImplementation;
 			sourceTree = "<group>";
 		};
-		54B9578F517755556A5895AE9CCBF4CE /* Products */ = {
+		54F4D3D7BE537984CF5929EBC0510913 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel.framework */,
-				2848949DD809BC5C5680B3617CBE153C /* MSPeekCollectionViewDelegateImplementation */,
-				B7CDC2F61C0D607C5AE71F7B7848024A /* Pods-Movies App */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7A9CC77F0F4E01304AD9193E954AF4AE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9436B90F03619611647DB428151F23BC /* MarqueeLabel */,
-				943A13DF6935A5C91E40B744C84E6C6B /* MSPeekCollectionViewDelegateImplementation */,
+				984EADF6CD955C6EAD63DB087459EEE1 /* MarqueeLabel */,
+				4E199B4A5720DC6CFEFC98FF42CA75D3 /* MSPeekCollectionViewDelegateImplementation */,
+				708B91E4B72BA4073188018687124813 /* Switches */,
+				6E068D6DA2F195246CEE0D423B7FC655 /* YALSideMenu */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9436B90F03619611647DB428151F23BC /* MarqueeLabel */ = {
+		6E068D6DA2F195246CEE0D423B7FC655 /* YALSideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				2843C109A96D2134BC763CB481FA59AB /* MarqueeLabel.swift */,
-				50E74035D5434E9E1A0B3AE451BDEF99 /* Support Files */,
+				24820790780103118D0A5112EC96F60A /* Menu.swift */,
+				260094E83689AD80884EF0C92DB4E6E5 /* MenuItemsAnimator.swift */,
+				A457F40D054D0ADDEEDB01197382BCC5 /* MenuTransitionAnimator.swift */,
+				BEF1EC922AB56B8DF1E442C31AD107A7 /* Support Files */,
 			);
+			name = YALSideMenu;
+			path = YALSideMenu;
+			sourceTree = "<group>";
+		};
+		708B91E4B72BA4073188018687124813 /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				032B13B3CBDEABA362BD896F8744A57E /* BaseControl.swift */,
+				FE838E77978D2A4050FB4F0B8577F10F /* CALayer+Extension.swift */,
+				B0A41EEEE9482C08009B3C513049DE49 /* JDSwitch.swift */,
+				DAC4D608C55E4E36551D6F27AFCCB1FE /* SDSwitch.swift */,
+				D3C1A9E542A1D660A39C444273C35F74 /* Switcher.swift */,
+				0A911A3FA7092C60C966C1B7A7CC437E /* Switches.h */,
+				73D4DD14DEA897174D40AC3DE1CF3A98 /* Switches.swift */,
+				B82BF3530F222F8895D67188AD31F78F /* UIImage+Extension.swift */,
+				753266D27CD7A187597341B27F89692F /* YapBaseSwitch.swift */,
+				854E9818A35EFD5C11E1AD13D71D18C0 /* YapLiquidSwitch.swift */,
+				E89DD68463AAC89D1CFC90BC91342739 /* YapSmileSwitch.swift */,
+				D41441DC538C40329902E1468177C858 /* YapSwitch.swift */,
+				DAA12E46C973BBA9F97486975E3551AE /* Support Files */,
+			);
+			name = Switches;
+			path = Switches;
+			sourceTree = "<group>";
+		};
+		984EADF6CD955C6EAD63DB087459EEE1 /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				6E4187B8408B3A5518C05599F47756C5 /* MarqueeLabel.swift */,
+				ABDEA70D48CBD51466427E93369DE030 /* Support Files */,
+			);
+			name = MarqueeLabel;
 			path = MarqueeLabel;
 			sourceTree = "<group>";
 		};
-		943A13DF6935A5C91E40B744C84E6C6B /* MSPeekCollectionViewDelegateImplementation */ = {
+		9FCAE6AE315E07E9C2A6081774FAD863 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0753F16F495B73314DF1027F15F37DB2 /* Axis.swift */,
-				D2DD5CAF1D3D3944251DBF15C28DDDBD /* CGPoint+Axis.swift */,
-				871B95924AFE06E33C5F5835B3A322B3 /* MSCollectionViewCellPeekingLayout.swift */,
-				77BB34F0FFB7FCB5A31D6FA0E371992A /* MSCollectionViewPaging.swift */,
-				EEA8CCE73CCE2F8A305C0EAD59FC6D64 /* MSCollectionViewPeekingBehavior.swift */,
-				95F988F3CF2678044295663FB4601B0D /* Sign.swift */,
-				8225478C78C0ED6B8945091A8851FB38 /* UICollectionView+PeekConfiguration.swift */,
-				C8E4D1893EABBB3D6A0C5233E582D311 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */,
-				AC8C45D534F64B348C37D4CA6F8CBC8E /* Support Files */,
+				CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel */,
+				2848949DD809BC5C5680B3617CBE153C /* MSPeekCollectionViewDelegateImplementation */,
+				B7CDC2F61C0D607C5AE71F7B7848024A /* Pods-Movies App */,
+				FF987C54A4424E2AE87F1B34975F2B6A /* Switches */,
+				D5FBE1031BE107DE87EFE1FD1B32767A /* YALSideMenu */,
 			);
-			path = MSPeekCollectionViewDelegateImplementation;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A6B1EF7C4BBA9688CB6901B7EA2B269B /* Pods-Movies App */ = {
@@ -210,19 +316,34 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		AC8C45D534F64B348C37D4CA6F8CBC8E /* Support Files */ = {
+		ABDEA70D48CBD51466427E93369DE030 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BCD69DFADA58FDFC4061DAB143727EFE /* MSPeekCollectionViewDelegateImplementation.modulemap */,
-				614F12344116E6B47D1971B6BCFBAAE6 /* MSPeekCollectionViewDelegateImplementation-dummy.m */,
-				0A647404FF9256E212F67524DD3DECAA /* MSPeekCollectionViewDelegateImplementation-Info.plist */,
-				90538E7E7C8DF635913BD81AC7C47405 /* MSPeekCollectionViewDelegateImplementation-prefix.pch */,
-				805A47E0E9909EC89055BDBF875F2FCD /* MSPeekCollectionViewDelegateImplementation-umbrella.h */,
-				8246E926A0C45C65559889099FC8E730 /* MSPeekCollectionViewDelegateImplementation.debug.xcconfig */,
-				5C76EBEAB697EB544AA3640877439637 /* MSPeekCollectionViewDelegateImplementation.release.xcconfig */,
+				758F2A6A1D4BA334D98BCB582C909CE3 /* MarqueeLabel.modulemap */,
+				44F55B01A42BDC33B9B975CC96465BF1 /* MarqueeLabel-dummy.m */,
+				4BE10CDAC2CD8F6E63C06068E2E3D757 /* MarqueeLabel-Info.plist */,
+				685FA037D61F132C29B7C687FC93720B /* MarqueeLabel-prefix.pch */,
+				64AFA08B1CAB0A1CFCB4F784D488F4CE /* MarqueeLabel-umbrella.h */,
+				7B498F619A645660812EA8FCBD3E1025 /* MarqueeLabel.debug.xcconfig */,
+				59E36B251D01FEFB304FC7D233A583A6 /* MarqueeLabel.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MSPeekCollectionViewDelegateImplementation";
+			path = "../Target Support Files/MarqueeLabel";
+			sourceTree = "<group>";
+		};
+		BEF1EC922AB56B8DF1E442C31AD107A7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C22516E1B14DCFFD38DD83B748B7A7F4 /* YALSideMenu.modulemap */,
+				FCCD70D8B19E7CCDB8CCFC564F685E47 /* YALSideMenu-dummy.m */,
+				9B258BF2743C549E1DBA7616AFB144E1 /* YALSideMenu-Info.plist */,
+				F1A026693CFA88D325F0A4EE2FED4183 /* YALSideMenu-prefix.pch */,
+				BA81C41CA080DC208E76CF468B09CCD7 /* YALSideMenu-umbrella.h */,
+				99956BCE7FAA681E605ACE866A5CF7DE /* YALSideMenu.debug.xcconfig */,
+				7506AC4A8C75BAC67D58C2E5A9268C3F /* YALSideMenu.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YALSideMenu";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -230,10 +351,40 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
-				7A9CC77F0F4E01304AD9193E954AF4AE /* Pods */,
-				54B9578F517755556A5895AE9CCBF4CE /* Products */,
+				54F4D3D7BE537984CF5929EBC0510913 /* Pods */,
+				9FCAE6AE315E07E9C2A6081774FAD863 /* Products */,
 				A9F464E36E02E8F22DFA0097154330E8 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		CF48EFB78049BF9033102A63A59C0E7E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7FAD0DC8DD67F492503B8C352A917F1 /* MSPeekCollectionViewDelegateImplementation.modulemap */,
+				0DF03F1EE8E81D4786C89FBD65F999E8 /* MSPeekCollectionViewDelegateImplementation-dummy.m */,
+				19923515D3F36771CEEB621C78B6FDA3 /* MSPeekCollectionViewDelegateImplementation-Info.plist */,
+				92EB005C3B3934361983E67098CF3DEB /* MSPeekCollectionViewDelegateImplementation-prefix.pch */,
+				073397CB40E451970604B6DACF2CCA10 /* MSPeekCollectionViewDelegateImplementation-umbrella.h */,
+				5EF25C17988910AA9BA0D035E63979D1 /* MSPeekCollectionViewDelegateImplementation.debug.xcconfig */,
+				81C5128D1CD0B6EE5401E27AEF56C842 /* MSPeekCollectionViewDelegateImplementation.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MSPeekCollectionViewDelegateImplementation";
+			sourceTree = "<group>";
+		};
+		DAA12E46C973BBA9F97486975E3551AE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E441648A9804E54099324F1FDFF5965 /* Switches.modulemap */,
+				6E81EA07E637CDE4295D69EEA01D4B9B /* Switches-dummy.m */,
+				AE94494B570F1FC6B809DEF12C52A1AF /* Switches-Info.plist */,
+				6DE3C46EC9F3AA10F6410A40E7399134 /* Switches-prefix.pch */,
+				0AADE817FD259C23CBEB12399637C3E0 /* Switches-umbrella.h */,
+				816A99BFC4D49D750AE7119DB9BAF5C4 /* Switches.debug.xcconfig */,
+				618B76E127C3102F513DA3E7A27073E2 /* Switches.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Switches";
 			sourceTree = "<group>";
 		};
 		F0A778C0229E9BF1FD97896B93F3272B /* iOS */ = {
@@ -249,14 +400,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		159557BD8516641A0D16171C00AEE242 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				46B43D1AD89FE337F3CAAC272E7FCE6C /* Pods-Movies App-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AAAAA2AF2FEEBF748BED3AC45024887C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,23 +416,68 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0F66790B6FD98CB6B1F8088AD499580 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E481F27CB2FA14008CF69338DE2305 /* Pods-Movies App-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1D51BB0EF05794187E03BCE68F21DFF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4086C1D1DED1D0E0F8B9F2784334AF0E /* YALSideMenu-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE6C4125CC49B470DD1D142C5024C059 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5346DAC28BE61EBA050B0D3E2CF9FF /* Switches.h in Headers */,
+				9E508CD8F0C80C480A79582B1D4FC9F5 /* Switches-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		851180938F0B76DC6C448CD28E11D5BA /* Pods-Movies App */ = {
+		5CF73B25E3FEE9938AE4C373505D5100 /* YALSideMenu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 433C3B20481D1B4511E3A20A2922DB09 /* Build configuration list for PBXNativeTarget "Pods-Movies App" */;
+			buildConfigurationList = EC53C3C30C7D5FA53EAF4B22F8FAF666 /* Build configuration list for PBXNativeTarget "YALSideMenu" */;
 			buildPhases = (
-				159557BD8516641A0D16171C00AEE242 /* Headers */,
-				CD8FB1F7C0ED4B2045D5DEC1D836D2C8 /* Sources */,
-				2D7B88F5FE954EF6F7B2B0A8537E1E5C /* Frameworks */,
-				58C40EA774B100672FBCAAD92278B8F4 /* Resources */,
+				E1D51BB0EF05794187E03BCE68F21DFF /* Headers */,
+				CDEEAAC766AA8B475131B894824A154F /* Sources */,
+				84D1265E2536C68BA7EB32D71DF1A926 /* Frameworks */,
+				E5130993635B9E6CA08B6E056AE5593C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C88DDAAB9023997B8D2061B414E07BD0 /* PBXTargetDependency */,
-				8B32F1409C9DCBB5DF34B847BBC87C74 /* PBXTargetDependency */,
+			);
+			name = YALSideMenu;
+			productName = SideMenu;
+			productReference = D5FBE1031BE107DE87EFE1FD1B32767A /* YALSideMenu */;
+			productType = "com.apple.product-type.framework";
+		};
+		851180938F0B76DC6C448CD28E11D5BA /* Pods-Movies App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0FEDFC4FCB5BDEF9614C3005CE9B3D0 /* Build configuration list for PBXNativeTarget "Pods-Movies App" */;
+			buildPhases = (
+				C0F66790B6FD98CB6B1F8088AD499580 /* Headers */,
+				2610A849DD80B11E01E01495820E0824 /* Sources */,
+				62FB4B37B36D9D7BC95A08C85808C916 /* Frameworks */,
+				3CEE4951BD308620430D54BF49463691 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00AE902D94AC9EDF24C113D6A68C11EF /* PBXTargetDependency */,
+				9856AD2EAC488B4D03F316151B3839AB /* PBXTargetDependency */,
+				1107D74D5DE93DB07DFCC3AE49ADF213 /* PBXTargetDependency */,
+				4FEAE84D38A27F74BE75F8E12BABF9AA /* PBXTargetDependency */,
 			);
 			name = "Pods-Movies App";
 			productName = Pods_Movies_App;
@@ -311,7 +499,7 @@
 			);
 			name = MarqueeLabel;
 			productName = MarqueeLabel;
-			productReference = CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel.framework */;
+			productReference = CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel */;
 			productType = "com.apple.product-type.framework";
 		};
 		CC4DE41EB4BC5DDE87BBBE62DE643BD8 /* MSPeekCollectionViewDelegateImplementation */ = {
@@ -332,6 +520,24 @@
 			productReference = 2848949DD809BC5C5680B3617CBE153C /* MSPeekCollectionViewDelegateImplementation */;
 			productType = "com.apple.product-type.framework";
 		};
+		E65BF325F9630E19991BF97283A0DF3A /* Switches */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFC57738CD12909BCE6E904065F759F5 /* Build configuration list for PBXNativeTarget "Switches" */;
+			buildPhases = (
+				EE6C4125CC49B470DD1D142C5024C059 /* Headers */,
+				CD4943A06DE4556398AEE74A74E7D69E /* Sources */,
+				D11B94CF8577E7C7D3743B9CB19BDB19 /* Frameworks */,
+				B757496F7A10726E840F5E9438BAFE2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Switches;
+			productName = Switches;
+			productReference = FF987C54A4424E2AE87F1B34975F2B6A /* Switches */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -339,7 +545,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -350,13 +556,15 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 54B9578F517755556A5895AE9CCBF4CE /* Products */;
+			productRefGroup = 9FCAE6AE315E07E9C2A6081774FAD863 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C23DB88E45B0ED14F0C8827BE9C46C95 /* MarqueeLabel */,
 				CC4DE41EB4BC5DDE87BBBE62DE643BD8 /* MSPeekCollectionViewDelegateImplementation */,
 				851180938F0B76DC6C448CD28E11D5BA /* Pods-Movies App */,
+				E65BF325F9630E19991BF97283A0DF3A /* Switches */,
+				5CF73B25E3FEE9938AE4C373505D5100 /* YALSideMenu */,
 			);
 		};
 /* End PBXProject section */
@@ -369,7 +577,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58C40EA774B100672FBCAAD92278B8F4 /* Resources */ = {
+		3CEE4951BD308620430D54BF49463691 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,9 +591,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B757496F7A10726E840F5E9438BAFE2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5130993635B9E6CA08B6E056AE5593C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2610A849DD80B11E01E01495820E0824 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C06D680F60EB85525748A4C3AC1C43D7 /* Pods-Movies App-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8F88F28B3F1AC770B49869A060C23F40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,11 +632,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD8FB1F7C0ED4B2045D5DEC1D836D2C8 /* Sources */ = {
+		CD4943A06DE4556398AEE74A74E7D69E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA496F09CD22A08AAFF818D0D447F51F /* Pods-Movies App-dummy.m in Sources */,
+				4687571EF9090FCD554EB0860C5A0926 /* BaseControl.swift in Sources */,
+				C8E93D66D18BCBA49C911C86AD2E3BCA /* CALayer+Extension.swift in Sources */,
+				6D61A62BB64271DB05F5EA11B2DAA78B /* JDSwitch.swift in Sources */,
+				B0EAA00A1B3C61AF7C07B94233B36D53 /* SDSwitch.swift in Sources */,
+				D83F942D91BAEA63D43C88E8DB88B8E8 /* Switcher.swift in Sources */,
+				AFACCE013B0C191993A58D8A7DE8F0E5 /* Switches.swift in Sources */,
+				7E3FA7EC272EB7C15E36AA02BBA71111 /* Switches-dummy.m in Sources */,
+				BA73F6B21EAEFEECE2C1CEA81B3BDCFE /* UIImage+Extension.swift in Sources */,
+				8E091505F0A0A8D57EE9EE0948BD63E0 /* YapBaseSwitch.swift in Sources */,
+				8A29291EBA9679A37FA804090F0504C0 /* YapLiquidSwitch.swift in Sources */,
+				8B49600CD581AE34A1437A8D07564EC5 /* YapSmileSwitch.swift in Sources */,
+				E3CE38155CD9828D391056FFBFC2864F /* YapSwitch.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDEEAAC766AA8B475131B894824A154F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0DDA59998DCCF09F9FE9DE17CF3658 /* Menu.swift in Sources */,
+				A8060D006B04342EE69C5B2407339504 /* MenuItemsAnimator.swift in Sources */,
+				1931641597698A8323AC4819B7EB3954 /* MenuTransitionAnimator.swift in Sources */,
+				C72C821940108F97BA1FBD2EADD9E198 /* YALSideMenu-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,22 +674,34 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8B32F1409C9DCBB5DF34B847BBC87C74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MarqueeLabel;
-			target = C23DB88E45B0ED14F0C8827BE9C46C95 /* MarqueeLabel */;
-			targetProxy = 3F1D6AD207311B35D5EDC46EFB0545D2 /* PBXContainerItemProxy */;
-		};
-		C88DDAAB9023997B8D2061B414E07BD0 /* PBXTargetDependency */ = {
+		00AE902D94AC9EDF24C113D6A68C11EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MSPeekCollectionViewDelegateImplementation;
 			target = CC4DE41EB4BC5DDE87BBBE62DE643BD8 /* MSPeekCollectionViewDelegateImplementation */;
-			targetProxy = 3D910944AB00C5C132F7EC95F6ACE644 /* PBXContainerItemProxy */;
+			targetProxy = 08370E8BB021DA7CDDDE627DB9EA248F /* PBXContainerItemProxy */;
+		};
+		1107D74D5DE93DB07DFCC3AE49ADF213 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Switches;
+			target = E65BF325F9630E19991BF97283A0DF3A /* Switches */;
+			targetProxy = E20D309CC066F9E16C22C0C047C2A6CB /* PBXContainerItemProxy */;
+		};
+		4FEAE84D38A27F74BE75F8E12BABF9AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YALSideMenu;
+			target = 5CF73B25E3FEE9938AE4C373505D5100 /* YALSideMenu */;
+			targetProxy = 5FD4497248C7608E63AA7F781FB7D1C2 /* PBXContainerItemProxy */;
+		};
+		9856AD2EAC488B4D03F316151B3839AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MarqueeLabel;
+			target = C23DB88E45B0ED14F0C8827BE9C46C95 /* MarqueeLabel */;
+			targetProxy = A59D777264606B0FF181AB308272B840 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		06128D2C8FF65BC506520084ECC2388B /* Release */ = {
+		3F2ECDD91D227C349641A32D2ED13FC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 246A36B3F6E8193FA099823CFA78ED5F /* Pods-Movies App.release.xcconfig */;
 			buildSettings = {
@@ -541,9 +805,43 @@
 			};
 			name = Debug;
 		};
+		6C734EF7488BB0754C5BBC37C8BCCE11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 816A99BFC4D49D750AE7119DB9BAF5C4 /* Switches.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Switches/Switches-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Switches/Switches-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Switches/Switches.modulemap";
+				PRODUCT_MODULE_NAME = Switches;
+				PRODUCT_NAME = Switches;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		8581CC1305566B2D34A389A276D78CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8246E926A0C45C65559889099FC8E730 /* MSPeekCollectionViewDelegateImplementation.debug.xcconfig */;
+			baseConfigurationReference = 5EF25C17988910AA9BA0D035E63979D1 /* MSPeekCollectionViewDelegateImplementation.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -577,7 +875,7 @@
 		};
 		8B71D140048E37EA295DDF2313D659CE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9BA24BC4BA6353116398F13B9C528CC /* MarqueeLabel.release.xcconfig */;
+			baseConfigurationReference = 59E36B251D01FEFB304FC7D233A583A6 /* MarqueeLabel.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -590,7 +888,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MarqueeLabel/MarqueeLabel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +910,7 @@
 		};
 		A7500E7CF0B2C72ECABA50BE15BC536A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E34F0FF19AB08D6814EF13D5A02F050 /* MarqueeLabel.debug.xcconfig */;
+			baseConfigurationReference = 7B498F619A645660812EA8FCBD3E1025 /* MarqueeLabel.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -625,7 +923,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MarqueeLabel/MarqueeLabel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -643,6 +941,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		C957A9C0350BF775960A1A35EF3BC16B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 618B76E127C3102F513DA3E7A27073E2 /* Switches.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Switches/Switches-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Switches/Switches-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Switches/Switches.modulemap";
+				PRODUCT_MODULE_NAME = Switches;
+				PRODUCT_NAME = Switches;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		CD85FD90473CFBE797E4264E7BBC70AF /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -706,7 +1039,111 @@
 			};
 			name = Release;
 		};
-		D2FE808ABED30D36DDB0F74EE661716A /* Debug */ = {
+		DF28F60AF0FBB7FFE3CE517A0303E6AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81C5128D1CD0B6EE5401E27AEF56C842 /* MSPeekCollectionViewDelegateImplementation.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation.modulemap";
+				PRODUCT_MODULE_NAME = MSPeekCollectionViewDelegateImplementation;
+				PRODUCT_NAME = MSPeekCollectionViewDelegateImplementation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E44199578A69883AD3F41E44B8943BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7506AC4A8C75BAC67D58C2E5A9268C3F /* YALSideMenu.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YALSideMenu/YALSideMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YALSideMenu/YALSideMenu.modulemap";
+				PRODUCT_MODULE_NAME = SideMenu;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EC0F3D653C46CE915BC6A8D796FCF703 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99956BCE7FAA681E605ACE866A5CF7DE /* YALSideMenu.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YALSideMenu/YALSideMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YALSideMenu/YALSideMenu.modulemap";
+				PRODUCT_MODULE_NAME = SideMenu;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EFBC3A8523CB19CD8583BA1F2601A6AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5887E7A0BE7E0A9709200FC3C537C7FB /* Pods-Movies App.debug.xcconfig */;
 			buildSettings = {
@@ -743,41 +1180,6 @@
 			};
 			name = Debug;
 		};
-		DF28F60AF0FBB7FFE3CE517A0303E6AA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C76EBEAB697EB544AA3640877439637 /* MSPeekCollectionViewDelegateImplementation.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation.modulemap";
-				PRODUCT_MODULE_NAME = MSPeekCollectionViewDelegateImplementation;
-				PRODUCT_NAME = MSPeekCollectionViewDelegateImplementation;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -786,15 +1188,6 @@
 			buildConfigurations = (
 				A7500E7CF0B2C72ECABA50BE15BC536A /* Debug */,
 				8B71D140048E37EA295DDF2313D659CE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		433C3B20481D1B4511E3A20A2922DB09 /* Build configuration list for PBXNativeTarget "Pods-Movies App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D2FE808ABED30D36DDB0F74EE661716A /* Debug */,
-				06128D2C8FF65BC506520084ECC2388B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -808,11 +1201,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C0FEDFC4FCB5BDEF9614C3005CE9B3D0 /* Build configuration list for PBXNativeTarget "Pods-Movies App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFBC3A8523CB19CD8583BA1F2601A6AE /* Debug */,
+				3F2ECDD91D227C349641A32D2ED13FC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CDF1617E4C47B259DD964906459A674D /* Build configuration list for PBXNativeTarget "MSPeekCollectionViewDelegateImplementation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8581CC1305566B2D34A389A276D78CAE /* Debug */,
 				DF28F60AF0FBB7FFE3CE517A0303E6AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFC57738CD12909BCE6E904065F759F5 /* Build configuration list for PBXNativeTarget "Switches" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C734EF7488BB0754C5BBC37C8BCCE11 /* Debug */,
+				C957A9C0350BF775960A1A35EF3BC16B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC53C3C30C7D5FA53EAF4B22F8FAF666 /* Build configuration list for PBXNativeTarget "YALSideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0F3D653C46CE915BC6A8D796FCF703 /* Debug */,
+				E44199578A69883AD3F41E44B8943BDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

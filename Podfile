@@ -6,6 +6,9 @@ target 'Movies App' do
   use_frameworks!
    pod 'MSPeekCollectionViewDelegateImplementation'
    pod 'MarqueeLabel'
+   pod 'Switches'
+   pod 'YALSideMenu', '~> 2.0.1'
+
   # Pods for Movies App
 
 end

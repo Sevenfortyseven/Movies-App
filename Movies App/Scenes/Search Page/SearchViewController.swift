@@ -25,17 +25,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         initializeTableView()
         initializeSearchBar()
         populateStackView()
-
+       
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateUI()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+ 
     }
    
     

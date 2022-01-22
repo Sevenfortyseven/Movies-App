@@ -42,7 +42,11 @@ class FavouriteMoviesCollectionViewCell: UICollectionViewCell {
     }
     
     public func initializeContentView(_ movie: Movie) {
-        let url = StaticEndpoint.remoteImagesEndpoint + movie.posterPath!
+        guard let posterURL = movie.posterPath else {
+            print("Poster url not available")
+            return
+        }
+        let url = StaticEndpoint.remoteImagesEndpoint + posterURL
         self.moviePosterView.loadImageFromUrl(urlString: url)
         self.movie = movie
         

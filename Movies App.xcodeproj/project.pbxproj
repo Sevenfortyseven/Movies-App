@@ -45,6 +45,10 @@
 		9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D052788E26700CCE203 /* CacheManager.swift */; };
 		9FB70D082788E4C500CCE203 /* ImageView+Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */; };
 		9FB8D0EF278B922900FB0B2D /* UpcomingMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8D0EE278B922900FB0B2D /* UpcomingMovies Cell.swift */; };
+		9FF2BCB3279C5C1C00695192 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCB2279C5C1C00695192 /* SettingsViewController.swift */; };
+		9FF2BCB7279CB0DF00695192 /* ColorThemeSettings Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCB6279CB0DF00695192 /* ColorThemeSettings Cell.swift */; };
+		9FF2BCB9279CC2E700695192 /* ColorsThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCB8279CC2E700695192 /* ColorsThemeViewController.swift */; };
+		9FF2BCBC279CC87D00695192 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCBB279CC87D00695192 /* SettingsMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +94,10 @@
 		9FB70D052788E26700CCE203 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Fetching.swift"; sourceTree = "<group>"; };
 		9FB8D0EE278B922900FB0B2D /* UpcomingMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpcomingMovies Cell.swift"; sourceTree = "<group>"; };
+		9FF2BCB2279C5C1C00695192 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9FF2BCB6279CB0DF00695192 /* ColorThemeSettings Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ColorThemeSettings Cell.swift"; path = "../../../../../Documents/ColorThemeSettings Cell.swift"; sourceTree = "<group>"; };
+		9FF2BCB8279CC2E700695192 /* ColorsThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsThemeViewController.swift; sourceTree = "<group>"; };
+		9FF2BCBB279CC87D00695192 /* SettingsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,8 +263,9 @@
 		9F9888382777A224002D0EDB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9FB70D022788CF8B00CCE203 /* CollectionView Cells */,
 				9F9C0C462795BF8100278FF2 /* TableView Cells */,
+				9FB70D022788CF8B00CCE203 /* CollectionView Cells */,
+				9FF2BCB0279C5BEB00695192 /* Settings Page */,
 				9F8FF65427935CEE001FDF67 /* Search Page */,
 				9F9888392777A22A002D0EDB /* Home Page */,
 				9F23C93B278DFF92001C434C /* Details Page */,
@@ -329,6 +338,7 @@
 			children = (
 				9F9C0C472795C05700278FF2 /* SearchedMovies Cell.swift */,
 				9F9C0C5827989E1100278FF2 /* UserReviews Cell.swift */,
+				9FF2BCB6279CB0DF00695192 /* ColorThemeSettings Cell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -350,6 +360,24 @@
 				9F9C0C612798F1EB00278FF2 /* FavouriteMovies Cell.swift */,
 			);
 			path = "CollectionView Cells";
+			sourceTree = "<group>";
+		};
+		9FF2BCB0279C5BEB00695192 /* Settings Page */ = {
+			isa = PBXGroup;
+			children = (
+				9FF2BCB1279C5C0D00695192 /* Controllers */,
+			);
+			path = "Settings Page";
+			sourceTree = "<group>";
+		};
+		9FF2BCB1279C5C0D00695192 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9FF2BCB2279C5C1C00695192 /* SettingsViewController.swift */,
+				9FF2BCB8279CC2E700695192 /* ColorsThemeViewController.swift */,
+				9FF2BCBB279CC87D00695192 /* SettingsMenuViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,6 +507,7 @@
 				9F9C0C482795C05700278FF2 /* SearchedMovies Cell.swift in Sources */,
 				9F9C0C642798F80600278FF2 /* AddMovieToFavourites.swift in Sources */,
 				9F98882627779870002D0EDB /* HomeViewController.swift in Sources */,
+				9FF2BCBC279CC87D00695192 /* SettingsMenuViewController.swift in Sources */,
 				9F8FF6582793699D001FDF67 /* NavigationManager.swift in Sources */,
 				9F275DFD278B084100C95E2B /* GenresDataBase.swift in Sources */,
 				9F98882227779870002D0EDB /* AppDelegate.swift in Sources */,
@@ -488,11 +517,14 @@
 				9F39B9B4277923A80090D9BA /* NetworkEngine.swift in Sources */,
 				9F32C962279A0B0100B51B4E /* NotificationName+Keys.swift in Sources */,
 				9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */,
+				9FF2BCB9279CC2E700695192 /* ColorsThemeViewController.swift in Sources */,
 				9F1220CC278A184F00B5CDE5 /* GenresResponse.swift in Sources */,
 				9FB70D042788CFB500CCE203 /* TrendingMovies Cell.swift in Sources */,
+				9FF2BCB3279C5C1C00695192 /* SettingsViewController.swift in Sources */,
 				9F8FF65627935D44001FDF67 /* SearchViewController.swift in Sources */,
 				9F275E01278B37A500C95E2B /* String+DateFormat.swift in Sources */,
 				9F23C942278E004E001C434C /* FavouritesViewController.swift in Sources */,
+				9FF2BCB7279CB0DF00695192 /* ColorThemeSettings Cell.swift in Sources */,
 				9F9C0C622798F1EC00278FF2 /* FavouriteMovies Cell.swift in Sources */,
 				9F1220CA278A169100B5CDE5 /* Genre.swift in Sources */,
 				9F89344D278CC0EE00360719 /* MoviesResponse.swift in Sources */,

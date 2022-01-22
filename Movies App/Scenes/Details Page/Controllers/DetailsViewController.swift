@@ -46,6 +46,8 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         spinner.startAnimating()
+        print("ViewWillAppear")
+        self.navigationController?.navigationBar.isHidden = false
     
     }
     
@@ -55,6 +57,8 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         movieGenre.setContentHuggingPriority(.defaultLow, for: .horizontal)
         movieGenre.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
+    
+    
     
     
     
@@ -325,8 +329,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     
     @objc private func markAsFavourite() {
         
-        print("Button pressed")
-        NotificationCenter.default.post(name: .FavouritesButtonPressed, object: self)
         guard let favouriteMovie = movie else {
             print("invalid movie object")
             return

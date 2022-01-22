@@ -1,20 +1,28 @@
 PODS:
   - MarqueeLabel (4.3.0)
   - MSPeekCollectionViewDelegateImplementation (3.2.0)
+  - Switches (3.0.0)
+  - YALSideMenu (2.0.1)
 
 DEPENDENCIES:
   - MarqueeLabel
   - MSPeekCollectionViewDelegateImplementation
+  - Switches
+  - YALSideMenu (~> 2.0.1)
 
 SPEC REPOS:
   trunk:
     - MarqueeLabel
     - MSPeekCollectionViewDelegateImplementation
+    - Switches
+    - YALSideMenu
 
 SPEC CHECKSUMS:
   MarqueeLabel: 02f5ac8fd6877c94564556cb93fa86c70c08baeb
   MSPeekCollectionViewDelegateImplementation: be35a217bd302976a9e4476151be992c1f150127
+  Switches: 6d54f7cafb1b7d7c405b19cf7b3de925742d0a55
+  YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: f28e10c6b4ce89a53ad2081929d6d3e5adef46a5
+PODFILE CHECKSUM: 6da3dfcf07c3af28f89f733b0aa6a3ff9bdae424
 
 COCOAPODS: 1.11.2

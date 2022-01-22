@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-struct NavigationManager {
+class NavigationManager {
     
     enum TargetView {
         case SearchScreen
         case DetailsScreen
+        case SettingsScreen
     }
     
     enum TransferStyle {
@@ -30,6 +31,9 @@ struct NavigationManager {
             SearchViewController
         case .DetailsScreen:
             targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+        case .SettingsScreen:
+            targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SettingsViewController.identifier) as!
+            SettingsViewController
         }
         
         switch transferStyle {

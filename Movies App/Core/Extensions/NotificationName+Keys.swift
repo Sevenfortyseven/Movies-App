@@ -9,6 +9,6 @@ import Foundation
 
 extension Notification.Name {
     
-    static let FavouritesButtonPressed = Notification.Name("FavouritesButtonPressed")
+    static let themeColorUpdated = Notification.Name("themeColorUpdated")
     
 }

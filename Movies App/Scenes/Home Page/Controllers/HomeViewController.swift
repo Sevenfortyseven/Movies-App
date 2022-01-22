@@ -21,7 +21,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var trendingMovies = [Movie]()
     private var upcomingMovies = [Movie]()
     private var topRatedMovies = [Movie]()
-    
+    private var darkTheme: Bool = true {
+        didSet {
+            if darkTheme {
+                self.view.backgroundColor = .mainAppColor
+                
+            } else {
+                self.view.backgroundColor = .white
+            }
+        }
+    }
+    private var observer: NSObjectProtocol?
     
     
     // Cell peek behavior configuration
@@ -32,6 +42,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startObserving()
         addSubviews()
         populateStackView()
         initializeCollectionView()
@@ -42,6 +53,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
     
@@ -109,6 +126,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .white
         button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
         button.setImage(UIImage(named: "menu2"), for: .normal)
         return button
     }()
@@ -211,9 +229,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // Action for Search button
     @objc private func searchButtonAction() {
+        self.navigationController?.navigationBar.isHidden = false
         NavigationManager.changeScene(from: self, to: .SearchScreen, with: .push)
     }
     
+    @objc private func settingsButtonAction() {
+        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SettingsMenuViewController.identifier)
+        targetVC.modalPresentationStyle = .custom
+        self.present(targetVC, animated: true, completion: nil)
+    }
     
     // MARK: - StackView Configuration
     
@@ -367,6 +391,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         return 0
     }
+
     
     // Cell scrolling behavior configuration for only trendingMoviesCollectionView
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -380,7 +405,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
         let favMoviesScreen = self.tabBarController?.viewControllers?[0] as! FavouritesViewController
         targetVC.changeToFavouriteDelegate = favMoviesScreen
-
         switch collectionView {
         case self.trendingMoviesCollectionView:
             let selectedMovie = trendingMovies[indexPath.row]
@@ -401,6 +425,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
     }
+    
+    // MARK: - Observers
+    
+    // Observe global theme update
+    
+    private func startObserving() {
+        observer = NotificationCenter.default.addObserver(forName: .themeColorUpdated, object: nil, queue: .main, using: { [weak self] notification in
+            self?.darkTheme = !self!.darkTheme
+        })
+    }
+    
     
     // MARK: - Network Calls
     
