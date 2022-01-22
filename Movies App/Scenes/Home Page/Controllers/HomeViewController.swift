@@ -92,15 +92,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // MARK: - ContentView
-    
-    // Netflix logo
-//    private let nfLogo: UIImageView = {
-//        let image = UIImageView()
-//        image.translatesAutoresizingMaskIntoConstraints = false
-//        image.image = UIImage(named: "Netflix_Logo")
-//        image.contentMode = .scaleToFill
-//        return image
-//    }()
+
     // App title
     private let appTitle: UILabel = {
         let label = UILabel()

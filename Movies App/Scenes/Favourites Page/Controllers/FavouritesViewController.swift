@@ -27,7 +27,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         InitializeCollectionView()
         updateUI()
         initializeConstraints()
-
+        
 
     }
     
@@ -35,6 +35,10 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+ 
     }
     
     

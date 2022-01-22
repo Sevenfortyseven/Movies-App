@@ -36,8 +36,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateUI()
-
     }
+   
     
     // Populate view with subviews
     private func addSubviews() {
@@ -46,7 +46,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.addSubview(favouriteGenreLabel)
         self.view.addSubview(searchResultLabel)
         self.view.addSubview(searchResultTableView)
-
+ 
     }
     
     // populate stackView with arranged subviews
@@ -109,6 +109,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitleColor(.white, for: .normal)
+        button.setTitle("Horror", for: .normal)
         button.backgroundColor = .appRedColor
         return button
     }()
@@ -118,6 +119,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
+        button.setTitle("Drama", for: .normal)
         button.backgroundColor = .appRedColor
         button.setTitleColor(.white, for: .normal)
         return button
@@ -128,6 +130,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
+        button.setTitle("Action", for: .normal)
         button.backgroundColor = .appRedColor
         button.setTitleColor(.white, for: .normal)
         return button
@@ -187,10 +190,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // Cell action
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+        let tabBar = (self.navigationController?.viewControllers[0]) as! UITabBarController
+        let favMoviesController = tabBar.viewControllers![0] as! FavouritesViewController
+        targetVC.changeToFavouriteDelegate = favMoviesController
         let selectedMovie = filteredMovies[indexPath.row]
         targetVC.movie = selectedMovie
         targetVC.genreIDs = selectedMovie.genreIDs
-        self.navigationController?.present(targetVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(targetVC, animated: true)
     }
 
 

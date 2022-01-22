@@ -12,15 +12,12 @@ import MarqueeLabel
 
 class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
   
-   
     // Self identifier
     private(set) static var identifier = "DetailsViewController"
     
-    // MARK: - IBOutlets
-    
+
     // MARK: - Instances
     
-    private var observer: NSObjectProtocol?
     public var movie: Movie?
     public var genreIDs: [Int]?
     private var video = [Video]()
@@ -29,6 +26,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     private static var favouriteMovies = [Movie]()
     weak var changeToFavouriteDelegate: FavouriteMoviesDelegate?
     
+   
     // MARK: - Initialization
     
     override func viewDidLoad() {
@@ -40,12 +38,13 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         initializeConstraints()
         checkMovie()
         updateUI()
+        
+
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initializeObserver()
         spinner.startAnimating()
     
     }
@@ -53,17 +52,11 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateFrames()
-        
         movieGenre.setContentHuggingPriority(.defaultLow, for: .horizontal)
         movieGenre.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
     
-    deinit {
-        
-        print("deinit called")
-        removeObserver()
-    }
     
     // Populate view with subviews
     private func addSubviews() {
@@ -331,7 +324,9 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     // MARK: - Button Actions
     
     @objc private func markAsFavourite() {
-
+        
+        print("Button pressed")
+        NotificationCenter.default.post(name: .FavouritesButtonPressed, object: self)
         guard let favouriteMovie = movie else {
             print("invalid movie object")
             return
@@ -403,22 +398,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     
 
 
-    // MARK: - Observer Configuration and Initialization
-    private func initializeObserver() {
-        observer = NotificationCenter.default.addObserver(forName: .removeFromFavourites, object: nil, queue: .main) { [weak self] notification in
-            let senderVC = notification.object as! FavouriteMoviesCollectionViewCell
-            DetailsViewController.favouriteMovies.removeAll(where: { senderVC.movie?.movieId == $0.movieId })
-            self?.addToFavouritesButton.tintColor = .white
-        }
-    }
-    
-    private func removeObserver() {
-        guard observer != nil else {
-            return
-        }
-        NotificationCenter.default.removeObserver(observer!)
-    }
-    
     // MARK: - Constraints
     
     private func initializeConstraints() {

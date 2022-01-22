@@ -9,6 +9,6 @@ import Foundation
 
 extension Notification.Name {
     
-    static let removeFromFavourites = Notification.Name("removeFromFavourites")
+    static let FavouritesButtonPressed = Notification.Name("FavouritesButtonPressed")
     
 }
