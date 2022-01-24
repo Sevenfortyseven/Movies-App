@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import MarqueeLabel
 
-class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
+class DetailsViewController: UIViewController, WKNavigationDelegate {
     
     // Self identifier
     private(set) static var identifier = "DetailsViewController"
@@ -19,8 +19,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     // MARK: - Instances
     private let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     public var movie: Movie?
-    private var lightThemeObserver: NSObjectProtocol?
-    private var darkThemeObserver: NSObjectProtocol?
     public var genreIDs: [Int]?
     private var video = [Video]()
     private var YTkey: String?
@@ -40,7 +38,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         initializeConstraints()
         checkMovie()
         updateUI()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,24 +49,12 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        initializeObservers()
-    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateFrames()
-        movieGenre.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        movieGenre.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
     }
-    
-    deinit {
-        if let lightThemeObserver = lightThemeObserver, let darkThemeObserver = darkThemeObserver {
-            NotificationCenter.default.removeObserver(lightThemeObserver)
-            NotificationCenter.default.removeObserver(darkThemeObserver)
-        }
-    }
-    
     
     
     // Populate view with subviews
@@ -135,11 +121,13 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     // Update frames
     private func updateFrames() {
         spinner.center = webView.center
+        movieGenre.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        movieGenre.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
     
     
-    // MARK: - Content View
+    // MARK: - UI Elements
     
     //AVplayer view
     private let webView: WKWebView = {
@@ -258,8 +246,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         return spinner
     }()
     
-    // MARK: - StackView Configuration
-    
     private let movieInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
@@ -296,6 +282,13 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         return separator
     }()
     
+    // User reviews tableView
+    private let userReviewsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.allowsSelection = false
+        return tableView
+    }()
     
     // MARK: - WebView Configuration and Delegate Methods
     
@@ -328,20 +321,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         spinner.stopAnimating()
     }
     
-    // MARK: - TableView Initialization and Configuration
-    
-    private let userReviewsTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.allowsSelection = false
-        return tableView
-    }()
-    
-    private func initializeTableView() {
-        userReviewsTableView.register(UserReviewsTableViewCell.self, forCellReuseIdentifier: UserReviewsTableViewCell.identifier)
-        userReviewsTableView.delegate = self
-        userReviewsTableView.dataSource = self
-    }
     
     // MARK: - Button Actions
     
@@ -364,39 +343,12 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         
     }
     
-    // MARK: - Observer initialization
+}
+
+// MARK: - Networking
+
+extension DetailsViewController {
     
-    private func initializeObservers() {
-        lightThemeObserver = NotificationCenter.default.addObserver(forName: .lightTheme, object: nil, queue: .main, using: {  _ in
-            self.overrideUserInterfaceStyle = .light
-        })
-        darkThemeObserver = NotificationCenter.default.addObserver(forName: .darkTheme, object: nil, queue: .main, using: { [weak self] _ in
-            self?.overrideUserInterfaceStyle = .dark
-        })
-    }
-    
-    // MARK: - TableView Delegate Methods
-    
-    // Number of cells
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  userReviews.count
-    }
-    
-    // Cell configuration
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = userReviewsTableView.dequeueReusableCell(withIdentifier: UserReviewsTableViewCell.identifier) as! UserReviewsTableViewCell
-        cell.initializeContentView(userReviews[indexPath.row])
-        return cell
-    }
-    
-    // Cell size
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
-        
-    }
-    
-    
-    // MARK: - Networking
     
     private func networkInAction() {
         guard movie != nil else {
@@ -425,7 +377,40 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         }
     }
     
+}
+
+
+// MARK: - TableView Configuration and Delegate Methods
+
+extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
+    private func initializeTableView() {
+        userReviewsTableView.register(UserReviewsTableViewCell.self, forCellReuseIdentifier: UserReviewsTableViewCell.identifier)
+        userReviewsTableView.delegate = self
+        userReviewsTableView.dataSource = self
+    }
+    
+    
+    // Number of cells
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return  userReviews.count
+    }
+    
+    // Cell configuration
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userReviewsTableView.dequeueReusableCell(withIdentifier: UserReviewsTableViewCell.identifier) as! UserReviewsTableViewCell
+        cell.initializeContentView(userReviews[indexPath.row])
+        return cell
+    }
+    
+    // Cell size
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+        
+    }
+
+
 }
 
 // MARK: - Constraints

@@ -28,7 +28,7 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        updateUI()
+        updateFrames()
     }
     
     // Populate View with subviews
@@ -50,14 +50,23 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
             print("error with movie backdrop url")
             return
         }
-        
         self.movieBackdrop.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + backdrop)
         self.movieTitle.text = movie?.title
         self.moviesGenre.text = GenresDataBase.getGenreData(movie!.genreIDs)
         self.moviesReleaseDate.text = movie!.releaseDate.YearFormat
     }
     
-    // MARK: - Cell ContentView
+    // MARK: - UI Configuration
+    
+    private func updateUI() {
+     
+    }
+    
+    private func updateFrames() {
+        movieBackdrop.frame = self.contentView.bounds
+    }
+    
+    // MARK: - Cell Elements
     
     private let movieBackdrop: UIImageView = {
         let imageView = UIImageView()
@@ -91,8 +100,6 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    // MARK: StackView Configuration
-    
     private let moviesInfo: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -102,18 +109,16 @@ class TrendingMoviesCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    // MARK: - Update UI
-    
-    private func updateUI() {
-        movieBackdrop.frame = self.contentView.bounds
-    }
-    
-    
-    // MARK: Constraints
+
+}
+
+
+// MARK: Constraints
+
+extension TrendingMoviesCollectionViewCell {
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
-        
         
         // StackView
         constraints.append(moviesInfo.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10))

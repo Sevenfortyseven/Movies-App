@@ -7,13 +7,14 @@
 
 import UIKit
 
+
 extension UIColor {
     
-    // Main App Color
+    
     static var mainAppColor: UIColor {
         
         get {
-            self.init(red: 0.10, green: 0.10, blue: 0.10, alpha: 1)
+            return self.init(named: "AppMainColor")!
         }
     }
     
@@ -37,7 +38,5 @@ extension UIColor {
             self.init(red: 0.6, green: 0.09, blue: 0.2, alpha: 1)
         }
     }
-    
-    
     
 }

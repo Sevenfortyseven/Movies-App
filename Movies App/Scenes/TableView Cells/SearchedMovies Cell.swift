@@ -12,13 +12,12 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     // Self identifier
     private(set) static var identifier = "SearchedMoviesTableViewCell"
-    
-    // MARK: Instances
+
     
     // MARK: Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         addSubviews()
         initializeStackView()
         initializeConstraints()
@@ -31,7 +30,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     override func layoutSubviews() {
         super.layoutSubviews()
- 
+        updateFrames()
     }
     
     // Add subviews
@@ -49,12 +48,10 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     // Cell content initialization
     public func initializeCellContent(_ movie: Movie?) {
-      
         guard let poster = movie?.posterPath else  {
             print("no poster url")
             return
         }
-        
         self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + poster)
         self.movieTitle.text = movie!.title
         self.movieGenre.text = GenresDataBase.getGenreData(movie!.genreIDs)
@@ -62,19 +59,27 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     }
     
     
-    // MARK: UI Config
+    // MARK: UI Configuration
     
     private func updateUI() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
+
     }
     
-    // MARK: ContentView
+    private func updateFrames() {
+        moviePoster.layoutIfNeeded()
+        _ = moviePoster.roundedCornersMaxCurve
+
+    }
+    
+    // MARK: Cell Elements
     
     // Movie poster imageView
     private let moviePoster: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -120,16 +125,23 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
         return stackView
     }()
     
-    // MARK: Constraints
+}
+
+
+// MARK: Constraints
+
+extension SearchedMoviesTableViewCell {
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
+        let bottomPadding = CGFloat(-5)
+        let topPadding = CGFloat(5)
         
         // Movie poster
-        constraints.append(moviePoster.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0))
-        constraints.append(moviePoster.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0))
-        constraints.append(moviePoster.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0))
-        constraints.append(moviePoster.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5))
+        constraints.append(moviePoster.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor))
+        constraints.append(moviePoster.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: topPadding))
+        constraints.append(moviePoster.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: bottomPadding))
+        constraints.append(moviePoster.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.4))
         
         // Movie details stackView
         constraints.append(movieDetailsStackView.leadingAnchor.constraint(equalTo: moviePoster.trailingAnchor, constant: 10))

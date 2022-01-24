@@ -22,6 +22,7 @@ class UserReviewsTableViewCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: UserReviewsTableViewCell.identifier)
         addSubviews()
         initializeConstraints()
+        updateUI()
         
     }
     
@@ -31,10 +32,8 @@ class UserReviewsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        updateUI()
         updateFrames()
    
-
     }
     
     
@@ -46,7 +45,7 @@ class UserReviewsTableViewCell: UITableViewCell {
         self.contentView.addSubview(userReviewView)
     }
     
-    // ContentView initialization
+    // Cell content initialization
     public func initializeContentView(_ userReview: UserReview) {
         /// ImageView initialization
         guard let avatarPath = userReview.authorDetails.avatarPath else {
@@ -63,7 +62,7 @@ class UserReviewsTableViewCell: UITableViewCell {
         
     }
     
-    // MARK: - Content View Elements
+    // MARK: - UI Elements
     
     //User avatar View
     private let userAvatarView: UIImageView = {
@@ -95,7 +94,7 @@ class UserReviewsTableViewCell: UITableViewCell {
     // MARK: - UI Configuration
     
     private func updateUI() {
-        self.backgroundColor = .mainAppColor
+        self.backgroundColor = .clear
         
     }
     
@@ -105,7 +104,11 @@ class UserReviewsTableViewCell: UITableViewCell {
         _ = userAvatarView.transformToCircle
     }
     
+}
+    
     // MARK: - Constraints
+    
+    extension UserReviewsTableViewCell {
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()

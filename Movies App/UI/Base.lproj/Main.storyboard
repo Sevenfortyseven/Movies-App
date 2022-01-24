@@ -68,9 +68,9 @@
                         <tabBarAppearance key="standardAppearance" backgroundEffect="systemUltraThinMaterialDark" stackedItemPositioning="centered"/>
                     </tabBar>
                     <connections>
-                        <segue destination="oB0-vL-YVf" kind="relationship" relationship="viewControllers" id="rRM-yX-CpW"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="mTW-nx-Cpp"/>
-                        <segue destination="cjB-6p-ZCu" kind="relationship" relationship="viewControllers" id="72K-TK-IUu"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="dzi-zP-zTH"/>
+                        <segue destination="oB0-vL-YVf" kind="relationship" relationship="viewControllers" id="lHr-uW-Dhs"/>
+                        <segue destination="cjB-6p-ZCu" kind="relationship" relationship="viewControllers" id="T55-05-IVD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IO4-kN-nqk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -138,34 +138,6 @@
             </objects>
             <point key="canvasLocation" x="2654" y="-602"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="PWG-zz-jLx">
-            <objects>
-                <viewController id="dHI-yO-ezE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="diH-2r-YWG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5k5-xf-bny">
-                                <rect key="frame" x="182" y="424" width="50" height="47.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0UV-Fp-zWy"/>
-                                    <constraint firstAttribute="width" constant="50" id="xXT-Tk-cfe"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="KaN-FU-7Pp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="5k5-xf-bny" firstAttribute="centerY" secondItem="diH-2r-YWG" secondAttribute="centerY" id="2jW-zz-nXe"/>
-                            <constraint firstItem="5k5-xf-bny" firstAttribute="centerX" secondItem="diH-2r-YWG" secondAttribute="centerX" id="cpO-1E-O1u"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zJc-2R-sIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5233" y="488"/>
-        </scene>
         <!--Settings View Controller-->
         <scene sceneID="Ou4-Ok-2Fz">
             <objects>
@@ -183,7 +155,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="questionmark.app.fill" catalog="system" width="128" height="114"/>
         <image name="tab_bar_home_icon" width="32" height="32"/>
         <image name="tab_bar_star_icon" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">

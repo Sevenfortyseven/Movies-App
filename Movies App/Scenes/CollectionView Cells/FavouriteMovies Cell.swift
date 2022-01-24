@@ -75,10 +75,4 @@ class FavouriteMoviesCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    //MARK: - Button actions
-    
-
-    //MARK: - Constraints
-    
-
 }

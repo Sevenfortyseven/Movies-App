@@ -20,7 +20,7 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = true
-        _ = self.roundedCornersMinCurve
+        updateUI()
         addSubviews()
         initializeConstraints()
     }
@@ -31,7 +31,7 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        updateUI()
+   
     }
     
     // Populate contentView with subViews
@@ -48,7 +48,8 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
         self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + poster)
     }
     
-    // MARK: - Cell ContentView
+    // MARK: - Cell Elements
+    
     private let moviePoster: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -56,10 +57,11 @@ class UpcomingMoviesCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    // MARK: - UI update
+    // MARK: - UI Configuration
     
     private func updateUI() {
         moviePoster.frame = self.contentView.bounds
+        _ = self.roundedCornersMaxCurve
     }
     
     // MARK: - Constraints

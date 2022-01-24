@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FavouriteMoviesDelegate {
+class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
     
     // Self identifier
     private(set) static var identifier = "FavouritesViewController"
@@ -42,11 +42,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         print("viewDidAppear")
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-    }
-    
     
     // Add subviews
     private func addSubviews() {
@@ -57,15 +52,12 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: - UI configuration
     
     private func updateUI() {
-        self.view.backgroundColor = UIColor(named: "AppMainColor")
-        //        updateTheme()
-        
+        self.view.backgroundColor = UIColor.mainAppColor
         self.favouriteMoviesCollectionView.backgroundColor = .clear
     }
     
     private func updateTheme() {
         let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        
         if isDarkMode {
             overrideUserInterfaceStyle = .dark
         } else {
@@ -95,6 +87,31 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         return collectionView
     }()
     
+    
+    
+    // MARK: - Delegate Methods
+    
+    // appends given movie object into self movies array
+    func addMovie(_ movie: Movie) {
+        self.favouriteMovies.append(movie)
+        self.favouriteMoviesCollectionView.reloadData()
+        
+    }
+    
+    // Removes movie from self movies array
+    func removeMovie(_ movie: Movie) {
+        self.favouriteMovies.removeAll(where: { $0.movieId == movie.movieId})
+        self.favouriteMoviesCollectionView.reloadData()
+    }
+    
+}
+
+
+
+// MARK: - CollectionView Configuration and Delegate Methods
+
+extension FavouritesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     // Register collectionView
     private func InitializeCollectionView() {
         favouriteMoviesCollectionView.register(FavouriteMoviesCollectionViewCell.self, forCellWithReuseIdentifier: FavouriteMoviesCollectionViewCell.identifier)
@@ -102,7 +119,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         favouriteMoviesCollectionView.dataSource = self
     }
     
-    // MARK: - CollectionView Delegate Methods
     
     // Cell count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -134,36 +150,16 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         targetVC.movie = selectedMovie
         targetVC.genreIDs = selectedMovie.genreIDs
         targetVC.changeToFavouriteDelegate = self
-        navigationController?.present(targetVC, animated: true, completion: nil
-        )
-    }
-    
-    
-    
-    
-    // MARK: - Networking
-    
-    
-    // MARK: - Delegate Methods
-    
-    // appends given movie object into self movies array
-    func addMovie(_ movie: Movie) {
-        print("add delegate working")
-        self.favouriteMovies.append(movie)
-        self.favouriteMoviesCollectionView.reloadData()
+        navigationController?.present(targetVC, animated: true, completion: nil)
         
     }
     
-    // Removes movie from self movies array
-    func removeMovie(_ movie: Movie) {
-        print("remove delegate working")
-        self.favouriteMovies.removeAll(where: { $0.movieId == movie.movieId})
-        self.favouriteMoviesCollectionView.reloadData()
-    }
-    
-    
-    
-    // MARK: - Constraints
+}
+
+
+// MARK: - Constraints
+
+extension FavouritesViewController {
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()

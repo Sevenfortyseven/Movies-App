@@ -20,8 +20,8 @@ class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        _ = self.roundedCornersMinCurve
-        self.contentView.clipsToBounds = true
+        self.clipsToBounds = true
+        updateUI()
         addSubviews()
     }
     
@@ -31,7 +31,7 @@ class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        updateUI()
+
     }
     
     // Populate view with subviews
@@ -49,7 +49,7 @@ class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
         self.moviePoster.loadImageFromUrl(urlString: StaticEndpoint.remoteImagesEndpoint + poster)
     }
     
-    // MARK: - Cell ContentView
+    // MARK: - Cell Elements
     
     private let moviePoster: UIImageView = {
         let image = UIImageView()
@@ -58,10 +58,11 @@ class TopRatedMoviesCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    // MARK: - UI update
+    // MARK: - UI Configuration
     
     private func updateUI() {
         moviePoster.frame = self.contentView.bounds
+        _ = self.roundedCornersMaxCurve
     }
     
     

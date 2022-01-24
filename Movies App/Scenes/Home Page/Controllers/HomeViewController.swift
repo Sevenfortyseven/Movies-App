@@ -116,7 +116,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UI update
     
     private func updateUI() {
-        self.view.backgroundColor = UIColor(named: "AppMainColor")
+        self.view.backgroundColor = UIColor.mainAppColor
         updateTheme()
         self.tabBarController?.tabBar.backgroundColor = .tabBarColor
         self.tabBarController?.tabBar.tintColor = .appRedColor
@@ -432,7 +432,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Instantiate DetailsViewController and set it's delegate to FavouritesViewController to pass data
         let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
-        let favMoviesScreen = self.tabBarController?.viewControllers?[0] as! FavouritesViewController
+        let favMoviesScreen = self.tabBarController?.viewControllers?[1] as! FavouritesViewController
         targetVC.changeToFavouriteDelegate = favMoviesScreen
         switch collectionView {
         case self.trendingMoviesCollectionView:
@@ -525,8 +525,10 @@ extension HomeViewController {
         // Constants
         let leadingSpace = CGFloat(24)
         let trailingSpace = CGFloat(-24)
-        let paddingBetweenItems = CGFloat(10)
+        let paddingBetweenItems = CGFloat(15)
         let stackViewHeight = CGFloat(44)
+        let primaryCollectionViewHeightMltp = CGFloat(0.20)
+        let secondaryCollectionViewHeightMltp = CGFloat(0.18)
         
         // Upper stackview
         constraints.append(upperStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5))
@@ -575,19 +577,19 @@ extension HomeViewController {
         constraints.append(trendingMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0))
         constraints.append(trendingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
         constraints.append(trendingMoviesCollectionView.topAnchor.constraint(equalTo: trendingLabel.bottomAnchor, constant: paddingBetweenItems))
-        constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2))
+        constraints.append(trendingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: primaryCollectionViewHeightMltp))
         
         // Upcoming movies collectionView
         constraints.append(upcomingMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leadingSpace))
         constraints.append(upcomingMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
         constraints.append(upcomingMoviesCollectionView.topAnchor.constraint(equalTo: upcomingLabel.bottomAnchor, constant: paddingBetweenItems))
-        constraints.append(upcomingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.17))
+        constraints.append(upcomingMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: secondaryCollectionViewHeightMltp))
         
         // Top rated movies collectionView
         constraints.append(topRatedMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leadingSpace))
         constraints.append(topRatedMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0))
         constraints.append(topRatedMoviesCollectionView.topAnchor.constraint(equalTo: topRatedLabel.bottomAnchor, constant: paddingBetweenItems))
-        constraints.append(topRatedMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.17))
+        constraints.append(topRatedMoviesCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: secondaryCollectionViewHeightMltp))
         
         
         NSLayoutConstraint.activate(constraints)

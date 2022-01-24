@@ -7,15 +7,14 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class SearchViewController: UIViewController, UISearchBarDelegate {
     
     private(set) static var identifier = "SearchViewController"
     
     // MARK: - Instances
     
-    private let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     private var filteredMovies = [Movie]()
-
+    
     
     // MARK: - Initialization
     
@@ -27,7 +26,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         initializeSearchBar()
         populateStackView()
         updateUI()
-
         
     }
     
@@ -42,7 +40,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         updateFrames()
         
     }
-
+    
     // Populate view with subviews
     private func addSubviews() {
         self.view.addSubview(searchBar)
@@ -53,7 +51,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    // populate stackView with arranged subviews
+    // Populate stackView with arranged subviews
     private func populateStackView() {
         genreButtonsStackView.addArrangedSubview(favouriteGenreButton1)
         genreButtonsStackView.addArrangedSubview(favouriteGenreButton2)
@@ -65,9 +63,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - UI Config
     
     private func updateUI() {
-        self.view.backgroundColor = UIColor(named: "AppMainColor")
         updateTheme()
-        searchResultTableView.backgroundColor = .clear
     }
     
     private func updateFrames() {
@@ -78,6 +74,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func updateTheme() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        searchResultTableView.backgroundColor = .clear
+        self.view.backgroundColor = UIColor.mainAppColor
         if isDarkMode {
             overrideUserInterfaceStyle = .dark
         } else {
@@ -85,7 +84,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    // MARK: - Content View
+    // MARK: - UI Elements
     
     
     // Search Textfield
@@ -152,10 +151,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return button
     }()
     
-    
-    // MARK: - StackView Configuration
-    
-    // stackView for genre buttons
     private let genreButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -167,53 +162,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return stackView
     }()
     
-    // MARK: - TableView Configuration
-    
     // TableView for search result items
     private let searchResultTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
-    
-    // Register TableView and set self as it's delegate and datasource
-    private func initializeTableView() {
-        searchResultTableView.register(SearchedMoviesTableViewCell.self, forCellReuseIdentifier: SearchedMoviesTableViewCell.identifier)
-        searchResultTableView.dataSource = self
-        searchResultTableView.delegate = self
-    }
-    
-    
-    // MARK: - TableView Delegate Methods
-    
-    // Number of cells
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredMovies.count
-    }
-    
-    // Cell configuration
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchedMoviesTableViewCell.identifier) as! SearchedMoviesTableViewCell
-        cell.initializeCellContent(filteredMovies[indexPath.row])
-        return cell
-    }
-    
-    // Cell Height
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
-    
-    // Cell action
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
-        let tabBar = (self.navigationController?.viewControllers[0]) as! UITabBarController
-        let favMoviesController = tabBar.viewControllers![0] as! FavouritesViewController
-        targetVC.changeToFavouriteDelegate = favMoviesController
-        let selectedMovie = filteredMovies[indexPath.row]
-        targetVC.movie = selectedMovie
-        targetVC.genreIDs = selectedMovie.genreIDs
-        self.navigationController?.pushViewController(targetVC, animated: true)
-    }
     
     
     // MARK: - SearchBar Configuration and Delegate Methods
@@ -230,6 +185,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             self.searchResultTableView.reloadData()
             return
         }
+        
         NetworkEngine.request(endpoint: MoviesDbEndpoint.search(query: searchText)) { (result:Result<MoviesResponse, Error>) in
             switch result {
             case .success(let response):
@@ -244,12 +200,56 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
 }
 
+// MARK: - TableView Configuration and Delegate Methods
+
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    
+    // Register TableView and set self as it's delegate and datasource
+    private func initializeTableView() {
+        searchResultTableView.register(SearchedMoviesTableViewCell.self, forCellReuseIdentifier: SearchedMoviesTableViewCell.identifier)
+        searchResultTableView.dataSource = self
+        searchResultTableView.delegate = self
+    }
+    
+    // Number of cells
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredMovies.count
+    }
+    
+    // Cell configuration
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchedMoviesTableViewCell.identifier) as! SearchedMoviesTableViewCell
+        cell.initializeCellContent(filteredMovies[indexPath.row])
+        return cell
+    }
+    
+    // Cell Height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
+    
+    // Cell action
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailsViewController.identifier) as! DetailsViewController
+        let tabBar = (self.navigationController?.viewControllers[0]) as! UITabBarController
+        let favMoviesController = tabBar.viewControllers![1] as! FavouritesViewController
+        targetVC.changeToFavouriteDelegate = favMoviesController
+        let selectedMovie = filteredMovies[indexPath.row]
+        targetVC.movie = selectedMovie
+        targetVC.genreIDs = selectedMovie.genreIDs
+        self.navigationController?.pushViewController(targetVC, animated: true)
+    }
+    
+    
+    
+}
+
 
 
 // MARK: - Constraints
 
 extension SearchViewController {
-    
     
     
     private func initializeConstraints() {
@@ -261,7 +261,7 @@ extension SearchViewController {
         let stackViewHeight = CGFloat(44)
         
         // SearchField
-        constraints.append(searchBar.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
+        constraints.append(searchBar.searchTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
         constraints.append(searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5))
         constraints.append(searchBar.heightAnchor.constraint(equalToConstant: stackViewHeight))
         constraints.append(searchBar.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7))
