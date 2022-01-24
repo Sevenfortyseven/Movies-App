@@ -8,13 +8,14 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-  
+    
     private(set) static var identifier = "SearchViewController"
     
     // MARK: - Instances
     
+    private let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     private var filteredMovies = [Movie]()
-    
+
     
     // MARK: - Initialization
     
@@ -25,26 +26,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         initializeTableView()
         initializeSearchBar()
         populateStackView()
-       
+        updateUI()
+
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        updateUI()
+        updateFrames()
+        
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
- 
-    }
-   
-    
+
     // Populate view with subviews
     private func addSubviews() {
         self.view.addSubview(searchBar)
@@ -52,7 +50,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.addSubview(favouriteGenreLabel)
         self.view.addSubview(searchResultLabel)
         self.view.addSubview(searchResultTableView)
- 
+        
     }
     
     // populate stackView with arranged subviews
@@ -63,16 +61,28 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         genreButtonsStackView.layoutIfNeeded()
     }
     
+    
     // MARK: - UI Config
     
     private func updateUI() {
-        self.view.backgroundColor = .mainAppColor
+        self.view.backgroundColor = UIColor(named: "AppMainColor")
+        updateTheme()
         searchResultTableView.backgroundColor = .clear
+    }
+    
+    private func updateFrames() {
         _ = favouriteGenreButton1.roundedCornersMinCurve
         _ = favouriteGenreButton2.roundedCornersMinCurve
         _ = favouriteGenreButton3.roundedCornersMinCurve
         
-
+    }
+    
+    private func updateTheme() {
+        if isDarkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     // MARK: - Content View
@@ -173,7 +183,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchResultTableView.delegate = self
     }
     
- 
+    
     // MARK: - TableView Delegate Methods
     
     // Number of cells
@@ -204,8 +214,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         targetVC.genreIDs = selectedMovie.genreIDs
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
-
-
+    
+    
     // MARK: - SearchBar Configuration and Delegate Methods
     
     private func initializeSearchBar() {
@@ -214,7 +224,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // SearchBar method that sends text input to initialize network call
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       // clear tableView cells if there is no text input
+        // clear tableView cells if there is no text input
         guard searchText != ""  else {
             self.filteredMovies.removeAll()
             self.searchResultTableView.reloadData()
@@ -231,9 +241,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
     }
-
     
-    // MARK: - Constraints
+}
+
+
+
+// MARK: - Constraints
+
+extension SearchViewController {
+    
+    
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
@@ -269,7 +286,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         constraints.append(searchResultTableView.topAnchor.constraint(equalTo: searchResultLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(searchResultTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 5))
         
-
+        
         NSLayoutConstraint.activate(constraints)
     }
 }

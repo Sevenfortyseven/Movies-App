@@ -11,14 +11,16 @@ import WebKit
 import MarqueeLabel
 
 class DetailsViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
-  
+    
     // Self identifier
     private(set) static var identifier = "DetailsViewController"
     
-
-    // MARK: - Instances
     
+    // MARK: - Instances
+    private let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     public var movie: Movie?
+    private var lightThemeObserver: NSObjectProtocol?
+    private var darkThemeObserver: NSObjectProtocol?
     public var genreIDs: [Int]?
     private var video = [Video]()
     private var YTkey: String?
@@ -26,7 +28,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     private static var favouriteMovies = [Movie]()
     weak var changeToFavouriteDelegate: FavouriteMoviesDelegate?
     
-   
+    
     // MARK: - Initialization
     
     override func viewDidLoad() {
@@ -38,8 +40,6 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         initializeConstraints()
         checkMovie()
         updateUI()
-        
-
 
     }
     
@@ -48,7 +48,11 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         spinner.startAnimating()
         print("ViewWillAppear")
         self.navigationController?.navigationBar.isHidden = false
+        
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        initializeObservers()
     }
     
     override func viewWillLayoutSubviews() {
@@ -58,7 +62,12 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         movieGenre.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
-    
+    deinit {
+        if let lightThemeObserver = lightThemeObserver, let darkThemeObserver = darkThemeObserver {
+            NotificationCenter.default.removeObserver(lightThemeObserver)
+            NotificationCenter.default.removeObserver(darkThemeObserver)
+        }
+    }
     
     
     
@@ -109,9 +118,18 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     // MARK: - UI Configuration
     
     private func updateUI() {
-        self.view.backgroundColor = .mainAppColor
+        self.view.backgroundColor = UIColor(named: "AppMainColor")
+        updateTheme()
         self.view.clipsToBounds = true
         self.userReviewsTableView.backgroundColor = .clear
+    }
+    
+    private func updateTheme() {
+        if isDarkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     // Update frames
@@ -120,7 +138,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
     }
     
     
-
+    
     // MARK: - Content View
     
     //AVplayer view
@@ -278,14 +296,14 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         return separator
     }()
     
- 
+    
     // MARK: - WebView Configuration and Delegate Methods
     
     
     // Initialize webView content
     private func initializeWebView() {
         webView.navigationDelegate = self
-      
+        
         for key in video {
             self.YTkey = key.key
         }
@@ -302,7 +320,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         }
         let request = URLRequest(url: url!)
         webView.load(request)
-       
+        
     }
     
     // Checks webView navigation state to stop activity indicator
@@ -343,11 +361,22 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
             DetailsViewController.favouriteMovies.removeAll(where: { $0.movieId == favouriteMovie.movieId})
             changeToFavouriteDelegate?.removeMovie(favouriteMovie)
         }
-       
+        
+    }
+    
+    // MARK: - Observer initialization
+    
+    private func initializeObservers() {
+        lightThemeObserver = NotificationCenter.default.addObserver(forName: .lightTheme, object: nil, queue: .main, using: {  _ in
+            self.overrideUserInterfaceStyle = .light
+        })
+        darkThemeObserver = NotificationCenter.default.addObserver(forName: .darkTheme, object: nil, queue: .main, using: { [weak self] _ in
+            self?.overrideUserInterfaceStyle = .dark
+        })
     }
     
     // MARK: - TableView Delegate Methods
-
+    
     // Number of cells
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  userReviews.count
@@ -396,11 +425,14 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         }
     }
     
-    // MARK: - Delegate Methods
     
+}
 
+// MARK: - Constraints
 
-    // MARK: - Constraints
+extension DetailsViewController {
+    
+    
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
@@ -467,3 +499,4 @@ class DetailsViewController: UIViewController, WKNavigationDelegate, UITableView
         NSLayoutConstraint.activate(constraints)
     }
 }
+

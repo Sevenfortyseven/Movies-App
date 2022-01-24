@@ -31,7 +31,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = .mainAppColor
+        self.backgroundColor = .systemPink
  
     }
     

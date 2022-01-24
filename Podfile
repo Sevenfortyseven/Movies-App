@@ -8,7 +8,8 @@ target 'Movies App' do
    pod 'MarqueeLabel'
    pod 'Switches'
    pod 'YALSideMenu', '~> 2.0.1'
-
+   pod "RevealMenuController"	
+	
   # Pods for Movies App
 
 end

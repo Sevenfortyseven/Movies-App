@@ -12,38 +12,38 @@ class SettingsViewController: UIViewController {
     
     // Self identifier
     private(set) static var identifier = "SettingsViewController"
-    
+  
+
     // MARK: - Instances
     
-    let menuHeight = UIScreen.main.bounds.height / 6
+    let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+    let userDefaults = UserDefaults()
+    let menuHeight = UIScreen.main.bounds.height / 2
     private var isPresenting: Bool = false
-    private var darkTheme: Bool = true {
-        didSet {
-            if darkTheme {
-                self.menuView.backgroundColor = .mainAppColor
-                
-            } else {
-                self.menuView.backgroundColor = .lightGray
-            }
-        }
-    }
+    private var sections = [SettingsSection]()
+    private var colorOption: SettingsSection!
+    private var optionTitle = "Dark Mode"
+    private let option1 = "     on"
+    private let option2 = "     off"
     
     // MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
-        populateStackView()
         updateUI()
+        setUpThemeSection()
         initializeConstraints()
+        initializeTableView()
         addGestureRecognizers()
-
+   
     }
     
     init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
         transitioningDelegate = self
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,36 +61,55 @@ class SettingsViewController: UIViewController {
         updateFrames()
     }
     
+
+    
     // Add subviews
     private func addSubviews() {
         self.view.addSubview(backDropView)
         self.view.addSubview(menuView)
-        self.view.addSubview(childStackView)
-        self.view.addSubview(parentStackView)
+        self.view.addSubview(settingsLabel)
+        self.view.addSubview(colorSettingsTableView)
     }
+ 
     
-    // Populate StackView with arranged subviews
-    private func populateStackView() {
-        childStackView.addArrangedSubview(moonImageView)
-        childStackView.addArrangedSubview(darkModeLabel)
-        parentStackView.addArrangedSubview(childStackView)
-        parentStackView.addArrangedSubview(darkModeButton)
-        
+    // Set up option sections
+    private func setUpThemeSection() {
+        var initialTitle: String {
+            if isDarkMode {
+                return optionTitle + option1
+            } else {
+                return optionTitle + option2
+            }
+        }
+        colorOption = SettingsSection(title: initialTitle, options: [option1, option2])
+
+        sections.append(colorOption)
     }
-    
-    
+
+
     // MARK: - UI Configuration
     
-    // Update UI
+
     private func updateUI() {
         self.view.backgroundColor = .clear
-        menuView.backgroundColor = .mainAppColor
+        menuView.backgroundColor = UIColor(named: "AppMainColor")
+        updateTheme()
+        self.colorSettingsTableView.backgroundColor = .clear
+
     }
-    
-    // Update frames
+
     private func updateFrames() {
         _ = menuView.roundedCornersMaxCurve
     }
+    
+    private func updateTheme() {
+        if isDarkMode {
+            menuView.overrideUserInterfaceStyle = .dark
+        } else {
+            menuView.overrideUserInterfaceStyle = .light
+        }
+    }
+    
     
     // MARK: - UI Elements
     
@@ -107,57 +126,26 @@ class SettingsViewController: UIViewController {
         menuView.translatesAutoresizingMaskIntoConstraints = false
         return menuView
     }()
-    
-    // MoonImageView
-    private let moonImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "moon.circle.fill")
-        imageView.tintColor = .gray
-        return imageView
-    }()
-    
-    // DarkMode label
-    private let darkModeLabel: UILabel = {
+
+    // Settings label
+    private let settingsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Dark Mode"
+        label.text = "Settings"
+        label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .white
         return label
     }()
     
-    // DarkMode Button
-    private let darkModeButton: UIButton = {
-        var config = UIButton.Configuration.plain()
-        let button = UIButton(configuration: config, primaryAction: .none)
-        button.setTitleColor(.gray, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("On", for: .normal)
-        button.addTarget(self, action: #selector(navigateToColorsThemeVC), for: .touchUpInside)
-        return button
+    // Sections tableView
+    private let colorSettingsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.bounces = false
+        tableView.isPagingEnabled = true
+        return tableView
     }()
-    
-    // Parent StackView
-    private let parentStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .leading
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    // Child stackView
-    private let childStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .center
-        stackView.distribution = .fillProportionally
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
+
     // MARK: - Gestures and Action
     
     // Method to dismiss Presented(self) ViewController
@@ -170,19 +158,8 @@ class SettingsViewController: UIViewController {
         backDropView.addGestureRecognizer(tapGesture)
     }
     
-    // Sends notification to all observers on tap
-    @objc private func updateTheme() {
-        NotificationCenter.default.post(name: .themeColorUpdated, object: nil)
-        self.darkTheme = !self.darkTheme
-    }
-    
-    // Action to navigate to app theme screen
-    @objc private func navigateToColorsThemeVC() {
-        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ColorsThemeViewController.identifier) as! ColorsThemeViewController
-        targetVC.modalPresentationStyle = .currentContext
-        present(targetVC, animated: true, completion: nil)
-        
-    }
+  
+
 }
 
     // MARK: - Transition Configuration, Delegate Methods
@@ -200,7 +177,7 @@ extension SettingsViewController: UIViewControllerTransitioningDelegate, UIViewC
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1
     }
-    
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
@@ -233,28 +210,75 @@ extension SettingsViewController: UIViewControllerTransitioningDelegate, UIViewC
 }
 
     // MARK: - TableView Configuration, Delegate Methods
-//
-//extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//
-//    private func initializeTableView() {
-//        colorSettingsTableView.register(ColorThemeSettingsTableViewCell.self, forCellReuseIdentifier: ColorThemeSettingsTableViewCell.identifier)
-//        colorSettingsTableView.delegate = self
-//        colorSettingsTableView.dataSource = self
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//
-//
-//
-//}
+
+extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+
+
+    private func initializeTableView() {
+        colorSettingsTableView.register(SettingsSectionTableViewCell.self, forCellReuseIdentifier: SettingsSectionTableViewCell.identifier)
+        colorSettingsTableView.delegate = self
+        colorSettingsTableView.dataSource = self
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let section = sections[section]
+        if section.isOpened  {
+            return section.options.count + 1
+        } else {
+            return 1
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsSectionTableViewCell.identifier, for: indexPath) as! SettingsSectionTableViewCell
+        if indexPath.row == 0 {
+            cell.titleLabel.text = sections[indexPath.section].title
+        } else {
+            cell.titleLabel.text = sections[indexPath.section].options[indexPath.row - 1]
+        }
+        
+        return cell
+        
+    }
+
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true )
+        let isDarkMode = userDefaults.bool(forKey: "isDarkMode")
+        
+        sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
+        tableView.reloadSections([indexPath.section], with: .none)
+        if indexPath.row == 1 {
+            
+            colorOption.title = optionTitle + option1
+            tableView.reloadSections([indexPath.section], with: .none)
+            if isDarkMode != true {
+                UserDefaults.standard.set(true, forKey: "isDarkMode")
+                updateTheme()
+                menuView.overrideUserInterfaceStyle = .dark
+            }
+            NotificationCenter.default.post(name: .darkTheme, object: nil)
+            
+        } else if indexPath.row == 2 {
+            colorOption.title = optionTitle + option2
+            tableView.reloadSections([indexPath.section], with: .none)
+            if isDarkMode == true {
+                UserDefaults.standard.set(false, forKey: "isDarkMode")
+                updateTheme()
+                menuView.overrideUserInterfaceStyle = .light
+            }
+            NotificationCenter.default.post(name: .lightTheme, object: nil)
+            
+        }
+        
+    }
+    
+}
 
 
 
@@ -268,24 +292,28 @@ extension SettingsViewController {
         let topPadding = CGFloat(25)
         let leftPadding = CGFloat(30)
         let rightPadding = CGFloat(-30)
-        let stackViewHeight = menuHeight / 5
+        let bottomPadding = CGFloat(-50)
+        let paddingBetweenItems = CGFloat(10)
    
         var constraints = [NSLayoutConstraint]()
         
-        // Menu View
+        // Menu view
         constraints.append(menuView.heightAnchor.constraint(equalToConstant: menuHeight))
         constraints.append(menuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor))
-        constraints.append(menuView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30))
-        constraints.append(menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30))
+        constraints.append(menuView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor))
+        constraints.append(menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor))
         
-        // Parent StackView
-        constraints.append(parentStackView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: leftPadding))
-        constraints.append(parentStackView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor, constant: rightPadding))
-        constraints.append(parentStackView.topAnchor.constraint(equalTo: menuView.topAnchor, constant: topPadding))
-        constraints.append(parentStackView.heightAnchor.constraint(equalToConstant: stackViewHeight))
-        constraints.append(childStackView.centerYAnchor.constraint(equalTo: parentStackView.centerYAnchor))
+        // Settings label
+        constraints.append(settingsLabel.topAnchor.constraint(equalTo: menuView.topAnchor, constant: topPadding))
+        constraints.append(settingsLabel.centerXAnchor.constraint(equalTo: menuView.centerXAnchor))
         
-
+        
+        // TableView
+        constraints.append(colorSettingsTableView.topAnchor.constraint(equalTo: settingsLabel.bottomAnchor, constant: paddingBetweenItems))
+        constraints.append(colorSettingsTableView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: leftPadding))
+        constraints.append(colorSettingsTableView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor, constant: rightPadding))
+        constraints.append(colorSettingsTableView.bottomAnchor.constraint(equalTo: menuView.bottomAnchor, constant: bottomPadding))
+        
         NSLayoutConstraint.activate(constraints)
     }
 }

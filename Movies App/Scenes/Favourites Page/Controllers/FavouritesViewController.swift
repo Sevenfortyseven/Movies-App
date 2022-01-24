@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FavouriteMoviesDelegate {
-  
+    
     // Self identifier
     private(set) static var identifier = "FavouritesViewController"
     
     // MARK: - Instances
-
+    
     private var favouriteMovies = [Movie]()
     private var deletedMovies = [Movie]()
-
+    
     
     // MARK: - Initialization
     
@@ -27,28 +27,26 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         InitializeCollectionView()
         updateUI()
         initializeConstraints()
+        print("ViewDidLoad")
         
-
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
- 
+        updateTheme()
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
+    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        updateFrames()
+        
     }
     
-    deinit {
-    }
     
     // Add subviews
     private func addSubviews() {
@@ -59,17 +57,20 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: - UI configuration
     
     private func updateUI() {
-        self.view.backgroundColor = .mainAppColor
+        self.view.backgroundColor = UIColor(named: "AppMainColor")
+        //        updateTheme()
+        
         self.favouriteMoviesCollectionView.backgroundColor = .clear
     }
     
-    private func updateFrames() {
+    private func updateTheme() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
         
-    }
-    
-    // Updates contentView according to observers and other changes
-    private func updateContentView() {
-    
+        if isDarkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     // MARK: - UI Elements
@@ -138,11 +139,13 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     
+    
+    
     // MARK: - Networking
     
     
     // MARK: - Delegate Methods
-
+    
     // appends given movie object into self movies array
     func addMovie(_ movie: Movie) {
         print("add delegate working")
@@ -158,12 +161,8 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         self.favouriteMoviesCollectionView.reloadData()
     }
     
- 
     
     
-    // MARK: - Observer Configuration and Initializaiton
-    
-
     // MARK: - Constraints
     
     private func initializeConstraints() {
@@ -185,6 +184,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDelegate, UICo
         
         NSLayoutConstraint.activate(constraints)
     }
-
+    
     
 }

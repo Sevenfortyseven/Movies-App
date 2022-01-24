@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="2654" y="-602"/>
         </scene>
-        <!--Settings Menu View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="Ou4-Ok-2Fz">
             <objects>
-                <viewController storyboardIdentifier="SettingsMenuViewController" id="mKC-dB-zll" customClass="SettingsMenuViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="mKC-dB-zll" customClass="SettingsViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qWH-fD-WDf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

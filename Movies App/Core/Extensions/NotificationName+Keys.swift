@@ -9,6 +9,7 @@ import Foundation
 
 extension Notification.Name {
     
-    static let themeColorUpdated = Notification.Name("themeColorUpdated")
+    static let lightTheme = Notification.Name("lightTheme")
+    static let darkTheme = Notification.Name("darkTheme")
     
 }

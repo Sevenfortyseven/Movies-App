@@ -8,7 +8,9 @@
 import MSPeekCollectionViewDelegateImplementation
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    
     
     // Self identifier
     private(set) static var identifier = "HomeViewController"
@@ -18,21 +20,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Instances
     
+    private var isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     private var trendingMovies = [Movie]()
     private var upcomingMovies = [Movie]()
     private var topRatedMovies = [Movie]()
-    private var darkTheme: Bool = true {
-        didSet {
-            if darkTheme {
-                self.view.backgroundColor = .mainAppColor
-                
-            } else {
-                self.view.backgroundColor = .white
-            }
-        }
-    }
-    private var observer: NSObjectProtocol?
-    
+    private var darkThemeObserver: NSObjectProtocol?
+    private var lightThemeObserver: NSObjectProtocol?
     
     // Cell peek behavior configuration
     private var behavior = MSCollectionViewPeekingBehavior(cellSpacing: 15, cellPeekWidth: 40)
@@ -42,9 +35,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startObserving()
         addSubviews()
         populateStackView()
+        updateUI()
         initializeCollectionView()
         initializeConstraints()
         networkInAction()
@@ -59,15 +52,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        initializeObservers()
         
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        updateUI()
+        updateFrames()
         
     }
     
+    deinit {
+        if let darkThemeObserver = darkThemeObserver, let lightThemeObserver = lightThemeObserver {
+            NotificationCenter.default.removeObserver(darkThemeObserver)
+            NotificationCenter.default.removeObserver(lightThemeObserver)
+
+        }
+    }
     
     // adding SubViews
     private func addSubviews() {
@@ -95,21 +96,49 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         categoriesStackView.addArrangedSubview(myListButton)
     }
     
+    // Observe global theme update
+    private func initializeObservers() {
+        darkThemeObserver = NotificationCenter.default.addObserver(forName: .darkTheme, object: nil, queue: .main, using: { [weak self] notification in
+            let navBar = self?.tabBarController
+            navBar?.viewControllers?[0].viewDidLoad()
+            self?.overrideUserInterfaceStyle = .dark
+            print("Dark theme on")
+        })
+        lightThemeObserver = NotificationCenter.default.addObserver(forName: .lightTheme, object: nil, queue: .main, using: { [weak self] notification in
+            self?.overrideUserInterfaceStyle = .light
+            print("Dark theme off")
+
+        })
+    }
+    
+    
     
     // MARK: - UI update
     
     private func updateUI() {
-        self.view.backgroundColor = UIColor.mainAppColor
-        _ = myListButton.roundedCornersMinCurve
-        _ = moviesButton.roundedCornersMinCurve
-        _ = tvShowsButton.roundedCornersMinCurve
-        
+        self.view.backgroundColor = UIColor(named: "AppMainColor")
+        updateTheme()
         self.tabBarController?.tabBar.backgroundColor = .tabBarColor
         self.tabBarController?.tabBar.tintColor = .appRedColor
     }
     
+    private func updateFrames() {
+        _ = myListButton.roundedCornersMinCurve
+        _ = moviesButton.roundedCornersMinCurve
+        _ = tvShowsButton.roundedCornersMinCurve
+        
+    }
+    
+    private func updateTheme() {
+        if isDarkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
     // MARK: - ContentView
-
+    
     // App title
     private let appTitle: UILabel = {
         let label = UILabel()
@@ -234,7 +263,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @objc private func settingsButtonAction() {
-        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SettingsMenuViewController.identifier)
+        let targetVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SettingsViewController.identifier)
         targetVC.modalPresentationStyle = .custom
         self.present(targetVC, animated: true, completion: nil)
     }
@@ -391,7 +420,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         return 0
     }
-
+    
     
     // Cell scrolling behavior configuration for only trendingMoviesCollectionView
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -425,18 +454,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
     }
-    
-    // MARK: - Observers
-    
-    // Observe global theme update
-    
-    private func startObserving() {
-        observer = NotificationCenter.default.addObserver(forName: .themeColorUpdated, object: nil, queue: .main, using: { [weak self] notification in
-            self?.darkTheme = !self!.darkTheme
-        })
-    }
-    
-    
+
+}
+
+
+extension HomeViewController {
     // MARK: - Network Calls
     
     private func networkInAction() {
@@ -490,8 +512,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-    
-    // MARK: - Constraints
+}
+
+
+// MARK: - Constraints
+
+extension HomeViewController {
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
@@ -567,7 +593,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         NSLayoutConstraint.activate(constraints)
         
     }
+    
+    
+    
+    
 }
-
-
-

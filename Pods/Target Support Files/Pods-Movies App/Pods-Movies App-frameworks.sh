@@ -178,12 +178,16 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RevealMenuController/RevealMenuController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SMIconLabel/SMIconLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Switches/Switches.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YALSideMenu/SideMenu.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MSPeekCollectionViewDelegateImplementation/MSPeekCollectionViewDelegateImplementation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RevealMenuController/RevealMenuController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SMIconLabel/SMIconLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Switches/Switches.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YALSideMenu/SideMenu.framework"
 fi
