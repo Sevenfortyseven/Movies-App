@@ -31,7 +31,6 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = .systemPink
  
     }
     
@@ -66,6 +65,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     // MARK: UI Config
     
     private func updateUI() {
+        self.backgroundColor = .clear
         self.selectionStyle = .none
     }
     

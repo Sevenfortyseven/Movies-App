@@ -12,13 +12,13 @@ class SettingsViewController: UIViewController {
     
     // Self identifier
     private(set) static var identifier = "SettingsViewController"
-  
-
+    
+    
     // MARK: - Instances
     
     let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     let userDefaults = UserDefaults()
-    let menuHeight = UIScreen.main.bounds.height / 2
+    let menuHeight = UIScreen.main.bounds.height / 3
     private var isPresenting: Bool = false
     private var sections = [SettingsSection]()
     private var colorOption: SettingsSection!
@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController {
         initializeConstraints()
         initializeTableView()
         addGestureRecognizers()
-   
+        
     }
     
     init() {
@@ -61,7 +61,7 @@ class SettingsViewController: UIViewController {
         updateFrames()
     }
     
-
+    
     
     // Add subviews
     private func addSubviews() {
@@ -70,7 +70,7 @@ class SettingsViewController: UIViewController {
         self.view.addSubview(settingsLabel)
         self.view.addSubview(colorSettingsTableView)
     }
- 
+    
     
     // Set up option sections
     private func setUpThemeSection() {
@@ -81,23 +81,29 @@ class SettingsViewController: UIViewController {
                 return optionTitle + option2
             }
         }
-        colorOption = SettingsSection(title: initialTitle, options: [option1, option2])
-
+        colorOption = SettingsSection(title: initialTitle, options: [option1, option2], icon: UIImage(systemName: "moon.circle.fill")!)
+        let languageOption = SettingsSection(title: "Language", options: [], icon: UIImage(systemName: "globe")!)
+        let privacyOption = SettingsSection(title: "Privacy", options: [], icon: UIImage(systemName: "lock.circle")!)
+        let helpOption = SettingsSection(title: "Help", options: [], icon: UIImage(systemName: "questionmark.app.fill")!)
+        
         sections.append(colorOption)
+        sections.append(languageOption)
+        sections.append(privacyOption)
+        sections.append(helpOption)
     }
-
-
+    
+    
     // MARK: - UI Configuration
     
-
+    
     private func updateUI() {
         self.view.backgroundColor = .clear
         menuView.backgroundColor = UIColor(named: "AppMainColor")
         updateTheme()
         self.colorSettingsTableView.backgroundColor = .clear
-
+        
     }
-
+    
     private func updateFrames() {
         _ = menuView.roundedCornersMaxCurve
     }
@@ -126,7 +132,7 @@ class SettingsViewController: UIViewController {
         menuView.translatesAutoresizingMaskIntoConstraints = false
         return menuView
     }()
-
+    
     // Settings label
     private let settingsLabel: UILabel = {
         let label = UILabel()
@@ -145,7 +151,7 @@ class SettingsViewController: UIViewController {
         tableView.isPagingEnabled = true
         return tableView
     }()
-
+    
     // MARK: - Gestures and Action
     
     // Method to dismiss Presented(self) ViewController
@@ -158,11 +164,11 @@ class SettingsViewController: UIViewController {
         backDropView.addGestureRecognizer(tapGesture)
     }
     
-  
-
+    
+    
 }
 
-    // MARK: - Transition Configuration, Delegate Methods
+// MARK: - Transition Configuration, Delegate Methods
 
 extension SettingsViewController: UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
@@ -177,7 +183,7 @@ extension SettingsViewController: UIViewControllerTransitioningDelegate, UIViewC
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1
     }
-
+    
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
@@ -209,11 +215,13 @@ extension SettingsViewController: UIViewControllerTransitioningDelegate, UIViewC
     }
 }
 
-    // MARK: - TableView Configuration, Delegate Methods
+
+
+// MARK: - TableView Configuration, Delegate Methods
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-
-
+    
+    
     private func initializeTableView() {
         colorSettingsTableView.register(SettingsSectionTableViewCell.self, forCellReuseIdentifier: SettingsSectionTableViewCell.identifier)
         colorSettingsTableView.delegate = self
@@ -221,10 +229,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 40
+        }
+        return 30
+    }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = sections[section]
         if section.isOpened  {
@@ -233,19 +250,21 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsSectionTableViewCell.identifier, for: indexPath) as! SettingsSectionTableViewCell
         if indexPath.row == 0 {
-            cell.titleLabel.text = sections[indexPath.section].title
+            cell.optionCellTitle.text = sections[indexPath.section].title
+            cell.optionCellIcon.image = sections[indexPath.section].icon
         } else {
-            cell.titleLabel.text = sections[indexPath.section].options[indexPath.row - 1]
+            cell.optionCellTitle.text = sections[indexPath.section].options[indexPath.row - 1]
+            cell.optionCellIcon.image = nil
         }
         
         return cell
         
     }
-
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true )
@@ -254,9 +273,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
         tableView.reloadSections([indexPath.section], with: .none)
         if indexPath.row == 1 {
-            
-            colorOption.title = optionTitle + option1
-            tableView.reloadSections([indexPath.section], with: .none)
+                colorOption.title = optionTitle + option1
+                tableView.reloadSections([indexPath.section], with: .none)
             if isDarkMode != true {
                 UserDefaults.standard.set(true, forKey: "isDarkMode")
                 updateTheme()
@@ -283,7 +301,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 
-    // MARK: - Constraints
+// MARK: - Constraints
 
 extension SettingsViewController {
     
@@ -294,7 +312,7 @@ extension SettingsViewController {
         let rightPadding = CGFloat(-30)
         let bottomPadding = CGFloat(-50)
         let paddingBetweenItems = CGFloat(10)
-   
+        
         var constraints = [NSLayoutConstraint]()
         
         // Menu view
