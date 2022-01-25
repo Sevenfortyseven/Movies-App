@@ -10,33 +10,41 @@ import UIKit
 
 extension UIColor {
     
-    
-    static var mainAppColor: UIColor {
+
+    static var primaryColor: UIColor {
         
-        get {
-            return self.init(named: "AppMainColor")!
-        }
+        return self.init(named: "PrimaryColor")!
     }
     
-    static var tabBarColor: UIColor {
+    static var tabBarDark: UIColor {
         
-        get {
-            self.init(red: 0.03, green: 0.03, blue: 0.03, alpha: 0.8)
-        }
+        return self.init(named: "TabBarDark")!
+    }
+    
+    static var tabBarLight: UIColor {
+        
+        return self.init(named: "TabBarLight")!
+    }
+    
+    static var secondaryColor: UIColor {
+        self.init(named: "SecondaryColor")!
+    }
+
+    
+    static var tertiaryColor: UIColor {
+        self.init(named: "TertiaryColor")!
     }
     
     static var appRedColor: UIColor {
         
-        get {
-            self.init(red: 0.8, green: 0.09, blue: 0.2, alpha: 1)
-        }
+        self.init(red: 0.8, green: 0.09, blue: 0.2, alpha: 1)
+        
     }
     
     static var appDarkRedColor: UIColor {
         
-        get {
-            self.init(red: 0.6, green: 0.09, blue: 0.2, alpha: 1)
-        }
+        self.init(red: 0.6, green: 0.09, blue: 0.2, alpha: 1)
+        
     }
     
 }

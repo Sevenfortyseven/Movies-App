@@ -104,13 +104,14 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
     // MARK: - UI Configuration
     
     private func updateUI() {
-        self.view.backgroundColor = UIColor(named: "AppMainColor")
         updateTheme()
         self.view.clipsToBounds = true
-        self.userReviewsTableView.backgroundColor = .clear
+    
     }
     
     private func updateTheme() {
+        self.view.backgroundColor = .primaryColor
+        self.userReviewsTableView.backgroundColor = .clear
         if isDarkMode {
             overrideUserInterfaceStyle = .dark
         } else {
@@ -144,7 +145,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         label.font = .preferredFont(forTextStyle: .title1)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 2
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -154,7 +155,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.type = .continuous
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.textColor = .systemGray
+        label.textColor = .tertiaryColor
         label.numberOfLines = 0
         return label
     }()
@@ -164,7 +165,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.textColor = .systemGray
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -173,7 +174,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.textColor = .systemGray
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -185,8 +186,8 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         button.addTarget(self, action: #selector(markAsFavourite), for: .touchDown)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        button.setTitleColor(.systemGray, for: .normal)
-        button.tintColor = .white
+        button.setTitleColor(.tertiaryColor, for: .normal)
+        button.tintColor = .gray
         button.setTitle("Favourite", for: .normal)
         return button
     }()
@@ -197,8 +198,8 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         config.imagePlacement = .top
         let button = UIButton(configuration: config, primaryAction: .none)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.systemGray, for: .normal)
-        button.tintColor = .white
+        button.setTitleColor(.tertiaryColor, for: .normal)
+        button.tintColor = .gray
         button.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
         button.setTitle("Download", for: .normal)
         return button
@@ -210,9 +211,9 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         config.imagePlacement = .top
         let button = UIButton(configuration: config, primaryAction: .none)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.systemGray, for: .normal)
+        button.setTitleColor(.tertiaryColor, for: .normal)
         button.setTitle("Share", for: .normal)
-        button.tintColor = .white
+        button.tintColor = .gray
         button.setImage(UIImage(systemName: "square.and.arrow.up.fill"), for: .normal)
         return button
     }()
@@ -222,7 +223,10 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = false
-        textView.textColor = .systemGray
+        textView.textColor = .gray
+        textView.isScrollEnabled = false
+        textView.sizeToFit()
+        textView.font = .preferredFont(forTextStyle: .footnote)
         textView.backgroundColor = .clear
         return textView
     }()
@@ -231,7 +235,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
     private let reviewsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         label.text = "Reviews"
         label.font = .preferredFont(forTextStyle: .headline)
         return label
@@ -336,7 +340,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate {
             DetailsViewController.favouriteMovies.append(favouriteMovie)
             changeToFavouriteDelegate?.addMovie(favouriteMovie)
         } else {
-            addToFavouritesButton.tintColor = .white
+            addToFavouritesButton.tintColor = .gray
             DetailsViewController.favouriteMovies.removeAll(where: { $0.movieId == favouriteMovie.movieId})
             changeToFavouriteDelegate?.removeMovie(favouriteMovie)
         }
@@ -469,7 +473,6 @@ extension DetailsViewController {
         constraints.append(movieDescriptionView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(movieDescriptionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(movieDescriptionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
-        constraints.append(movieDescriptionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1))
         
         // Reviews label
         constraints.append(reviewsLabel.topAnchor.constraint(equalTo: movieDescriptionView.bottomAnchor, constant: paddingBetweenItems))

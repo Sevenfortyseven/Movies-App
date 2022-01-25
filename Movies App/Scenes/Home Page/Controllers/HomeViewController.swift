@@ -99,15 +99,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Observe global theme update
     private func initializeObservers() {
         darkThemeObserver = NotificationCenter.default.addObserver(forName: .darkTheme, object: nil, queue: .main, using: { [weak self] notification in
-            let navBar = self?.tabBarController
-            navBar?.viewControllers?[0].viewDidLoad()
             self?.overrideUserInterfaceStyle = .dark
-            print("Dark theme on")
+            self?.tabBarController?.tabBar.backgroundColor = .tabBarDark
         })
         lightThemeObserver = NotificationCenter.default.addObserver(forName: .lightTheme, object: nil, queue: .main, using: { [weak self] notification in
             self?.overrideUserInterfaceStyle = .light
-            print("Dark theme off")
-
+            self?.tabBarController?.tabBar.backgroundColor = .tabBarLight
         })
     }
     
@@ -116,10 +113,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UI update
     
     private func updateUI() {
-        self.view.backgroundColor = UIColor.mainAppColor
         updateTheme()
-        self.tabBarController?.tabBar.backgroundColor = .tabBarColor
-        self.tabBarController?.tabBar.tintColor = .appRedColor
     }
     
     private func updateFrames() {
@@ -130,10 +124,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     private func updateTheme() {
+        self.view.backgroundColor = .primaryColor
+        self.tabBarController?.tabBar.tintColor = .appRedColor
         if isDarkMode {
             overrideUserInterfaceStyle = .dark
+            self.tabBarController?.tabBar.backgroundColor = .tabBarDark
         } else {
             overrideUserInterfaceStyle = .light
+            self.tabBarController?.tabBar.backgroundColor = .tabBarLight
         }
     }
     
@@ -145,7 +143,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Movie Hub"
         label.font = UIFont(name: "AmericanTypewriter-Bold", size: 30)
-        label.textColor = .appRedColor
+        label.textColor = .secondaryColor
         return label
     }()
     
@@ -153,7 +151,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private let optionMenu: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .white
+        button.tintColor = .tertiaryColor
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
         button.setImage(UIImage(named: "menu2"), for: .normal)
@@ -167,7 +165,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         button.setTitle("TV Shows", for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .appRedColor
+        button.backgroundColor = .secondaryColor
         return button
     }()
     
@@ -178,7 +176,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         button.setTitle("Movies", for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .appRedColor
+        button.backgroundColor = .secondaryColor
         return button
     }()
     
@@ -189,7 +187,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         button.setTitle("My List", for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .appRedColor
+        button.backgroundColor = .secondaryColor
         return button
     }()
     
@@ -198,7 +196,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("See All", for: .normal)
-        button.setTitleColor(.appDarkRedColor, for: .normal)
+        button.setTitleColor(.secondaryColor, for: .normal)
         button.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 13)
         return button
     }()
@@ -209,7 +207,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("See All", for: .normal)
         button.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 13)
-        button.setTitleColor(.appDarkRedColor, for: .normal)
+        button.setTitleColor(.secondaryColor, for: .normal)
         return button
     }()
     
@@ -219,7 +217,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         button.addTarget(self, action: #selector(searchButtonAction), for: .touchDown)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "search_icon"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .tertiaryColor
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
@@ -230,7 +228,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
         label.text = "Trending This Week"
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -239,7 +237,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Coming Soon"
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         label.font = .preferredFont(forTextStyle: .headline)
         return label
     }()
@@ -250,7 +248,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
         label.text = "Top Rated"
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         return label
     }()
     

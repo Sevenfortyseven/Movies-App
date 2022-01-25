@@ -17,7 +17,6 @@ class SettingsViewController: UIViewController {
     // MARK: - Instances
     
     let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-    let userDefaults = UserDefaults()
     let menuHeight = UIScreen.main.bounds.height / 3
     private var isPresenting: Bool = false
     private var sections = [SettingsSection]()
@@ -98,7 +97,7 @@ class SettingsViewController: UIViewController {
     
     private func updateUI() {
         self.view.backgroundColor = .clear
-        menuView.backgroundColor = UIColor(named: "AppMainColor")
+        menuView.backgroundColor = .primaryColor
         updateTheme()
         self.colorSettingsTableView.backgroundColor = .clear
         
@@ -268,7 +267,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true )
-        let isDarkMode = userDefaults.bool(forKey: "isDarkMode")
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
         
         sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
         tableView.reloadSections([indexPath.section], with: .none)

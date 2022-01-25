@@ -23,7 +23,7 @@ public protocol RevealMenuActionProtocol {
 /// Delegate to handle touch events from RevealMenuCell
 ///
 /// - Seealso: `RevealMenuCell`
-public protocol RevealMenuCellDelegate : class {
+public protocol RevealMenuCellDelegate : AnyObject {
     /// RevealMenuCell did pressed event
     func revealMenuCell(_ cell: RevealMenuCell, didPressedWithItem item: RevealMenuActionProtocol)
     /// RevealMenuCell  with Cancel button pressed

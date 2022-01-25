@@ -25,9 +25,7 @@ class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
         super.viewDidLoad()
         addSubviews()
         InitializeCollectionView()
-        updateUI()
         initializeConstraints()
-        print("ViewDidLoad")
         
     }
     
@@ -37,12 +35,6 @@ class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidAppear")
-    }
-    
-    
     // Add subviews
     private func addSubviews() {
         self.view.addSubview(yourMoviesLabel)
@@ -50,12 +42,7 @@ class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
     }
     
     // MARK: - UI configuration
-    
-    private func updateUI() {
-        self.view.backgroundColor = UIColor.mainAppColor
-        self.favouriteMoviesCollectionView.backgroundColor = .clear
-    }
-    
+
     private func updateTheme() {
         let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
         if isDarkMode {
@@ -63,6 +50,8 @@ class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
         } else {
             overrideUserInterfaceStyle = .light
         }
+        self.view.backgroundColor = .primaryColor
+        self.favouriteMoviesCollectionView.backgroundColor = .clear
     }
     
     // MARK: - UI Elements
@@ -71,7 +60,7 @@ class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
     private let yourMoviesLabel: UILabel = {
         let label = UILabel()
         label .translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         label.font = .preferredFont(forTextStyle: .headline)
         label.text = "Your Movies"
         return label
@@ -83,7 +72,7 @@ class FavouritesViewController: UIViewController, FavouriteMoviesDelegate {
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
@@ -163,7 +152,6 @@ extension FavouritesViewController {
     
     private func initializeConstraints() {
         var constraints = [NSLayoutConstraint]()
-        
         let leadingSpace = CGFloat(24)
         let trailingSpace = CGFloat(-24)
         let paddingBetweenItems = CGFloat(10)
@@ -176,7 +164,7 @@ extension FavouritesViewController {
         constraints.append(favouriteMoviesCollectionView.topAnchor.constraint(equalTo: yourMoviesLabel.bottomAnchor, constant: paddingBetweenItems))
         constraints.append(favouriteMoviesCollectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
         constraints.append(favouriteMoviesCollectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
-        constraints.append(favouriteMoviesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0))
+        constraints.append(favouriteMoviesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor))
         
         NSLayoutConstraint.activate(constraints)
     }

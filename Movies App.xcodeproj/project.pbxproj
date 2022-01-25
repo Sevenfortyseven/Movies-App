@@ -41,14 +41,14 @@
 		9F9C0C5E2798A2AC00278FF2 /* UserReviewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C5D2798A2AC00278FF2 /* UserReviewsResponse.swift */; };
 		9F9C0C622798F1EC00278FF2 /* FavouriteMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C612798F1EB00278FF2 /* FavouriteMovies Cell.swift */; };
 		9F9C0C642798F80600278FF2 /* AddMovieToFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C0C632798F80600278FF2 /* AddMovieToFavourites.swift */; };
+		9FA8DF82279F6235001B0372 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8DF81279F6235001B0372 /* DownloadsViewController.swift */; };
 		9FB70D042788CFB500CCE203 /* TrendingMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D032788CFB500CCE203 /* TrendingMovies Cell.swift */; };
 		9FB70D062788E26700CCE203 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D052788E26700CCE203 /* CacheManager.swift */; };
 		9FB70D082788E4C500CCE203 /* ImageView+Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */; };
 		9FB8D0EF278B922900FB0B2D /* UpcomingMovies Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8D0EE278B922900FB0B2D /* UpcomingMovies Cell.swift */; };
 		9FC3ADC4279DA9C900DEC710 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC3ADC3279DA9C900DEC710 /* SettingsSection.swift */; };
-		9FC3ADC6279DEF8A00DEC710 /* ColorThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC3ADC5279DEF8A00DEC710 /* ColorThemeManager.swift */; };
 		9FF2BCB3279C5C1C00695192 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCB2279C5C1C00695192 /* SettingsViewController.swift */; };
-		9FF2BCB7279CB0DF00695192 /* SettingsSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCB6279CB0DF00695192 /* SettingsSectionTableViewCell.swift */; };
+		9FF2BCB7279CB0DF00695192 /* SettingsSectionTableView Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2BCB6279CB0DF00695192 /* SettingsSectionTableView Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,14 +90,14 @@
 		9F9C0C5D2798A2AC00278FF2 /* UserReviewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewsResponse.swift; sourceTree = "<group>"; };
 		9F9C0C612798F1EB00278FF2 /* FavouriteMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteMovies Cell.swift"; sourceTree = "<group>"; };
 		9F9C0C632798F80600278FF2 /* AddMovieToFavourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToFavourites.swift; sourceTree = "<group>"; };
+		9FA8DF81279F6235001B0372 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		9FB70D032788CFB500CCE203 /* TrendingMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMovies Cell.swift"; sourceTree = "<group>"; };
 		9FB70D052788E26700CCE203 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		9FB70D072788E4C500CCE203 /* ImageView+Fetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Fetching.swift"; sourceTree = "<group>"; };
 		9FB8D0EE278B922900FB0B2D /* UpcomingMovies Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpcomingMovies Cell.swift"; sourceTree = "<group>"; };
 		9FC3ADC3279DA9C900DEC710 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
-		9FC3ADC5279DEF8A00DEC710 /* ColorThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeManager.swift; sourceTree = "<group>"; };
 		9FF2BCB2279C5C1C00695192 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		9FF2BCB6279CB0DF00695192 /* SettingsSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsSectionTableViewCell.swift; path = ../../../../../Documents/SettingsSectionTableViewCell.swift; sourceTree = "<group>"; };
+		9FF2BCB6279CB0DF00695192 /* SettingsSectionTableView Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SettingsSectionTableView Cell.swift"; path = "../../../../../Documents/SettingsSectionTableView Cell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +199,7 @@
 		9F8FF65427935CEE001FDF67 /* Search Page */ = {
 			isa = PBXGroup;
 			children = (
-				9F8FF65527935D44001FDF67 /* SearchViewController.swift */,
+				9FA8DF7E279F3714001B0372 /* Controllers */,
 			);
 			path = "Search Page";
 			sourceTree = "<group>";
@@ -264,8 +264,9 @@
 		9F9888382777A224002D0EDB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9F9C0C462795BF8100278FF2 /* TableView Cells */,
 				9FB70D022788CF8B00CCE203 /* CollectionView Cells */,
+				9F9C0C462795BF8100278FF2 /* TableView Cells */,
+				9FA8DF7F279F61FC001B0372 /* Downloads Page */,
 				9FF2BCB0279C5BEB00695192 /* Settings Page */,
 				9F8FF65427935CEE001FDF67 /* Search Page */,
 				9F9888392777A22A002D0EDB /* Home Page */,
@@ -330,7 +331,6 @@
 				9F8FF6572793699D001FDF67 /* NavigationManager.swift */,
 				9FB70D052788E26700CCE203 /* CacheManager.swift */,
 				9F275DFC278B084100C95E2B /* GenresDataBase.swift */,
-				9FC3ADC5279DEF8A00DEC710 /* ColorThemeManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 			children = (
 				9F9C0C472795C05700278FF2 /* SearchedMovies Cell.swift */,
 				9F9C0C5827989E1100278FF2 /* UserReviews Cell.swift */,
-				9FF2BCB6279CB0DF00695192 /* SettingsSectionTableViewCell.swift */,
+				9FF2BCB6279CB0DF00695192 /* SettingsSectionTableView Cell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -351,6 +351,30 @@
 				9F9C0C632798F80600278FF2 /* AddMovieToFavourites.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9FA8DF7E279F3714001B0372 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F8FF65527935D44001FDF67 /* SearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9FA8DF7F279F61FC001B0372 /* Downloads Page */ = {
+			isa = PBXGroup;
+			children = (
+				9FA8DF80279F620E001B0372 /* ViewControllers */,
+			);
+			path = "Downloads Page";
+			sourceTree = "<group>";
+		};
+		9FA8DF80279F620E001B0372 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9FA8DF81279F6235001B0372 /* DownloadsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9FB70D022788CF8B00CCE203 /* CollectionView Cells */ = {
@@ -523,16 +547,16 @@
 				9FC3ADC4279DA9C900DEC710 /* SettingsSection.swift in Sources */,
 				9F275E01278B37A500C95E2B /* String+DateFormat.swift in Sources */,
 				9F23C942278E004E001C434C /* FavouritesViewController.swift in Sources */,
-				9FF2BCB7279CB0DF00695192 /* SettingsSectionTableViewCell.swift in Sources */,
+				9FF2BCB7279CB0DF00695192 /* SettingsSectionTableView Cell.swift in Sources */,
 				9F9C0C622798F1EC00278FF2 /* FavouriteMovies Cell.swift in Sources */,
 				9F1220CA278A169100B5CDE5 /* Genre.swift in Sources */,
 				9F89344D278CC0EE00360719 /* MoviesResponse.swift in Sources */,
 				9F39B9AE2778EA500090D9BA /* MoviesDbEndpoint.swift in Sources */,
 				9F23C940278E000A001C434C /* DetailsViewController.swift in Sources */,
 				9FB8D0EF278B922900FB0B2D /* UpcomingMovies Cell.swift in Sources */,
+				9FA8DF82279F6235001B0372 /* DownloadsViewController.swift in Sources */,
 				9F9888402777ABFD002D0EDB /* UIColor+Colors.swift in Sources */,
 				9F39B9AC2778E8E80090D9BA /* Endpoint Protocol.swift in Sources */,
-				9FC3ADC6279DEF8A00DEC710 /* ColorThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

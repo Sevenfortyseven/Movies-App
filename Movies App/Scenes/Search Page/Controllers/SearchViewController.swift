@@ -75,13 +75,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     private func updateTheme() {
         let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        searchResultTableView.backgroundColor = .clear
-        self.view.backgroundColor = UIColor.mainAppColor
         if isDarkMode {
             overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.tintColor = .white
         } else {
             overrideUserInterfaceStyle = .light
+            self.navigationController?.navigationBar.tintColor = .appRedColor
         }
+        searchResultTableView.backgroundColor = .clear
+        
+        self.view.backgroundColor = .primaryColor
+       
     }
     
     // MARK: - UI Elements
@@ -93,6 +97,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.autocorrectionType = .no
         searchBar.searchBarStyle = .minimal
+        searchBar.searchTextField.textColor = .darkText
         searchBar.searchTextField.backgroundColor = .white
         searchBar.searchTextField.leftView?.tintColor = .appRedColor
         return searchBar
@@ -104,7 +109,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
         label.text = "Your Favourite Genre"
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -114,7 +119,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
         label.text = "Search Result"
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -125,7 +130,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitleColor(.white, for: .normal)
         button.setTitle("Horror", for: .normal)
-        button.backgroundColor = .appRedColor
+        button.backgroundColor = .secondaryColor
         return button
     }()
     
@@ -135,7 +140,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitle("Drama", for: .normal)
-        button.backgroundColor = .appRedColor
+        button.backgroundColor = .secondaryColor
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -146,7 +151,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         button.setTitle("Action", for: .normal)
-        button.backgroundColor = .appRedColor
+        button.backgroundColor = .secondaryColor
         button.setTitleColor(.white, for: .normal)
         return button
     }()

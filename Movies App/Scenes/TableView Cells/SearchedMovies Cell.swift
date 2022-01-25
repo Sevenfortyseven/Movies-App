@@ -88,9 +88,9 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     private let movieTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         label.font = .preferredFont(forTextStyle: .headline)
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         return label
     }()
     
@@ -98,9 +98,9 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     private let movieGenre: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -108,7 +108,7 @@ class SearchedMoviesTableViewCell: UITableViewCell  {
     private let movieReleaseDate: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .tertiaryColor
         label.font = .preferredFont(forTextStyle: .subheadline)
         return label
     }()

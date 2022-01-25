@@ -121,7 +121,7 @@
 		07F5136B4AEEDFB970C9D54039F67624 /* RevealMenuCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = RevealMenuCell.xib; path = RevealMenuController/Classes/RevealMenuCell.xib; sourceTree = "<group>"; };
 		08E2CCE050856CAC3180C6D6BEE74104 /* YALSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YALSideMenu.modulemap; sourceTree = "<group>"; };
 		0F7090EEC74C31B456D72E054FBC1C20 /* YALSideMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YALSideMenu.release.xcconfig; sourceTree = "<group>"; };
-		0F836016D3D917102702C9C663DA82F1 /* RevealMenuController */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RevealMenuController; path = RevealMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F836016D3D917102702C9C663DA82F1 /* RevealMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RevealMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		121F14AA712F4EA06853BCBE8D2B575F /* Pods-Movies App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Movies App-frameworks.sh"; sourceTree = "<group>"; };
 		1436D9688E94285804D018308835C1A1 /* Switches.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switches.swift; path = Sources/Switches.swift; sourceTree = "<group>"; };
 		1A08A7F4C5EE70A0F11EBDC4F410F7F6 /* Switches.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Switches.release.xcconfig; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 		99AB8CDF3329838E196974AA500F55B8 /* Switches-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Switches-umbrella.h"; sourceTree = "<group>"; };
 		9A1CB0AE623214F5923FD61DE7C00B39 /* MSCollectionViewPeekingBehavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCollectionViewPeekingBehavior.swift; path = Sources/MSPeekCollectionViewDelegateImplementation/MSCollectionViewPeekingBehavior.swift; sourceTree = "<group>"; };
 		9B97D791FC7D56F8B53AC92331C0C6AC /* SMIconLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMIconLabel.swift; path = SMIconLabel/SMIconLabel.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EF414D5E55E90AA41A0EA76C217ED0A /* YALSideMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YALSideMenu.debug.xcconfig; sourceTree = "<group>"; };
 		9FE46B11FEBCBB7C689EB07A5E57BD38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		A579F16DF783B243C1261D5120062660 /* YapSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YapSwitch.swift; path = Sources/Switches/YapSwitch.swift; sourceTree = "<group>"; };
@@ -191,11 +191,11 @@
 		C333D32B95702D08443EE19DDD61DC35 /* Switcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switcher.swift; path = Sources/Switches/Switcher.swift; sourceTree = "<group>"; };
 		CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarqueeLabel; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F533BF77CEBBB3271C875BFCED099B /* RevealMenuController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RevealMenuController.release.xcconfig; sourceTree = "<group>"; };
-		D5FBE1031BE107DE87EFE1FD1B32767A /* YALSideMenu */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YALSideMenu; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5FBE1031BE107DE87EFE1FD1B32767A /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D666D242D5D600C06DD3DB86943106F2 /* JDSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JDSwitch.swift; path = Sources/Switches/JDSwitch.swift; sourceTree = "<group>"; };
 		D73ADFCB8F64F6D66B536F7978BEF063 /* MSPeekCollectionViewDelegateImplementation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSPeekCollectionViewDelegateImplementation-umbrella.h"; sourceTree = "<group>"; };
 		D79FC83492CB485D3D29FB4972B919B5 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionViewScrollDirection+PeekDataCovnversion.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/UICollectionViewScrollDirection+PeekDataCovnversion.swift"; sourceTree = "<group>"; };
-		DA4014ACB4663075C0A14C476E85B762 /* SMIconLabel */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SMIconLabel; path = SMIconLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA4014ACB4663075C0A14C476E85B762 /* SMIconLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMIconLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6BDE87FBD6D660B777DEB85532B4CF /* Switches.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Switches.debug.xcconfig; sourceTree = "<group>"; };
 		E2E23AD158C46BC35C73EC27B26E2899 /* YALSideMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YALSideMenu-Info.plist"; sourceTree = "<group>"; };
 		E3DD19A0B794E1F5233A32B282CA0DEC /* CGPoint+Axis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+Axis.swift"; path = "Sources/MSPeekCollectionViewDelegateImplementation/CGPoint+Axis.swift"; sourceTree = "<group>"; };
@@ -311,7 +311,6 @@
 				D79FC83492CB485D3D29FB4972B919B5 /* UICollectionViewScrollDirection+PeekDataCovnversion.swift */,
 				74678CDDD3685E85B7B99F72A8DD9116 /* Support Files */,
 			);
-			name = MSPeekCollectionViewDelegateImplementation;
 			path = MSPeekCollectionViewDelegateImplementation;
 			sourceTree = "<group>";
 		};
@@ -321,7 +320,6 @@
 				220133497B3A814177220DD22C135F1C /* MarqueeLabel.swift */,
 				36E8E67D407457A8B6454BF72C7F4440 /* Support Files */,
 			);
-			name = MarqueeLabel;
 			path = MarqueeLabel;
 			sourceTree = "<group>";
 		};
@@ -342,7 +340,6 @@
 				A579F16DF783B243C1261D5120062660 /* YapSwitch.swift */,
 				A0FF67375D0AE4D454B873CCDD6CB5D9 /* Support Files */,
 			);
-			name = Switches;
 			path = Switches;
 			sourceTree = "<group>";
 		};
@@ -354,7 +351,6 @@
 				BBD6BB796E42EF5412C123F665123AA3 /* MenuTransitionAnimator.swift */,
 				B62B8403812C4C630FF72FC77185B631 /* Support Files */,
 			);
-			name = YALSideMenu;
 			path = YALSideMenu;
 			sourceTree = "<group>";
 		};
@@ -383,7 +379,6 @@
 				8DE03D3C31F0B01EBBF3E6EF4E5D750B /* RevealMenuProtocols.swift */,
 				F0767FD8CCF9F4227235C7FD367C374E /* Support Files */,
 			);
-			name = RevealMenuController;
 			path = RevealMenuController;
 			sourceTree = "<group>";
 		};
@@ -448,7 +443,6 @@
 				9B97D791FC7D56F8B53AC92331C0C6AC /* SMIconLabel.swift */,
 				D73CC3327A0A727DC44DC2E7F6F275A0 /* Support Files */,
 			);
-			name = SMIconLabel;
 			path = SMIconLabel;
 			sourceTree = "<group>";
 		};
@@ -497,10 +491,10 @@
 				CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel */,
 				2848949DD809BC5C5680B3617CBE153C /* MSPeekCollectionViewDelegateImplementation */,
 				B7CDC2F61C0D607C5AE71F7B7848024A /* Pods-Movies App */,
-				0F836016D3D917102702C9C663DA82F1 /* RevealMenuController */,
-				DA4014ACB4663075C0A14C476E85B762 /* SMIconLabel */,
+				0F836016D3D917102702C9C663DA82F1 /* RevealMenuController.framework */,
+				DA4014ACB4663075C0A14C476E85B762 /* SMIconLabel.framework */,
 				FF987C54A4424E2AE87F1B34975F2B6A /* Switches */,
-				D5FBE1031BE107DE87EFE1FD1B32767A /* YALSideMenu */,
+				D5FBE1031BE107DE87EFE1FD1B32767A /* SideMenu.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -609,7 +603,7 @@
 			);
 			name = RevealMenuController;
 			productName = RevealMenuController;
-			productReference = 0F836016D3D917102702C9C663DA82F1 /* RevealMenuController */;
+			productReference = 0F836016D3D917102702C9C663DA82F1 /* RevealMenuController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5CF73B25E3FEE9938AE4C373505D5100 /* YALSideMenu */ = {
@@ -627,7 +621,7 @@
 			);
 			name = YALSideMenu;
 			productName = SideMenu;
-			productReference = D5FBE1031BE107DE87EFE1FD1B32767A /* YALSideMenu */;
+			productReference = D5FBE1031BE107DE87EFE1FD1B32767A /* SideMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6DEBEF3AF483D30B9A939B9A0759F229 /* SMIconLabel */ = {
@@ -645,7 +639,7 @@
 			);
 			name = SMIconLabel;
 			productName = SMIconLabel;
-			productReference = DA4014ACB4663075C0A14C476E85B762 /* SMIconLabel */;
+			productReference = DA4014ACB4663075C0A14C476E85B762 /* SMIconLabel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		851180938F0B76DC6C448CD28E11D5BA /* Pods-Movies App */ = {
@@ -1135,7 +1129,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SMIconLabel/SMIconLabel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SMIconLabel/SMIconLabel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1273,7 +1267,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/RevealMenuController/RevealMenuController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/RevealMenuController/RevealMenuController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1307,7 +1301,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/RevealMenuController/RevealMenuController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/RevealMenuController/RevealMenuController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1439,7 +1433,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SMIconLabel/SMIconLabel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SMIconLabel/SMIconLabel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1508,7 +1502,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/YALSideMenu/YALSideMenu-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1543,7 +1537,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/YALSideMenu/YALSideMenu-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -313,7 +313,7 @@ extension RevealMenuController: RevealMenuCellDelegate {
         if let action = item as? RevealMenuAction {
             action.handler?(self, action)
         } else if let actionGroup = item as? RevealMenuActionGroup {
-            if let index = openedItems.index(where: { $0 === actionGroup }) {
+            if let index = openedItems.firstIndex(where: { $0 === actionGroup }) {
                 openedItems.remove(at: index)
                 tableView.reloadData()
                 UIView.animate(

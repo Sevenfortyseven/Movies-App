@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="-284" y="115"/>
         </scene>
-        <!--View Controller-->
+        <!--Downloads View Controller-->
         <scene sceneID="cgh-E3-qR9">
             <objects>
-                <viewController id="cjB-6p-ZCu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DownloadsViewController" id="cjB-6p-ZCu" customClass="DownloadsViewController" customModule="Movies_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ke-VR-kZS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

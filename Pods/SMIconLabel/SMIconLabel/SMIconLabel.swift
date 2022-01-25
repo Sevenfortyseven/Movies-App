@@ -59,7 +59,7 @@ open class SMIconLabel: UILabel {
                 width: frame.width - icon.size.width - iconPadding,
                 height: .greatestFiniteMagnitude),
             options: .usesLineFragmentOrigin,
-            attributes: [ .font : font ],
+            attributes: [ .font : font! ],
             context: nil).size
 
         guard let iconView = iconView else { return }

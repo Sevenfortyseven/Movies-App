@@ -77,7 +77,7 @@ class UserReviewsTableViewCell: UITableViewCell {
     private let userNicknameView: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .gray
         label.font = .preferredFont(forTextStyle: .callout, compatibleWith: .init(legibilityWeight: .bold))
         return label
     }()
@@ -85,7 +85,7 @@ class UserReviewsTableViewCell: UITableViewCell {
     //User review
     private let userReviewView: UITextView = {
         let textView = UITextView()
-        textView.textColor = .white
+        textView.textColor = .tertiaryColor
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         return textView
