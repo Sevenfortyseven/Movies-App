@@ -1,6 +1,0 @@
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSPeekCollectionViewDelegateImplementation.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealMenuController.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SMIconLabel.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Switches.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework
