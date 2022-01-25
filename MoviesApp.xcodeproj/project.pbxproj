@@ -308,16 +308,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		9F98883E2777ABE6002D0EDB /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				9F8FF6572793699D001FDF67 /* NavigationManager.swift */,
-				9FB70D052788E26700CCE203 /* CacheManager.swift */,
-				9F275DFC278B084100C95E2B /* GenresDataBase.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		9F9C0C492795E4A200278FF2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,7 +400,9 @@
 		E690394627A0649800EC7402 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				9F98883E2777ABE6002D0EDB /* Service */,
+				E6A6819427A0684C002ABE89 /* Provider */,
+				E6A6819327A06832002ABE89 /* Cache */,
+				E6A6819227A06825002ABE89 /* Navigation */,
 				9F39B9A92778E7FA0090D9BA /* Networking */,
 			);
 			path = Infrastructure;
@@ -438,6 +430,30 @@
 				9F9C0C5827989E1100278FF2 /* UserReviewsCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		E6A6819227A06825002ABE89 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9F8FF6572793699D001FDF67 /* NavigationManager.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E6A6819327A06832002ABE89 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				9FB70D052788E26700CCE203 /* CacheManager.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		E6A6819427A0684C002ABE89 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				9F275DFC278B084100C95E2B /* GenresDataBase.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
