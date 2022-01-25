@@ -24,6 +24,11 @@ class DownloadsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        comingSoonLabel.frame = CGRect(x: self.view.frame.height / 2, y: self.view.frame.width / 2, width: 300, height: 60)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +38,7 @@ class DownloadsViewController: UIViewController {
  
     
     private func addSubviews() {
-        self.view.addSubview(tmpLabel)
+        self.view.addSubview(comingSoonLabel)
     }
     
     
@@ -54,8 +59,8 @@ class DownloadsViewController: UIViewController {
 
     // MARK: - UI Elements
     
-    private let tmpLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 200, y: 200, width: 300, height: 60))
+    private let comingSoonLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         label.font = .preferredFont(forTextStyle: .largeTitle)
         label.text = "Coming Soon"
         label.textColor = .appRedColor

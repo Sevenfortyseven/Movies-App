@@ -121,7 +121,7 @@ class SettingsViewController: UIViewController {
     // Upper view
     lazy var backDropView: UIView = {
         let bdView = UIView(frame: self.view.bounds)
-        bdView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        bdView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         return bdView
     }()
     

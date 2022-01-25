@@ -17,7 +17,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     
     // MARK: - Initialization
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
@@ -26,6 +25,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         initializeSearchBar()
         populateStackView()
         updateUI()
+        addViewTapGestureRecognizer()
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +54,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         self.view.addSubview(searchResultLabel)
         self.view.addSubview(searchResultTableView)
         
+    }
+    
+    private func addViewTapGestureRecognizer() {
+        //Looks for single or multiple taps.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     // Populate stackView with arranged subviews
@@ -265,10 +277,11 @@ extension SearchViewController {
         let stackViewHeight = CGFloat(44)
         
         // SearchField
-        constraints.append(searchBar.searchTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpace))
+     
+        constraints.append(searchBar.searchTextField.leadingAnchor.constraint(equalTo: self.favouriteGenreLabel.safeAreaLayoutGuide.leadingAnchor, constant: 0))
         constraints.append(searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5))
         constraints.append(searchBar.heightAnchor.constraint(equalToConstant: stackViewHeight))
-        constraints.append(searchBar.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7))
+        constraints.append(searchBar.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.95))
         
         // Favourite genre label
         constraints.append(favouriteGenreLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))
