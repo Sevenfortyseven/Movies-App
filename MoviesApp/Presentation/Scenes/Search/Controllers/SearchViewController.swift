@@ -26,7 +26,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         populateStackView()
         updateUI()
         addViewTapGestureRecognizer()
+       
     }
+    
     
     //Calls this function when the tap is recognized.
     @objc func dismissKeyboard() {
@@ -58,7 +60,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     private func addViewTapGestureRecognizer() {
         //Looks for single or multiple taps.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
     
@@ -281,7 +284,7 @@ extension SearchViewController {
         constraints.append(searchBar.searchTextField.leadingAnchor.constraint(equalTo: self.favouriteGenreLabel.safeAreaLayoutGuide.leadingAnchor, constant: 0))
         constraints.append(searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5))
         constraints.append(searchBar.heightAnchor.constraint(equalToConstant: stackViewHeight))
-        
+        constraints.append(searchBar.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.95))
         
         // Favourite genre label
         constraints.append(favouriteGenreLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpace))

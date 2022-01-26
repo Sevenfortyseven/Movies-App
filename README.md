@@ -41,9 +41,28 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot1]![product-screenshot2]![Product Name Screen Shot3]![Product Name Screen Shot4]
+<img src="Screenshots/image1.png" width="200" height="400">  <img src="Screenshots/image2.png" width="200" height="400">  <img src="Screenshots/image3.png" width="200" height="400">  <img src="Screenshots/image4.png" width="200" height="400"> 
+<img src="Screenshots/image10.png" width="200" height="400">  <img src="Screenshots/image7.png" width="200" height="400">  <img src="Screenshots/image8.png" width="200" height="400">  <img src="Screenshots/image9.png" width="200" height="400">
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+
+
+
+Hi there, this is my first project ever that solves absolutely 0 problems; However, I made this app for showcase purposes only, to demonstrate the skills I've learned so far.
+The app is created with an MVC design pattern, using moviesDB free API.
+
+while working on this app I've learned/ mastered: 
+* Passing data and communication between objects using Delegation pattern
+* Observer and Notification pattern
+* Building UI with programmatical approach only 
+* Communication patterns with closures
+
+and much more... but I think I've listed the most important ones. The app is not in a final state; I'm going to implement more features which I'll list below in my roadmap
+
+Libraries I've used:
+* MSPeekCollectionViewDelegateImplementation
+* MarqueeLabel
+* RevealMenuController 
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -51,14 +70,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* Xcode 13
+* Swift programming language
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -67,65 +80,39 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To run the app you'll need your own moviesDB api key and xcode 13.2 + 
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [https://www.themoviedb.org](https://www.themoviedb.org)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Sevenfortyseven/Movies-App.git
    ```
-3. Install NPM packages
+3. Install pods using CocoaPods
+
    ```sh
-   npm install
+   $ pod install
    ```
-4. Enter your API in `config.js`
+4. Enter your API in `config.swift`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   let API_KEY = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [x] Search Movies/TV shows
+- [x] Dark/Light mode
+- [ ] User authorisation
+- [ ] Downloads
 
 
 
-[product-screenshot1]: Screenshots/image1.png
-[product-screenshot2]: Screenshots/image2.png
-[product-screenshot3]: Screenshots/image3.png
-[product-screenshot4]: Screenshots/image4.png
-[product-screenshot5]: Screenshots/image5.png
-[product-screenshot6]: Screenshots/image6.png
-[product-screenshot7]: Screenshots/image7.png
-[product-screenshot8]: Screenshots/image8.png
-[product-screenshot9]: Screenshots/image9.png
-[product-screenshot10]: Screenshots/image10.png
