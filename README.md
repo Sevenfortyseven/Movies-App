@@ -8,7 +8,7 @@
 <h3 align="center">Movie Hub</h3>
 
   <p align="center">
-    A simple movie browsing app
+    A simple movie browsing/movie suggesting app
   </p>
 </div>
 
@@ -33,10 +33,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -45,7 +41,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot1][product-screenshot2][Product Name Screen Shot3][Product Name Screen Shot4]]
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
 
@@ -121,3 +117,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Feature 3
     - [ ] Nested Feature
 
+
+
+[product-screenshot1]: Screenshots/image1.png
+[product-screenshot2]: Screenshots/image2.png
+[product-screenshot3]: Screenshots/image3.png
+[product-screenshot4]: Screenshots/image4.png
+[product-screenshot5]: Screenshots/image5.png
+[product-screenshot6]: Screenshots/image6.png
+[product-screenshot7]: Screenshots/image7.png
+[product-screenshot8]: Screenshots/image8.png
+[product-screenshot9]: Screenshots/image9.png
+[product-screenshot10]: Screenshots/image10.png
